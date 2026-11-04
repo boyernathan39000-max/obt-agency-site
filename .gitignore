@@ -1,0 +1,30 @@
+# Le dossier de mise en ligne est une copie a l'identique du site deja en
+# ligne, 192 Mo : il n'a rien a faire dans le depot, il se refabrique a la
+# publication. Nathan, 4 novembre 2026.
+SITE MISE EN LIGNE/
+
+# Fichiers du systeme et du poste.
+.DS_Store
+.netlify/
+*.bak
+*.avant-*
+
+# Sauvegardes datees et maquettes de travail.
+Maquettes/
+
+# Les documents de travail restent dans le Drive, jamais dans le depot : il
+# devient public le 4 novembre 2026 et ces fichiers portent le nom du
+# partenaire qui fait le referencement, les prix et les marges, le plan de la
+# refonte et les notes internes. Rien de cela ne regarde un visiteur.
+00-AUDIT AVANT REFONTE.md
+00-RENDEZ-VOUS (mise en service).md
+01-PLAN DE LA REFONTE.md
+02-PLAN DESIGN BLAST.md
+03-PLAN SECTION PAR SECTION.html
+GATES-audit.md
+GATES-nettoyage-s4.md
+GATES-refonte.md
+NOTES.md
+
+# La charte interne porte la grille de prix : elle reste dans le Drive.
+00-IDENTITE/

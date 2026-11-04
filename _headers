@@ -1,0 +1,77 @@
+# En-têtes de sécurité — lus par Netlify au déploiement.
+# Ce fichier doit se trouver à la RACINE du site publié, à côté d'index.html.
+
+/*
+  # Le navigateur ne devine plus le type d'un fichier : un .txt servi comme du
+  # HTML ne peut plus s'exécuter.
+  X-Content-Type-Options: nosniff
+  # Seules nos propres pages peuvent encadrer le site : pas de clickjacking.
+  X-Frame-Options: SAMEORIGIN
+  # Un site tiers ne reçoit que notre domaine, jamais l'adresse complète.
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Aucune de ces API n'est utilisée : on les refuse à la source.
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+  # HTTPS obligatoire pendant deux ans, sous-domaines compris.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # Le site ne charge RIEN de l'extérieur. Le seul script en ligne est celui
+  # qui arme le voile de chargement : il est autorisé par son empreinte, pas
+  # par un « unsafe-inline » qui ouvrirait la porte à n'importe quel script
+  # injecté. `form-action` cantonne l'envoi des formulaires à Web3Forms.
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://api.web3forms.com; connect-src 'self' https://api.web3forms.com; script-src 'self' 'sha256-CxE7yu6TFmFq9cr6ePaal7PWUYqliSFUflRKnvIRYY8='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; frame-src 'self'; upgrade-insecure-requests
+
+# Les sites de démonstration ne chargent plus aucun script distant : GSAP,
+# ScrollTrigger et Lenis sont servis depuis leur propre dossier `vendor/`.
+# Restent leurs polices Google, leurs images Unsplash et le plan Google Maps
+# encadré par AUBIER, d'où une politique un peu plus large que celle du site de
+# l'agence — mais fermée, et limitée à ce dossier. `frame-src` cite les deux
+# hôtes de la carte : `maps.google.com` redirige vers `www.google.com/maps/embed`,
+# et une redirection est elle aussi soumise à la politique.
+# S'y ajoute `player.vimeo.com` : le site des Terrasses de Merlue encadre une
+# video. `frame-src` n'autorise qu'a encadrer, rien d'autre, et seulement dans
+# ce dossier.
+/Maquettes/*
+  # Ces copies ne sont pas des pages d'OBT Agency : `robots.txt` en interdit
+  # l'exploration, et cet en-tete interdit l'indexation. Leurs adresses
+  # canoniques visent le site du client, ce qui est voulu : l'original est
+  # chez lui, et la demonstration ne doit pas lui faire concurrence.
+  X-Robots-Tag: noindex
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; font-src 'self' https://fonts.gstatic.com; media-src 'self'; frame-src 'self' https://maps.google.com https://www.google.com https://player.vimeo.com; connect-src 'self'; upgrade-insecure-requests
+
+# ---------------------------------------------------------------------------
+# MISE EN CACHE
+# Par défaut, Netlify envoie `max-age=0, must-revalidate` sur TOUT : à chaque
+# changement de page, le navigateur redemande au serveur si la feuille de
+# style, le script, la police et les images ont changé. Douze allers-retours
+# avant le premier pixel — c'est ce qui rendait la navigation poussive.
+#
+# Les feuilles et le script portent déjà `?v=NNN` : changer ce numéro suffit à
+# forcer le rechargement, on peut donc les figer un an sans risque. Les polices
+# ne changent jamais. Les images gardent une échéance plus courte, pour qu'un
+# remplacement se voie sans attendre.
+# ---------------------------------------------------------------------------
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+/Maquettes/*
+  Cache-Control: public, max-age=86400
+
+# Les pages, elles, restent revalidées à chaque visite : une correction de
+# texte doit se voir tout de suite.
+
+# Ces fichiers ne devraient jamais être publiés ; si l'un passait malgré tout,
+# il ne sera au moins pas indexé.
+/*.md
+  X-Robots-Tag: noindex

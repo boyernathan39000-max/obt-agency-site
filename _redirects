@@ -1,0 +1,22 @@
+# Fichiers de travail : s'ils partaient en ligne par erreur, ils ne seraient
+# pas servis. Ceinture et bretelles : la vraie protection reste de ne pas les
+# téléverser du tout.
+/*.avant-*        /404.html   404
+/*.bak            /404.html   404
+/NOTES.md         /404.html   404
+/.DS_Store        /404.html   404
+
+# Page de référence d'un site tiers, conservée comme inspiration. Ses traceurs
+# (Google Tag Manager, Microsoft Clarity, Klaviyo) ont été retirés le
+# 4 septembre 2026 ; il reste qu'elle reproduit le site d'un tiers, et elle
+# n'est liée depuis nulle part. Cette règle la rend inatteignable en ligne tout
+# en la conservant sur le poste. Retirer ces deux lignes pour la publier.
+/Maquettes/Le*Gralle/ayocin.html   /404.html   404
+
+# Arborescence du 1er novembre 2026. « Services » devient la page du pack,
+# celle qui porte l'abonnement et les trois montants ; « Réalisations »
+# devient « Résultats », parce qu'on y montre d'abord des chiffres. Les deux
+# anciennes adresses sont indexées et liées depuis l'extérieur : 301 et non
+# 302, le déplacement est définitif, c'est ce qui transmet le poids acquis.
+/services.html       /pack.html       301
+/realisations.html   /resultats.html  301

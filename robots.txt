@@ -1,0 +1,11 @@
+# OBT Agency — https://obt-agency.fr
+
+User-agent: *
+Allow: /
+
+# Les sites de démonstration des clients sont affichés dans la visionneuse du
+# site ; ce sont des copies locales, elles n'ont pas à être indexées comme des
+# pages d'OBT Agency.
+Disallow: /Maquettes/
+
+Sitemap: https://obt-agency.fr/sitemap.xml

@@ -1,0 +1,409 @@
+/* ==========================================================================
+   OBT Agency, tokens.css
+   Source de vérité : Articool/site/assets/css/main.css (valeurs relevées dans
+   le code, jamais à l'œil sur une capture) + Articool/site/design-system.md.
+   Aucune couleur ni taille de police ne doit être écrite en dur ailleurs.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. POLICES, Inter Variable, self-hosted (copiée depuis Articool/site/assets)
+   Une seule famille pour tout le site : titres, corps et boutons.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/InterVariable.woff2") format("woff2-variations"),
+       url("../assets/fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/InterVariable-Italic.woff2") format("woff2-variations"),
+       url("../assets/fonts/InterVariable-Italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+
+  /* ------------------------------------------------------------------------
+     2. PALETTE, thème clair, fond blanc (§9 du design system Articool)
+     ------------------------------------------------------------------------ */
+
+  /* Fonds */
+  --c-bg:              #FFFFFF;  /* body, sections pleines */
+  --c-bg-panel:        #F6F7F9;  /* cartes solides, pied de page */
+  --c-bg-elevated:     #EEF0F3;  /* cartes surélevées, inputs, cartes empilées */
+
+  /* Textes */
+  --c-text:            #12151A;  /* titres, corps important */
+  --c-text-muted:      #545B64;  /* sous-titres, descriptions */
+  --c-text-faint:      #5F6670;  /* légendes, méta, labels de pied de page */
+  --c-text-on-accent:  #FFFFFF;  /* texte posé sur --c-accent-deep */
+  --c-prix-barre:      #C62828;  /* ancien montant barré d’une offre
+                                    promotionnelle, 5,6:1 sur blanc (AA).
+                                    Distinct de --c-alert, réservé aux
+                                    signaux de défaut de la démo du hero. */
+
+  /* Accents */
+  --c-accent:          #2558D6;  /* couleur principale : liens, icônes, eyebrow,
+                                    boutons pleins, 6,1:1 sur blanc (AA) */
+  --c-accent-bright:   #3D8BFF;  /* accent clair : usage décoratif, dégradés */
+  --c-accent-light:    #7FD1FF;  /* survol du bouton plein, accents sur fond sombre */
+  --c-accent-deep:     #2558D6;  /* fond du bouton plein (texte blanc, 6,1:1) */
+
+  /* Teintes d'accent transparentes (base #2558D6 = rgb(37,88,214)) */
+  --c-accent-a04:      rgba(37, 88, 214, .04);
+  --c-accent-a08:      rgba(37, 88, 214, .08);
+  --c-accent-a12:      rgba(37, 88, 214, .12);
+  --c-accent-a16:      rgba(37, 88, 214, .16);
+  --c-accent-a18:      rgba(37, 88, 214, .18);
+
+  /* Dégradés des taches de fond.
+     Une descente d'alpha en six paliers et non une rampe linéaire : l'œil
+     détecte les ruptures de pente (bandes de Mach) et voit alors le bord du
+     cercle. Cette courbe imite un flou gaussien, elle donne le même rendu
+     qu'un `filter: blur()` sans aucun coût de rastérisation par image.
+     Terminer sur la même couleur à alpha 0 (et non sur le mot-clé
+     `transparent`, qui vaut du noir transparent) évite en plus le liseré gris. */
+  --blob-bright: radial-gradient(circle at 50% 50%,
+      rgba(61, 139, 255, .90) 0%,  rgba(61, 139, 255, .58) 22%,
+      rgba(61, 139, 255, .30) 42%, rgba(61, 139, 255, .13) 62%,
+      rgba(61, 139, 255, .04) 80%, rgba(61, 139, 255, 0) 100%);
+  --blob-light: radial-gradient(circle at 50% 50%,
+      rgba(127, 209, 255, .90) 0%,  rgba(127, 209, 255, .58) 22%,
+      rgba(127, 209, 255, .30) 42%, rgba(127, 209, 255, .13) 62%,
+      rgba(127, 209, 255, .04) 80%, rgba(127, 209, 255, 0) 100%);
+  --blob-deep: radial-gradient(circle at 50% 50%,
+      rgba(37, 88, 214, .90) 0%,  rgba(37, 88, 214, .58) 22%,
+      rgba(37, 88, 214, .30) 42%, rgba(37, 88, 214, .13) 62%,
+      rgba(37, 88, 214, .04) 80%, rgba(37, 88, 214, 0) 100%);
+  --blob-sweep-a: radial-gradient(ellipse at 22% 30%,
+      rgba(61, 139, 255, .85) 0%,  rgba(61, 139, 255, .50) 24%,
+      rgba(61, 139, 255, .24) 46%, rgba(61, 139, 255, .09) 66%,
+      rgba(61, 139, 255, 0) 100%);
+  --blob-sweep-b: radial-gradient(ellipse at 80% 72%,
+      rgba(127, 209, 255, .85) 0%,  rgba(127, 209, 255, .50) 24%,
+      rgba(127, 209, 255, .24) 46%, rgba(127, 209, 255, .09) 66%,
+      rgba(127, 209, 255, 0) 100%);
+
+  /* Bordures et surfaces translucides (base #12151A = rgb(18,21,26)) */
+  --c-surface:         rgba(18, 21, 26, .035); /* fond des surfaces "verre" */
+  --c-surface-strong:  rgba(18, 21, 26, .06);  /* état actif, survol */
+  --c-border:          rgba(18, 21, 26, .10);  /* bordure standard, séparateurs */
+  --c-border-strong:   rgba(18, 21, 26, .18);  /* bordure de placeholder */
+
+  /* Couleurs d'état, hors palette de marque, réservées aux signaux
+     fonctionnels de la démo d'audit du hero (score atteint / défaut détecté). */
+  --c-ok:     #2E9E63;
+  --c-alert:  #D9534F;
+  --c-sheen:  rgba(255, 255, 255, .55);  /* reflet qui balaie la fenêtre de la démo */
+  --shadow-cursor: 0 3px 6px rgba(0, 0, 0, .35);
+
+  /* Échelle miniature de la démo d'audit : la maquette figure un site vu en
+     tout petit, ses textes sont volontairement sous l'échelle typographique
+     du site. Ils ne servent qu'à ce composant. */
+  --fs-mock-xs: 11px;
+  --fs-mock-sm: 12px;
+  --fs-mock-md: 13px;
+  /* Le label des jauges est SOUS la fenêtre : il ne suit pas son échelle. */
+  --fs-gauge-label: 10px;
+
+  /* Réglages propres au mobile */
+  --blob-ratio:        1.45;   /* forme des taches, relevée sur le rendu desktop */
+  --blob-ratio-full:   1.6;
+  --fs-hero-eyebrow-m: 0.6875rem;  /* 11px */
+  --fs-hero-title-m:   2rem;       /* 32px, contre 40 auparavant */
+  --fs-hero-sub-m:     0.9375rem;  /* 15px */
+  --fs-mobile-xs:      0.6875rem;  /* 11px, bloc « méthode de calcul » */
+  /* Libellés d'axes du graphique. La valeur est en UNITÉS du viewBox, pas en
+     pixels d'écran : le SVG mesure 960 unités de large pour 309 px affichés en
+     mobile, une graduation à 12 unités n'y ferait que 3,9 px. */
+  /* Photo de la section « Nos services » en mobile : moitié de sa hauteur
+     naturelle (596 px à 335 px de large). */
+  /* Hauteur retirée aux heros des pages intérieures pour que la section
+     suivante affleure la ligne de flottaison : on doit deviner qu'il y a une
+     suite sans avoir à défiler pour le découvrir. */
+  --hero-peek:         140px;
+  /* Carrousel d'avis de la page Contact */
+  --avis-delai:        3000ms;   /* lu par main.js */
+  --avis-fondu:        .5s;
+
+  /* Placeholders d'image (§5 du brief) */
+  --c-ph-border:       #C3C8CF;  /* bordure fine gris moyen */
+
+  /* Ombres */
+  --shadow-glow:       0 8px 36px -14px rgba(47, 107, 255, .35);
+  --shadow-soft:       0 20px 50px -22px rgba(18, 23, 31, .16);
+  /* Visionneuse de réalisation */
+  --c-viewer-backdrop: rgba(18, 21, 26, .55);
+  --shadow-viewer:     0 40px 120px -30px rgba(18, 23, 31, .45);
+
+  /* États de survol */
+  --c-hover-border:    var(--c-accent);
+  --c-hover-text:      var(--c-accent);
+
+  /* ------------------------------------------------------------------------
+     3. TYPOGRAPHIE
+     Famille unique : Inter. Tracking négatif sur les titres h1→h3 uniquement,
+     jamais sur le corps de texte ni sur la navigation.
+     ------------------------------------------------------------------------ */
+  --font-base: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Échelle (ratio 1.25, base 16px) : 12/14/16/20/25/32/40/50/64/80 */
+  --fs-2xs:  0.75rem;    /* 12px */
+  --fs-xs:   0.875rem;   /* 14px */
+  --fs-sm:   1rem;       /* 16px */
+  --fs-md:   1.25rem;    /* 20px */
+  --fs-lg:   1.5625rem;  /* 25px */
+  --fs-xl:   2rem;       /* 32px */
+  --fs-2xl:  2.5rem;     /* 40px */
+  --fs-3xl:  3.125rem;   /* 50px */
+  --fs-4xl:  4rem;       /* 64px */
+  --fs-5xl:  5rem;       /* 80px */
+
+  /* Graisses */
+  --fw-regular:   400;
+  --fw-medium:    500;   /* liens de navigation */
+  --fw-semibold:  600;   /* h3, boutons, emphases, eyebrow */
+  --fw-bold:      700;   /* h1, h2, chiffres, labels de pied de page */
+
+  /* Titres */
+  --h1-size:      var(--fs-4xl);   /* 80px (--fs-5xl) au-dessus de 900px */
+  --h1-lh:        1.04;
+  --h1-ls:        -0.02em;
+
+  --h2-size:      var(--fs-2xl);   /* 50px (--fs-3xl) au-dessus de 900px */
+  --h2-lh:        1.1;
+  --h2-ls:        -0.02em;
+  --h2-weight:    var(--fw-bold);
+
+  --h3-size:      var(--fs-lg);
+  --h3-lh:        1.25;
+  --h3-ls:        -0.01em;
+  --h3-weight:    var(--fw-semibold);
+
+  /* Titre de hero : plus grand et plus resserré que h1 */
+  --hero-size:    clamp(2.75rem, 6vw, 5rem);
+  --hero-ls:      -0.03em;
+  /* Marge gauche du hero : la moitié de celle du conteneur, pour ramener la
+     colonne de texte vers le bord sans toucher aux écarts entre ses éléments. */
+  --hero-pad-left: max(20px, calc(var(--container-pad) * .45));
+
+  /* Corps de texte */
+  --body-size:    var(--fs-sm);
+  --body-lh:      1.5;
+  --body-ls:      0;
+  --body-weight:  var(--fw-regular);
+  --lead-size:    var(--fs-md);   /* chapô sous un titre de section */
+
+  /* Eyebrow / sur-titre (« RÉASSURANCE », « AVIS CLIENTS »…) */
+  --eyebrow-size:   var(--fs-2xs);
+  --eyebrow-weight: var(--fw-semibold);
+  --eyebrow-ls:     0.12em;
+  --eyebrow-case:   uppercase;
+  --eyebrow-color:  var(--c-accent);
+
+  /* Navigation */
+  --nav-size:     var(--fs-xs);
+  --nav-weight:   var(--fw-medium);
+  --nav-lh:       1.5;
+  --nav-ls:       0;
+
+  /* Boutons */
+  --btn-size:     var(--fs-xs);
+  --btn-weight:   var(--fw-semibold);
+  --btn-lh:       1.5;
+  --btn-ls:       0;
+  --btn-case:     none;
+
+  /* Labels de colonne de pied de page */
+  --footer-label-size:   var(--fs-2xs);
+  --footer-label-weight: var(--fw-bold);
+  --footer-label-ls:     0.08em;
+  --footer-label-case:   uppercase;
+
+  /* ------------------------------------------------------------------------
+     4. ESPACEMENTS, base 4px, ratio doublant
+     ------------------------------------------------------------------------ */
+  --sp-1:   0.25rem;  /*   4px */
+  --sp-2:   0.5rem;   /*   8px */
+  --sp-3:   0.75rem;  /*  12px */
+  --sp-4:   1rem;     /*  16px */
+  --sp-6:   1.5rem;   /*  24px */
+  --sp-8:   2rem;     /*  32px */
+  --sp-12:  3rem;     /*  48px */
+  --sp-16:  4rem;     /*  64px */
+  --sp-24:  6rem;     /*  96px */
+  --sp-32:  8rem;     /* 128px */
+
+  /* Rythme vertical des sections */
+  --section-pad:        var(--sp-24);  /* padding-block desktop */
+  --section-pad-mobile: var(--sp-16);  /* padding-block sous 680px */
+
+  /* Conteneur et gouttières */
+  --container-max:  1440px;
+  --container-pad:  clamp(20px, 5vw, 96px);
+
+  /* ------------------------------------------------------------------------
+     5. RAYONS
+     ------------------------------------------------------------------------ */
+  --radius-sm:    10px;   /* inputs, petits blocs, icon-box */
+  --radius-md:    20px;   /* cartes, placeholders d'image */
+  --radius-lg:    32px;   /* panneaux, bannières, cartes de service */
+  --radius-pill:  999px;  /* navigation, boutons, badges */
+
+  /* ------------------------------------------------------------------------
+     6. BOUTONS
+     ------------------------------------------------------------------------ */
+  --btn-radius:            var(--radius-pill);
+  --btn-pad-y:             var(--sp-3);
+  --btn-pad-x:             var(--sp-8);
+  --btn-gap:               var(--sp-3);
+
+  /* Bouton plein (CTA principal) */
+  --btn-solid-bg:          var(--c-accent-deep);
+  --btn-solid-text:        var(--c-text-on-accent);
+  --btn-solid-border:      transparent;
+  --btn-solid-shadow:      var(--shadow-glow);
+  --btn-solid-bg-hover:    var(--c-accent-light);
+  --btn-solid-text-hover:  var(--c-text);
+
+  /* Bouton contour (CTA secondaire) */
+  --btn-outline-bg:            transparent;
+  --btn-outline-text:          var(--c-text);
+  --btn-outline-border:        var(--c-border);
+  --btn-outline-pad-y:         var(--sp-3);
+  --btn-outline-pad-x:         var(--sp-6);
+  --btn-outline-border-hover:  var(--c-accent);
+  --btn-outline-text-hover:    var(--c-accent);
+
+  /* Bouton de la barre de menu (surface translucide) */
+  --btn-nav-pad-y:         var(--sp-3);
+
+  /* Pastille ronde à flèche, à l'intérieur d'un bouton */
+  --btn-circle-size:       40px;
+  --btn-circle-bg:         linear-gradient(155deg, var(--c-accent), var(--c-accent-bright));
+  --btn-circle-text:       #FFFFFF;
+
+  /* Flèches de carrousel */
+  --carousel-arrow-size:   40px;
+
+  /* ------------------------------------------------------------------------
+     7. CARTES ET BLOCS
+     ------------------------------------------------------------------------ */
+  --card-radius:        var(--radius-lg);
+  --card-pad:           var(--sp-6);
+  --card-pad-lg:        var(--sp-8);
+  /* Plancher de hauteur des cartes d'offre de la page Services. */
+  --offer-card-min-h:   340px;
+  /* Bandeau image en haut des cartes de la page Services : environ 30 % de
+     la hauteur d'une carte, toutes les cartes étant à la même hauteur. */
+  --service-media-h:   5.875rem;  /* 94px, 70 % de moins que les 312px d'origine */
+
+  --icon-box-size:      44px;
+  --icon-box-radius:    var(--radius-sm);
+  --icon-box-bg:        linear-gradient(155deg, var(--c-accent-a12), var(--c-accent-a04));
+  --icon-box-border:    var(--c-accent-a16);
+  --icon-size:          22px;
+  --icon-stroke:        1.5;
+
+  /* Barre de menu */
+  /* Logo de marque, le fichier est au ratio 4:1, seule la hauteur est fixée. */
+  --logo-height:        26px;
+  --logo-height-footer: 32px;
+
+  --header-pad-y:       var(--sp-6);
+  /* Barre de menu reprise de la capture Articool : pas de filet de séparation,
+     la navigation et le CTA portent leur propre pilule. */
+  --nav-track-bg:       var(--c-bg-elevated);
+  --nav-track-border:   var(--c-border);
+  --nav-active-bg:      var(--c-bg);
+  --nav-active-shadow:  0 2px 10px -4px rgba(18, 23, 31, .35);
+  /* Pilule de survol : plus discrète que celle de la page active. */
+  --nav-hover-bg:       var(--c-surface-strong);
+  --header-height:      88px;  /* 2 × 24px de padding + 40px de contenu */
+
+  /* Pied de page */
+  --footer-pad-top:     var(--sp-16);
+  --footer-pad-bottom:  var(--sp-8);
+  --footer-border:      var(--c-border);
+  /* Signature typographique géante « OBT AGENCY » : la capture est crème sur
+     fond noir, transposée ici en gris très clair teinté bleu pour rester un
+     élément décoratif et non un titre. */
+  --c-footer-wordmark:  #12151A;   /* signature géante, sur le fond gris du pied de page */
+
+  /* Maquette « après » de la démo d'audit : elle figure un hero photographique
+     sombre. Ces valeurs ne servent QUE là, le site, lui, reste clair. */
+  --c-mock-shot-a:      #171B22;   /* zone sombre de la photo */
+  --c-mock-shot-b:      #333A46;   /* zone éclairée */
+  --c-mock-on-shot:     #FFFFFF;
+  --c-mock-on-shot-dim: rgba(255, 255, 255, .60);
+  --c-mock-glass:       rgba(255, 255, 255, .10);
+  --c-mock-glass-edge:  rgba(255, 255, 255, .20);
+  /* Couleur de marque du client maquetté, le rouge de son ancien site. Ce
+     n'est PAS `--c-alert`, qui signale un défaut : ici le rouge est l'identité
+     que le client garde d'un écran à l'autre. Le bleu reste celui d'OBT et ne
+     s'invite pas dans la maquette du site d'un tiers. */
+  --c-mock-brand:       #D9534F;
+  --c-mock-brand-deep:  #C0403C;   /* fond plein, texte blanc dessus */
+  --c-mock-brand-light: #FF8F8A;   /* sur fond sombre : étoiles */
+  --fs-mock-title:      1.125rem;   /* 18px */
+  --fs-mock-title-m:    0.875rem;   /* 14px */
+
+  /* Voile de chargement */
+  /* Bornée en vw ET en rem : au-delà de 1440px le conteneur ne grandit plus,
+     un vw pur ferait déborder la signature hors du cadre. */
+  --footer-wordmark-size: clamp(2.25rem, 12.8vw, 11.25rem);
+
+  /* ------------------------------------------------------------------------
+     8. MOUVEMENT
+     ------------------------------------------------------------------------ */
+  --ease-out-soft:   cubic-bezier(.16, 1, .3, 1);
+  --ease-inout-soft: cubic-bezier(.65, 0, .35, 1);
+  --dur-fast:  .25s;   /* micro-interactions */
+  --dur-med:   .8s;    /* reveals de bloc */
+  --dur-carousel: .45s; /* glissement du carrousel : on le manipule, il doit
+                           répondre, .8s donnait une impression de lourdeur */
+
+  --marquee-duration:  40s;   /* bande défilante, boucle linéaire infinie */
+
+  /* Apparitions au défilement */
+  --reveal-dur:    .55s;
+  --reveal-step:   45ms;   /* décalage entre deux éléments d'un même groupe */
+  --reveal-shift:  26px;   /* translation de départ */
+  --reveal-blur:   12px;   /* flou de départ des titres */
+
+  /* Transition entre les deux pages (View Transitions, Chrome/Edge) */
+  --page-transition-dur: .16s;
+
+  /* ------------------------------------------------------------------------
+     9. POINTS DE RUPTURE (référence, non utilisables en @media, rappel ici)
+     480px · 768px · 1024px · 1440px
+     ------------------------------------------------------------------------ */
+
+  /* ------------------------------------------------------------------------
+     10. DIVERS
+     ------------------------------------------------------------------------ */
+  /* Pochoir de masque (mask-image) : ce n'est pas une couleur de la palette,
+     seulement la partie opaque d'un dégradé de masque. */
+  --mask-opaque: #000;
+
+  /* Curseur personnalisé : le point bleu qui remplace la flèche de la souris. */
+
+  /* Barre d'appel flottante */
+  --c-whatsapp:        #25D366;   /* vert de marque WhatsApp */
+  --c-whatsapp-hover:  #1FB855;
+  --appel-bas:         var(--sp-6);
+  --appel-bas-m:       var(--sp-3);  /* la barre descend en mobile */
+  --appel-pad:         var(--sp-3);
+  --appel-z:           90;        /* sous le bandeau menu (100) */
+
+  /* Marge conservée tout autour du cadre : le site de l'agence reste visible. */
+  --viewer-pad:        clamp(1rem, 4vmin, 3rem);
+  --viewer-max-w:      1400px;
+  --viewer-bar-h:      48px;
+  --viewer-dur:        .28s;
+}

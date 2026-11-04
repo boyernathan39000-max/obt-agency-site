@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico?v=366" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=366">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=366">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=366">
+<title>Automatisation IA pour artisans et domaines · OBT Agency</title>
+<meta name="description" content="Les demandes qui arrivent la nuit, les devis à recopier, les relances oubliées : on branche ce qui se répète sur un automate et vous récupérez vos soirées.">
+<link rel="canonical" href="https://obt-agency.fr/automatisation-ia.html">
+<!-- Partage : ce qui s'affiche quand l'adresse est collee dans un
+     message, un reseau social ou une messagerie. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OBT Agency">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Automatisation IA pour artisans et domaines · OBT Agency">
+<meta property="og:description" content="Les demandes qui arrivent la nuit, les devis à recopier, les relances oubliées : on branche ce qui se répète sur un automate et vous récupérez vos soirées.">
+<meta property="og:url" content="https://obt-agency.fr/automatisation-ia.html">
+<meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css?v=366">
+<link rel="stylesheet" href="css/style.css?v=366">
+<link rel="stylesheet" href="css/refonte.css?v=366">
+<!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
+     armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
+<!-- La page voisine est préchargée : le changement de page est alors instantané. -->
+<link rel="prefetch" href="contact.html" as="document">
+<link rel="prefetch" href="contact.html" as="document">
+<script>(function () {
+  /* La seule chose que ce script fait encore : signaler que JavaScript
+     repond. La feuille de style s'en sert pour les elements qui n'ont de
+     sens qu'avec lui. Le voile de chargement a ete retire le 1er novembre. */
+  document.documentElement.classList.add('js');
+})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+  {
+    "@type": "ProfessionalService",
+    "@id": "https://obt-agency.fr/#entreprise",
+    "name": "OBT Agency",
+    "legalName": "Tom BOYER",
+    "description": "Référencement sur Google et dans les IA, avec le site refait compris dans l'abonnement.",
+    "url": "https://obt-agency.fr/",
+    "logo": "https://obt-agency.fr/assets/img/logo-obt.png",
+    "image": "https://obt-agency.fr/assets/img/logo-obt.png",
+    "email": "contact@obt-agency.fr",
+    "telephone": "+33641336451",
+    "identifier": { "@type": "PropertyValue", "propertyID": "SIREN", "value": "109317453" },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "51 chemin des Vignes",
+      "postalCode": "39210",
+      "addressLocality": "Menétru-le-Vignoble",
+      "addressRegion": "Bourgogne-Franche-Comté",
+      "addressCountry": "FR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "19:00"
+    }],
+    "areaServed": { "@type": "Country", "name": "France" },
+    "priceRange": "500 € à 5 000 €",
+    "knowsLanguage": "fr"
+  },
+  {
+    "@type": "OfferCatalog",
+    "@id": "https://obt-agency.fr/services.html#catalogue",
+    "name": "Prestations OBT Agency",
+    "provider": { "@id": "https://obt-agency.fr/#entreprise" },
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création et refonte de site web", "serviceType": "Création de site internet" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création et mise à niveau de fiche Google Business", "serviceType": "Référencement local" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Identité visuelle et charte graphique", "serviceType": "Design graphique" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation IA et développement sur mesure", "serviceType": "Développement logiciel" } }
+    ]
+  }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+
+<!-- Sprite d'icônes SVG, inline pour fonctionner en file:// sans requête réseau -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <!-- Les outils sur lesquels on branche les automatisations. Dessins
+       simplifies, aux couleurs des marques : on les cite pour dire a quoi
+       on se branche, rien de plus. 2 novembre 2026. -->
+  <symbol id="i-n8n" viewBox="0 0 24 24" fill="none">
+    <path d="M4.4 12h3.2M11 12.4 14 9m-3 2.2 3 3.4m3.6-5.4h2.6" stroke="#EA4B71" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="3.1" cy="12" r="1.9" fill="#EA4B71"/>
+    <circle cx="9.3" cy="12" r="2.4" fill="#EA4B71"/>
+    <circle cx="15.5" cy="8.2" r="1.9" fill="#EA4B71"/>
+    <circle cx="15.5" cy="15.8" r="1.9" fill="#EA4B71"/>
+    <circle cx="21" cy="8.2" r="1.7" fill="#EA4B71"/>
+  </symbol>
+  <symbol id="i-make" viewBox="0 0 24 24" stroke="none">
+    <path fill="#6D00CC" d="M4.4 4.6h2.9l2.1 14.8H6.5z"/>
+    <path fill="#6D00CC" d="m10.9 4.6 2.9.2 1.3 14.6h-2.9z" opacity=".82"/>
+    <circle fill="#6D00CC" cx="18.3" cy="7.4" r="2.6" opacity=".66"/>
+    <rect fill="#6D00CC" x="16" y="12.4" width="4.6" height="7" rx="2.3" opacity=".5"/>
+  </symbol>
+  <symbol id="i-zapier" viewBox="0 0 24 24" stroke="none">
+    <path fill="#FF4F00" d="M14 2.4h-4v6.1L5.7 4.2 2.9 7l4.3 4.3H1.1v4h6.1L2.9 19.6l2.8 2.8 4.3-4.3v6.1h4v-6.1l4.3 4.3 2.8-2.8-4.3-4.3h6.1v-4h-6.1L20.2 7l-2.8-2.8L14 8.5z"/>
+  </symbol>
+  <symbol id="i-slack" viewBox="0 0 24 24" stroke="none">
+    <path fill="#36C5F0" d="M7.2 14.6a2.1 2.1 0 1 1-2.1-2.1h2.1zm1.1 0a2.1 2.1 0 0 1 4.2 0v5.3a2.1 2.1 0 0 1-4.2 0z"/>
+    <path fill="#2EB67D" d="M10.4 7.2a2.1 2.1 0 1 1 2.1-2.1v2.1zm0 1.1a2.1 2.1 0 0 1 0 4.2H5.1a2.1 2.1 0 0 1 0-4.2z"/>
+    <path fill="#ECB22E" d="M17.8 10.4a2.1 2.1 0 1 1 2.1 2.1h-2.1zm-1.1 0a2.1 2.1 0 0 1-4.2 0V5.1a2.1 2.1 0 0 1 4.2 0z"/>
+    <path fill="#E01E5A" d="M14.6 17.8a2.1 2.1 0 1 1-2.1 2.1v-2.1zm0-1.1a2.1 2.1 0 0 1 0-4.2h5.3a2.1 2.1 0 0 1 0 4.2z"/>
+  </symbol>
+  <symbol id="i-gmail" viewBox="0 0 24 24" stroke="none">
+    <path fill="#4285F4" d="M2.6 19.4h3.1v-7.6L2 9.2v8.6c0 .9.3 1.6.6 1.6z"/>
+    <path fill="#34A853" d="M18.3 19.4h3.1c.4 0 .6-.7.6-1.6V9.2l-3.7 2.6z"/>
+    <path fill="#FBBC04" d="m18.3 6.2-6.3 4.6-6.3-4.6v5.6l6.3 4.6 6.3-4.6z"/>
+    <path fill="#EA4335" d="M2 6.5 5.7 9V4.6L4.2 3.5C3.1 2.7 2 3.5 2 4.8z"/>
+    <path fill="#C5221F" d="M22 6.5 18.3 9V4.6l1.5-1.1c1.1-.8 2.2 0 2.2 1.3z"/>
+  </symbol>
+  <symbol id="i-notion" viewBox="0 0 24 24" stroke="none">
+    <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="3.4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+    <path fill="#111" d="M8 7.6h2.4l4 6.1V7.6h2v8.8h-2.3l-4.1-6.3v6.3H8z"/>
+  </symbol>
+  <symbol id="i-airtable" viewBox="0 0 24 24" stroke="none">
+    <path fill="#FFBF00" d="m11.1 3.3-8 3.3c-.5.2-.5.8 0 1l8 3.2c.6.2 1.2.2 1.8 0l8-3.2c.5-.2.5-.8 0-1l-8-3.3a2.4 2.4 0 0 0-1.8 0z"/>
+    <path fill="#26B5F8" d="M12.6 12.3v7.9c0 .4.4.7.8.5l8.1-3.2c.2-.1.4-.4.4-.6V9c0-.4-.4-.7-.8-.5l-8.1 3.2c-.2.1-.4.3-.4.6z"/>
+    <path fill="#ED3049" d="m10.8 12.6-2.4 1.2-5.6 2.7c-.4.2-.9-.1-.9-.5v-7c0-.2.1-.3.2-.4l.3-.2 8.4 4.2z"/>
+  </symbol>
+
+  <symbol id="i-claude" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol><symbol id="i-chatgpt" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+  <symbol id="i-gemini" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol>
+  <symbol id="i-perplexity" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-google" viewBox="0 0 48 48" stroke="none"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol>
+    <symbol id="i-bing" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5 2.2 9.7 3.9v12.4l5.8-3.3-2.8-1.3-1.8-4.5 8.1 2.9v4.6L9.7 21.8 5 19.2z"/></symbol>
+  <symbol id="i-recherche" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-lien" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 1 0-5.7-5.7l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 1 0 5.7 5.7l1.5-1.5"/></symbol>
+  <symbol id="i-document" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-fenetre" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></symbol>
+  <symbol id="i-etincelle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></symbol>
+  <symbol id="i-cible" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></symbol>
+  <symbol id="i-maps" viewBox="0 0 24 24" stroke="none"><path fill="#34A853" d="M4.2 15.6 8.6 10l2.6 3.1-4.3 7.4a2.1 2.1 0 0 1-2.8.8 2.1 2.1 0 0 1-.8-2.8z"/><path fill="#FBBC04" d="m8.6 10-4.4 5.6-1.1-2A9 9 0 0 1 2 9.1c0-1.1.2-2.1.6-3z"/><path fill="#4285F4" d="M19.6 11.6a9 9 0 0 1-1 2.2l-4.1 6.7a2.1 2.1 0 0 1-3.6 0l-1.7-2.9 5-8.5z"/><path fill="#1A73E8" d="M11 .4a9 9 0 0 1 8.6 11.2l-5.4-2.5-.5-.9A3 3 0 0 0 9.3 11L2.6 6.1A9 9 0 0 1 11 .4z"/><circle fill="#EA4335" cx="11" cy="9.4" r="3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8l-6.1 3.3 1.4-6.8-5.1-4.7 6.9-.8L12 2.5z"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-2.5L17 21l-2-7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 15a8 8 0 1116 0"/><path d="M12 15l3.5-4.5"/><circle cx="12" cy="15" r="1"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 1.5l1.5 9 9 1.5-9 1.5-1.5 9-1.5-9-9-1.5 9-1.5z"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5L3 17.6 6.4 21l6.3-6.3a4 4 0 005-5.4l-3 3-2-2 3-3z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38S.93 3.35.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13s1.34 1.08 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38s1.08-1.34 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13S20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zm0 3.67a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 2.16a4.01 4.01 0 110 8.02 4.01 4.01 0 010-8.02zm6.41-3.87a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2.1 22l5.35-1.4a9.8 9.8 0 004.59 1.16h.01c5.43 0 9.84-4.4 9.84-9.84 0-2.63-1.02-5.1-2.88-6.96A9.77 9.77 0 0012.04 2zm0 17.9h-.01a8.2 8.2 0 01-4.16-1.14l-.3-.18-3.09.81.83-3.02-.2-.31a8.14 8.14 0 01-1.25-4.35c0-4.51 3.68-8.18 8.19-8.18 2.19 0 4.24.85 5.79 2.4a8.13 8.13 0 012.39 5.79c0 4.51-3.67 8.18-8.19 8.18zm4.49-6.13c-.25-.13-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12s-.63.8-.77.96c-.14.17-.28.19-.53.07-.25-.13-1.04-.39-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.57.19 1.1.16 1.51.1.46-.07 1.45-.59 1.65-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.17-.47-.29z"/></symbol>
+
+  <symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 100 17h1.4a1.9 1.9 0 001.5-3 1.9 1.9 0 011.5-3h2.1a1.9 1.9 0 001.9-1.9A9.1 9.1 0 0012 3.5z"/><circle cx="8" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10.5" r="1"/></symbol>
+</svg>
+
+<!-- ============================================================
+     BANDE MENU, commune à toutes les pages (réf. barre de nav Articool)
+     ============================================================ -->
+<header class="site-header" id="site-header">
+  <a href="index.html" class="logo" aria-label="OBT Agency, accueil">
+    <img class="brand-logo brand-logo--sombre" src="assets/img/logo-obt.png" width="1200" height="300"
+         decoding="async" alt="">
+    <!-- La meme image, lettres en blanc, rond bleu garde. Elle prend la place
+         de l'autre quand le bandeau passe au-dessus d'une section nuit. -->
+    <img class="brand-logo brand-logo--clair" src="assets/img/logo-obt-clair.png" width="1200" height="300"
+         decoding="async" alt="" aria-hidden="true">
+  </a>
+
+  <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li><a href="index.html">Accueil</a></li>
+      <li class="nav-produit" data-nav-produit>
+        <button type="button" class="nav-produit__bouton" aria-expanded="false" aria-controls="menu-produit">
+          Prestations <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau" id="menu-produit" hidden>
+          <ul class="nav-produit__liste">
+            <li class="est-avant"><a href="pack.html" data-produit="pack">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
+              <span class="nav-produit__texte"><strong>Pack <span class="a1__surligne est-peint">SEO &amp; GEO</span> +&nbsp;<span class="a1__surligne est-peint">Site Professionnel</span></strong></span>
+            </a></li>
+            <li><a href="site-internet.html" data-produit="site">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Création &amp; Refonte de Site Professionnel</strong></span>
+            </a></li>
+            <li><a href="identite-visuelle.html" data-produit="identite">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Identité Visuelle &amp; Charte Graphique</strong></span>
+            </a></li>
+            <li><a href="automatisation-ia.html" aria-current="page" data-produit="ia">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Automatisation IA</strong></span>
+            </a></li>
+          </ul>
+
+          <!-- La colonne de droite : la maquette de la prestation survolee et
+               sa phrase. Dessinee en HTML, rien d'un site client dedans. Elle
+               est decorative, le menu marche sans elle. -->
+          <div class="nav-apercu" data-nav-apercu aria-hidden="true">
+            <span class="nav-apercu__vue nav-apercu__vue--pack" data-vue="pack">
+              <span class="nav-apercu__ecran"><span class="v-paire"><span class="v-moitie"><i class="v-barre"></i><i class="v-bloc"></i><i class="v-bouton"></i><em>Le site</em></span><span class="v-moitie"><span class="v-colonnes"><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 68%"></i><i class="v-vif" style="--h: 100%"></i></span><em>Le référencement</em></span></span><span class="v-puces"><b>Mots-clés</b><b>Liens entrants</b><b>Articles</b><b>Fiche Google</b></span><span class="v-cite"><em>Cité par</em><svg class="icon icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg><svg class="icon icon--gemini" aria-hidden="true"><use href="#i-gemini"/></svg><svg class="icon icon--claude" aria-hidden="true"><use href="#i-claude"/></svg><svg class="icon icon--perplexity" aria-hidden="true"><use href="#i-perplexity"/></svg></span></span>
+              <span class="nav-apercu__mot">Le site et le référencement dans un seul abonnement, rien à rajouter.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--site" data-vue="site">
+              <span class="nav-apercu__ecran"><span class="v-fenetre"><i></i><i></i><i></i><b></b></span><span class="v-entete"><i class="v-marque"></i><span class="v-nav"><i></i><i></i><i></i></span><i class="v-cta"></i></span><span class="v-heros"><span class="v-mots"><i class="v-titre"></i><i class="v-txt"></i><i class="v-txt v-txt--court"></i><i class="v-bouton"></i></span><i class="v-image"></i></span><span class="v-trio"><i></i><i></i><i></i></span></span>
+              <span class="nav-apercu__mot">Un site qui inspire confiance en trois secondes, sur téléphone comme sur ordinateur.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--identite" data-vue="identite">
+              <span class="nav-apercu__ecran"><span class="v-charte"><span class="v-logo"><i></i><b>OBT</b></span><span class="v-teintes"><i style="--t:#2558D6"></i><i style="--t:#3D8BFF"></i><i style="--t:#7FD1FF"></i><i style="--t:#071230"></i><i style="--t:#FAF9F5"></i></span><span class="v-polices"><i class="v-titre"></i><i class="v-txt"></i><i class="v-txt v-txt--court"></i></span></span></span>
+              <span class="nav-apercu__mot">Un logo, des couleurs et une charte : la même image partout, du site au devis.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--ia" data-vue="ia">
+              <span class="nav-apercu__ecran"><span class="v-flux"><span class="v-etape"><i></i><em>Demande reçue</em></span><span class="v-fleche"></span><span class="v-etape v-etape--vif"><i></i><em>L&rsquo;IA rédige</em></span><span class="v-fleche"></span><span class="v-etape"><i></i><em>Devis envoyé</em></span></span></span>
+              <span class="nav-apercu__mot">Les tâches qui vous prennent vos soirées, faites toutes seules.</span>
+            </span>
+          </div>
+
+          <p class="nav-produit__pied">
+            <a href="test-visibilite.html" class="a1__bouton">
+              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+              Faire un test de visibilité
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a href="contact.html" class="a1__bouton a1__bouton--bleu">
+              Prendre rendez-vous
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
+        </div>
+      </li>
+      <li><a href="resultats.html">Résultats</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <a href="contact.html" class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- =====================================================================
+       S1, LE BANDEAU. A droite, la demande qui arrive le soir et le devis
+       qui repart, dessines en HTML. Page creee le 2 novembre 2026 : le
+       menu menait au formulaire de contact, faute de page.
+       ===================================================================== -->
+  <section id="automatisation-ia-s1" class="p1" aria-labelledby="automatisation-ia-s1-titre">
+    <span class="p1__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+
+    <div class="p1__dedans">
+      <div class="p1__mots">
+        <p class="a1__pastille p1__pastille">Automatisation IA</p>
+        <h1 id="automatisation-ia-s1-titre" class="p1__titre">Les tâches qui vous prennent vos soirées.<br>
+          <span class="a1__surligne est-peint">Faites toutes seules</span><span class="a1__point a1__point--fin">.</span></h1>
+        <p class="p1__sous">Les demandes qui tombent à 21 h, les devis à recopier, les relances qu&rsquo;on oublie. On branche ce qui se répète sur un automate, vous gardez la main sur ce qui compte.</p>
+        <p class="p1__action">
+          <a href="contact.html#contact-s2" class="a1__bouton">
+            <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+            Parler de votre projet
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a href="#automatisation-ia-s3" class="a1__bouton a1__bouton--bleu">
+            Voir ce qu&rsquo;on automatise
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </p>
+        <p class="p1__gages">
+          <span><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Satisfait ou remboursé</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Rien à installer chez vous</span>
+        </p>
+        <div class="a1__preuve p1__preuve">
+          <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+             aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
+            <span class="a1__visages" aria-hidden="true">
+              <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
+            </span>
+            <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+            <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <b>5/5</b>
+          </a>
+        </div>
+      </div>
+
+      <div class="p1__vue">
+        <div class="wf" aria-hidden="true">
+          <p class="wf__tete"><span class="wf__pastille">Automatisation</span>Demande de devis, le soir</p>
+
+          <ol class="wf__chaine">
+            <li class="wf__noeud">
+              <span class="wf__logo"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="wf__mots">
+                <b>Une demande arrive</b>
+                <i>Formulaire du site &middot; 21 h 47</i>
+              </span>
+            </li>
+            <li class="wf__fil"></li>
+            <li class="wf__noeud wf__noeud--ia">
+              <span class="wf__logo wf__logo--duo"><svg class="icon icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg><svg class="icon icon--claude" aria-hidden="true"><use href="#i-claude"/></svg></span>
+              <span class="wf__mots">
+                <b>L&rsquo;IA rédige la réponse</b>
+                <i>Vos tarifs, vos mots, votre ton</i>
+              </span>
+            </li>
+            <li class="wf__fil"></li>
+            <li class="wf__noeud">
+              <span class="wf__logo wf__logo--vert"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              <span class="wf__mots">
+                <b>Vous validez</b>
+                <i>D&rsquo;un pouce, depuis le chantier</i>
+              </span>
+            </li>
+            <li class="wf__fil"></li>
+            <li class="wf__noeud">
+              <span class="wf__logo"><svg class="icon" aria-hidden="true"><use href="#i-gmail"/></svg></span>
+              <span class="wf__mots">
+                <b>Le devis part</b>
+                <i>21 h 48 &middot; avec le document joint</i>
+              </span>
+            </li>
+          </ol>
+
+          <p class="wf__moteur">Monté sur <svg class="icon" aria-hidden="true"><use href="#i-n8n"/></svg> n8n ou <svg class="icon" aria-hidden="true"><use href="#i-make"/></svg> Make, branché sur <svg class="icon" aria-hidden="true"><use href="#i-gmail"/></svg> <svg class="icon" aria-hidden="true"><use href="#i-slack"/></svg> <svg class="icon" aria-hidden="true"><use href="#i-airtable"/></svg></p>
+        </div>
+        <p class="p1__legende">Un automate, c&rsquo;est ça : des étapes reliées, qui tournent sans vous.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S2, LE CONSTAT, EN IMMERSION. Le telephone reste colle pendant qu'on
+       descend la journee : a chaque heure une notification de plus s'empile
+       et le ciel fonce. Meme etapier que les autres pages, les classes jr
+       ont ete ajoutees dans main.js. Nathan, 2 novembre 2026.
+       ===================================================================== -->
+  <section id="automatisation-ia-s2" class="jr" data-fond="sombre" aria-labelledby="automatisation-ia-s2-title">
+    <span class="po__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="jr__dedans">
+      <div class="po__tete">
+        <p class="p2__sur-titre po__sur-titre">Le constat</p>
+        <h2 id="automatisation-ia-s2-title" class="po__titre">Votre journée ne s&rsquo;arrête pas quand vous rentrez.</h2>
+        <p class="po__chapeau">Une journée ordinaire. Regardez ce qui s&rsquo;empile pendant que vous travaillez.</p>
+      </div>
+
+      <div class="jr__corps" data-etapier>
+        <ol class="jr__liste">
+          <li class="jr__moment est-actif">
+            <p class="jr__heure">07 h 10</p>
+            <h3 class="jr__quoi">Vous partez sur le chantier</h3>
+            <p class="jr__dit">Le téléphone reste dans la camionnette. Une demande arrive, personne ne répond.</p>
+          </li>
+          <li class="jr__moment">
+            <p class="jr__heure">12 h 30</p>
+            <h3 class="jr__quoi">La pause</h3>
+            <p class="jr__dit">Vous rappelez. Le premier a déjà fait venir quelqu&rsquo;un d&rsquo;autre.</p>
+          </li>
+          <li class="jr__moment">
+            <p class="jr__heure">18 h 20</p>
+            <h3 class="jr__quoi">Vous rentrez</h3>
+            <p class="jr__dit">Le devis promis hier n&rsquo;est pas parti. Il partira demain, peut-être.</p>
+          </li>
+          <li class="jr__moment">
+            <p class="jr__heure">21 h 47</p>
+            <h3 class="jr__quoi">À table</h3>
+            <p class="jr__dit">Une demande tombe par le site. Elle attendra le week-end, comme les autres.</p>
+          </li>
+          <li class="jr__moment">
+            <p class="jr__heure">23 h 05</p>
+            <h3 class="jr__quoi">Le bureau</h3>
+            <p class="jr__dit">Vous recopiez les mêmes lignes dans le même tableau, pour la troisième fois cette semaine.</p>
+          </li>
+        </ol>
+
+        <div class="jr__scene">
+          <div class="cadre cadre--tel jr__tel" aria-hidden="true">
+            <span class="cadre__ile"></span>
+            <div class="cadre__ecran">
+            <!-- 07 h 10 -->
+            <div class="jr__vue est-actif" data-ciel="1">
+              <span class="jr__barre"><b>07 h 10</b><i></i><i></i></span>
+              <p class="jr__compte"><b>1</b> chose en attente</p>
+              <ul class="jr__notifs">
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>07 h 10</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 07 h 08</span>
+              </li>
+              </ul>
+            </div>
+            <!-- 12 h 30 -->
+            <div class="jr__vue" data-ciel="2">
+              <span class="jr__barre"><b>12 h 30</b><i></i><i></i></span>
+              <p class="jr__compte"><b>3</b> choses en attente</p>
+              <ul class="jr__notifs">
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>07 h 10</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 07 h 08</span>
+              </li>
+              <li class="jr__notif est-perdu">
+                <span class="jr__notif-tete"><b>Demande sans réponse</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">5 h d&rsquo;attente &middot; parti ailleurs</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Appel manqué</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">11 h 42 &middot; numéro inconnu</span>
+              </li>
+              </ul>
+            </div>
+            <!-- 18 h 20 -->
+            <div class="jr__vue" data-ciel="3">
+              <span class="jr__barre"><b>18 h 20</b><i></i><i></i></span>
+              <p class="jr__compte"><b>4</b> choses en attente</p>
+              <ul class="jr__notifs">
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>07 h 10</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 07 h 08</span>
+              </li>
+              <li class="jr__notif est-perdu">
+                <span class="jr__notif-tete"><b>Demande sans réponse</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">5 h d&rsquo;attente &middot; parti ailleurs</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Appel manqué</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">11 h 42 &middot; numéro inconnu</span>
+              </li>
+              <li class="jr__notif est-retard">
+                <span class="jr__notif-tete"><b>Devis Dupont</b><i>18 h 20</i></span>
+                <span class="jr__notif-dit">Promis hier &middot; pas encore écrit</span>
+              </li>
+              </ul>
+            </div>
+            <!-- 21 h 47 -->
+            <div class="jr__vue" data-ciel="4">
+              <span class="jr__barre"><b>21 h 47</b><i></i><i></i></span>
+              <p class="jr__compte"><b>5</b> choses en attente</p>
+              <ul class="jr__notifs">
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>07 h 10</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 07 h 08</span>
+              </li>
+              <li class="jr__notif est-perdu">
+                <span class="jr__notif-tete"><b>Demande sans réponse</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">5 h d&rsquo;attente &middot; parti ailleurs</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Appel manqué</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">11 h 42 &middot; numéro inconnu</span>
+              </li>
+              <li class="jr__notif est-retard">
+                <span class="jr__notif-tete"><b>Devis Dupont</b><i>18 h 20</i></span>
+                <span class="jr__notif-dit">Promis hier &middot; pas encore écrit</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>21 h 47</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 21 h 47</span>
+              </li>
+              </ul>
+            </div>
+            <!-- 23 h 05 -->
+            <div class="jr__vue" data-ciel="5">
+              <span class="jr__barre"><b>23 h 05</b><i></i><i></i></span>
+              <p class="jr__compte"><b>6</b> choses en attente</p>
+              <ul class="jr__notifs">
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>07 h 10</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 07 h 08</span>
+              </li>
+              <li class="jr__notif est-perdu">
+                <span class="jr__notif-tete"><b>Demande sans réponse</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">5 h d&rsquo;attente &middot; parti ailleurs</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Appel manqué</b><i>12 h 30</i></span>
+                <span class="jr__notif-dit">11 h 42 &middot; numéro inconnu</span>
+              </li>
+              <li class="jr__notif est-retard">
+                <span class="jr__notif-tete"><b>Devis Dupont</b><i>18 h 20</i></span>
+                <span class="jr__notif-dit">Promis hier &middot; pas encore écrit</span>
+              </li>
+              <li class="jr__notif ">
+                <span class="jr__notif-tete"><b>Nouvelle demande</b><i>21 h 47</i></span>
+                <span class="jr__notif-dit">Formulaire du site &middot; 21 h 47</span>
+              </li>
+              <li class="jr__notif est-retard">
+                <span class="jr__notif-tete"><b>Trois devis à relancer</b><i>23 h 05</i></span>
+                <span class="jr__notif-dit">Sans nouvelles depuis huit jours</span>
+              </li>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="jr__bilan">Rien là-dedans n&rsquo;est votre métier. C&rsquo;est exactement ce qu&rsquo;on branche sur un automate.</p>
+    </div>
+  </section>
+
+
+  <!-- =====================================================================
+       S3, CE QU'ON AUTOMATISE. Six taches, six chaines : a gauche la tache,
+       a droite le chemin qu'elle suit, avec les logos des outils. Une
+       automatisation, c'est un workflow, la page doit le montrer.
+       Nathan, 2 novembre 2026.
+       ===================================================================== -->
+  <section id="automatisation-ia-s3" class="p2 p2--plein p2--trois" aria-labelledby="automatisation-ia-s3-title">
+    <span class="p2__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="p2__dedans">
+      <div class="p2__tete">
+        <p class="p2__sur-titre">Ce qu&rsquo;on automatise</p>
+        <h2 id="automatisation-ia-s3-title" class="p2__titre">Six chaînes qui tournent sans vous.</h2>
+        <p class="p2__texte">On commence par celle qui vous coûte le plus de soirées. Les autres viennent après, une par une.</p>
+      </div>
+
+      <ul class="rails">
+        <li class="rail rail--avant">
+          <p class="p2__etiquette">Le plus demandé</p>
+          <div>
+            <p class="rail__num">01</p>
+            <h3>Les demandes du site</h3>
+            <p>Chaque formulaire reçoit une réponse dans la minute, avec le devis pré-rempli d&rsquo;après ce que la personne a écrit.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-fenetre"/></svg>Formulaire</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg>L&rsquo;IA rédige</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-gmail"/></svg>Devis envoyé</span>
+          </div>
+        </li>
+
+        <li class="rail">
+          <div>
+            <p class="rail__num">02</p>
+            <h3>Les relances</h3>
+            <p>Un devis resté sans réponse est relancé au bon moment, poliment, sans que vous y pensiez.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-clock"/></svg>Devis sans réponse</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque icon--claude" aria-hidden="true"><use href="#i-claude"/></svg>Relance écrite</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-gmail"/></svg>Partie</span>
+          </div>
+        </li>
+
+        <li class="rail">
+          <div>
+            <p class="rail__num">03</p>
+            <h3>Les avis</h3>
+            <p>La demande d&rsquo;avis part toute seule quand le chantier est fini, au moment où le client est content.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-check"/></svg>Chantier terminé</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-whatsapp"/></svg>Message prêt</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-google"/></svg>Avis Google</span>
+          </div>
+        </li>
+
+        <li class="rail">
+          <div>
+            <p class="rail__num">04</p>
+            <h3>Les réservations</h3>
+            <p>Pour les hébergements : le planning, les tarifs, les demandes complètes, Airbnb et Booking synchronisés.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-calendar"/></svg>Demande reçue</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-airtable"/></svg>Planning à jour</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-gmail"/></svg>Réponse complète</span>
+          </div>
+        </li>
+
+        <li class="rail">
+          <div>
+            <p class="rail__num">05</p>
+            <h3>Les papiers</h3>
+            <p>Devis et factures préparés à partir de ce qui est déjà saisi, pas retapés une deuxième fois.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-document"/></svg>Rendez-vous signé</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-n8n"/></svg>Devis monté</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-airtable"/></svg>Facture suivie</span>
+          </div>
+        </li>
+
+        <li class="rail">
+          <div>
+            <p class="rail__num">06</p>
+            <h3>Le suivi</h3>
+            <p>Ce qui est en cours, ce qui attend une réponse, ce qui est signé. Visible d&rsquo;un coup d&rsquo;œil.</p>
+          </div>
+          <div class="rail__chaine">
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-gauge"/></svg>Chaque étape</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape rail__etape--ia"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-notion"/></svg>Tableau tenu</span>
+            <i class="rail__fil"></i>
+            <span class="rail__etape"><svg class="icon icon--marque" aria-hidden="true"><use href="#i-slack"/></svg>Alerte à vous</span>
+          </div>
+        </li>
+      </ul>
+
+      <p class="rails__action">
+        <a href="contact.html#contact-s2" class="a1__bouton a1__bouton--bleu">
+          Dire ce qui vous prend du temps
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S4, LES GARDE-FOUS. La peur de cette page, c'est l'automate qui
+       ecrit n'importe quoi aux clients. On y repond de face : ce qu'il fait
+       seul, ce qu'il ne fera jamais. Coches vertes a gauche, croix rouges a
+       droite. Nathan, 2 novembre 2026.
+       ===================================================================== -->
+  <section id="automatisation-ia-s4" class="gf" aria-labelledby="automatisation-ia-s4-title">
+    <span class="p2__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="gf__dedans">
+      <div class="p2__tete gf__tete">
+        <p class="p2__sur-titre">Les garde-fous</p>
+        <h2 id="automatisation-ia-s4-title" class="p2__titre">L&rsquo;automate travaille pour vous. Il ne parle pas à votre place.</h2>
+        <p class="p2__texte">C&rsquo;est la question qu&rsquo;on nous pose en premier. Voilà la réponse, des deux côtés.</p>
+      </div>
+
+      <div class="gf__duo">
+        <article class="gf__carte gf__carte--oui">
+          <h3 class="gf__nom">Ce qu&rsquo;il fait tout seul</h3>
+          <ul class="gf__liste">
+            <li class="est-oui"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Lire la demande et comprendre ce qu&rsquo;on vous demande</span></li>
+            <li class="est-oui"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Préparer la réponse avec vos tarifs et vos mots</span></li>
+            <li class="est-oui"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Ranger la demande au bon endroit, avec son dossier</span></li>
+            <li class="est-oui"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Vous prévenir, là où vous regardez vraiment</span></li>
+          </ul>
+        </article>
+
+        <article class="gf__carte gf__carte--non">
+          <h3 class="gf__nom">Ce qu&rsquo;il ne fera jamais</h3>
+          <ul class="gf__liste">
+            <li class="est-non"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Envoyer quoi que ce soit sans votre accord</span></li>
+            <li class="est-non"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Inventer un prix ou une date que vous n&rsquo;avez pas donnés</span></li>
+            <li class="est-non"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Promettre un chantier qu&rsquo;il n&rsquo;a pas vu</span></li>
+            <li class="est-non"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Garder vos données ailleurs que chez vous</span></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="gf__note">Vous l&rsquo;arrêtez d&rsquo;un message, sans préavis et sans justification. Il ne tourne que tant qu&rsquo;il vous sert.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S5, LES QUESTIONS. Celles qu'on nous pose sur l'automatisation : le
+       prix, les outils qu'on a deja, l'erreur, ce que voient les clients,
+       le delai, les donnees. Aucun montant. Fond creme, tete centree.
+       Nathan, 2 novembre 2026.
+       ===================================================================== -->
+  <section id="automatisation-ia-s5" class="p5" aria-labelledby="automatisation-ia-s5-title">
+    <span class="p5__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="p5__dedans">
+      <div class="p5__tete">
+        <p class="p2__sur-titre">Questions fréquentes</p>
+        <h2 id="automatisation-ia-s5-title" class="p2__titre">Ce qu&rsquo;on nous demande avant de brancher.</h2>
+      </div>
+
+      <div class="faq-list p5__liste" data-faq>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a1" id="ia-q1">
+              <span>Combien ça coûte&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a1" role="region" aria-labelledby="ia-q1" hidden>
+            <p>Ça dépend du nombre de tâches qu&rsquo;on branche et de ce qu&rsquo;elles touchent : répondre à un formulaire et tenir un planning de locations ne demandent pas le même travail. On le chiffre au rendez-vous, devant vous, après avoir regardé votre semaine.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a2" id="ia-q2">
+              <span>Je n&rsquo;ai pas de logiciel, juste une boîte mail&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a2" role="region" aria-labelledby="ia-q2" hidden>
+            <p>C&rsquo;est le cas le plus courant et ça suffit. On part de ce que vous avez déjà : votre boîte mail, votre téléphone, le formulaire du site. On n&rsquo;installe rien chez vous et vous ne changez pas vos habitudes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a3" id="ia-q3">
+              <span>Et si l&rsquo;automate se trompe&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a3" role="region" aria-labelledby="ia-q3" hidden>
+            <p>Rien ne part sans votre accord : c&rsquo;est vous qui appuyez. Et s&rsquo;il se trompe ou s&rsquo;arrête, c&rsquo;est notre affaire : on le surveille, on le corrige, c&rsquo;est compris dans l&rsquo;abonnement.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a4" id="ia-q4">
+              <span>Mes clients vont voir que c&rsquo;est une IA&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a4" role="region" aria-labelledby="ia-q4" hidden>
+            <p>Ce sont vos mots, vos tarifs, votre façon de dire les choses, relus par vous avant de partir. Ce n&rsquo;est pas un robot qui discute à votre place, c&rsquo;est une réponse écrite d&rsquo;avance et envoyée au bon moment.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a5" id="ia-q5">
+              <span>Combien de temps pour le mettre en place&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a5" role="region" aria-labelledby="ia-q5" hidden>
+            <p>On branche une tâche, on la regarde tourner une ou deux semaines, puis on passe à la suivante. On commence toujours par celle qui vous prend le plus de soirées.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-heading">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="ia-a6" id="ia-q6">
+              <span>Où vont mes données&nbsp;?</span>
+              <svg class="icon faq-sign" aria-hidden="true"><use href="#i-plus"/></svg>
+            </button>
+          </h3>
+          <div class="faq-answer" id="ia-a6" role="region" aria-labelledby="ia-q6" hidden>
+            <p>Elles restent dans vos outils, à votre nom. L&rsquo;automate les fait passer d&rsquo;un endroit à l&rsquo;autre, il n&rsquo;en garde pas de copie chez nous.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S6, LE DERNIER APPEL. Le meme bloc que la section 11 de l'accueil.
+       ===================================================================== -->
+  <section id="automatisation-ia-s6" class="a11" aria-labelledby="automatisation-ia-s6-title">
+    <div class="a11__dedans">
+      <div class="a11__bloc" data-fond="sombre">
+        <span class="a11__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+
+        <a class="a11__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+           aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
+          <span class="a1__visages" aria-hidden="true">
+            <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
+          </span>
+          <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+          <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5/5</b>
+        </a>
+
+        <h2 id="automatisation-ia-s6-title" class="a11__titre">Vos soirées valent mieux que ça.<br>
+          <span class="a11__clair">On s&rsquo;occupe du reste</span><span class="a1__point a1__point--fin">.</span></h2>
+
+        <p class="a11__action">
+          <a href="contact.html#contact-s2" class="a11__bouton">
+            <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+            Dire ce qui vous prend du temps
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a href="contact.html" class="a11__bouton a11__bouton--clair">
+            Prendre rendez-vous
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </p>
+        <p class="a11__sous">Trente minutes, chez vous ou au <a href="tel:+33641336451">06 41 33 64 51</a>. On regarde ce qui vous prend le plus de temps, puis on vous dit ce qui peut tourner tout seul.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     BAS DE PAGE, identique sur toutes les pages (réf. dossier "Bas de page")
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="brand-logo brand-logo--footer" src="assets/img/logo-obt.png" width="1200" height="300"
+             decoding="async" alt="OBT Agency">
+        <p class="footer-baseline">On rend les artisans et les domaines visibles sur Google et dans les réponses des IA. On refait le site qui transforme ces visites en appels. Partout en France.</p>
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/obt.agency/" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur Instagram (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+          </a></li>
+          <li><a href="https://www.tiktok.com/@obt.agency" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur TikTok (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg>
+          </a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61594475880521" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur Facebook (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+          </a></li>
+          <li><a href="https://www.linkedin.com/in/obt-agency/" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur LinkedIn (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="footer-col" aria-labelledby="pied-nav-titre">
+        <p class="footer-col-title" id="pied-nav-titre">Navigation</p>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="resultats.html">Résultats</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Prendre rendez-vous</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Coordonnées</p>
+        <ul>
+          <li><a href="contact.html#contact-s2">Formulaire de contact</a></li>
+          <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
+          <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
+          <li class="footer-col-plain">Partout en France, à distance</li>
+          <li class="footer-col-plain">Réponse sous 24 h ouvrées</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 OBT Agency. Tous droits réservés.</p>
+      <p class="footer-legal">
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="plan-du-site.html">Plan du site</a>
+      </p>
+      <p><a href="#main" class="footer-top-link">Haut de page <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></p>
+    </div>
+
+    <p class="footer-wordmark" aria-hidden="true">OBT AGENCY</p>
+  </div>
+</footer>
+
+<script src="js/main.js?v=366" defer></script>
+<!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
+     qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->
+
+</body>
+</html>

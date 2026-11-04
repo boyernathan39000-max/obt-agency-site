@@ -1,0 +1,37 @@
+# Quel dossier Netlify met en ligne.
+#
+# Le dossier de travail contient aussi les maquettes sources, les sauvegardes
+# datees et les notes : rien de tout cela ne doit partir en ligne. Seul
+# « SITE MISE EN LIGNE » est publie, exactement comme lorsque le dossier est
+# depose a la main sur Netlify.
+#
+# Aucune commande de construction : le site est fait de fichiers statiques,
+# il n'y a rien a compiler.
+[build]
+  publish = "SITE MISE EN LIGNE"
+
+# Les deux fonctions de la prise de rendez-vous. Elles ne sont pas des pages :
+# elles vivent a cote du dossier publie, pas dedans. La cle de l'agenda est
+# posee dans les variables d'environnement du site, jamais dans un fichier.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Le site appelle /api/creneaux et /api/rendez-vous ; Netlify les renvoie sur
+# les fonctions. Meme origine que la page, donc rien a changer a la CSP.
+[[redirects]]
+  from = "/api/creneaux"
+  to = "/.netlify/functions/creneaux"
+  status = 200
+
+[[redirects]]
+  from = "/api/rendez-vous"
+  to = "/.netlify/functions/rendez-vous"
+  status = 200
+
+# Le test de visibilite. Pas de cle a poser : l'analyse ne depend d'aucun
+# service exterieur, elle lit le site elle-meme.
+[[redirects]]
+  from = "/api/test-visibilite"
+  to = "/.netlify/functions/test-visibilite"
+  status = 200
