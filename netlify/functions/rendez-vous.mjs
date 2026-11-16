@@ -33,8 +33,12 @@ export default async (request) => {
      On repond « ok » sans rien reserver, pour ne pas lui apprendre la regle. */
   if (texte(demande.botcheck, 10)) return reponse({ ok: true });
 
+  /* Depuis le 6 novembre 2026, le formulaire demande « Nom et prenom » en une
+     seule case. L'ancien champ prenom reste accepte s'il arrive. */
   const prenom = texte(demande.prenom, 80);
-  const nom = texte(demande.nom, 80);
+  const nom = texte(demande.nom, 120);
+  const site = texte(demande.site, 300);
+  const fiche = texte(demande.fiche, 300);
   const email = texte(demande.email, 160);
   const tel = texte(demande.tel, 40);
   const entreprise = texte(demande.entreprise, 160);
@@ -42,7 +46,7 @@ export default async (request) => {
   const besoin = texte(demande.besoin, 120);
   const debut = texte(demande.debut, 40);
 
-  if (!prenom || !nom || !tel || !entreprise) {
+  if (!nom || !tel || !entreprise) {
     return reponse({ erreur: 'Il manque des informations.' }, 400);
   }
   if (!COURRIEL.test(email)) return reponse({ erreur: 'Adresse de courriel invalide.' }, 400);
@@ -67,7 +71,7 @@ export default async (request) => {
         start: quand.toISOString(),
         eventTypeId: Number(typeEvenement),
         attendee: {
-          name: `${prenom} ${nom}`,
+          name: prenom ? `${prenom} ${nom}` : nom,
           email,
           phoneNumber: tel,
           timeZone: FUSEAU,
@@ -77,12 +81,15 @@ export default async (request) => {
           besoin: besoin || '(non precise)',
           entreprise,
           telephone: tel,
+          site: site || '(non indique)',
+          fiche: fiche || '(non indiquee)',
           origine: 'Site OBT Agency, page Contact'
         },
         bookingFieldsResponses: {
           title: `${besoin || 'Rendez-vous'} : ${entreprise}`,
           notes: [besoin && `Besoin : ${besoin}`, `Entreprise : ${entreprise}`,
-                  `Telephone : ${tel}`, message && `Message : ${message}`]
+                  `Telephone : ${tel}`, site && `Site : ${site}`, fiche && `Fiche Google : ${fiche}`,
+                  message && `Message : ${message}`]
             .filter(Boolean).join('\n')
         }
       })

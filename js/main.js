@@ -1342,6 +1342,17 @@
     /* --- l'avancement --- */
     function montrer(n) {
       [1, 2, 3].forEach(function (i) { etapes[i].hidden = (i !== n); });
+      /* Quand on revient sur le choix de la prestation, rien n'est plus
+         selectionne : la page se redecouvre comme la premiere fois. Le
+         focus laisse sur l'ancien bouton est retire aussi, sinon son
+         contour bleu restait affiche. Nathan, 6 novembre 2026. */
+      if (n === 2) {
+        racine.querySelectorAll('[data-rdv-besoin]').forEach(function (a) {
+          a.setAttribute('aria-pressed', 'false');
+          a.blur();
+        });
+        choix.besoin = null;
+      }
       if (fil) {
         Array.prototype.forEach.call(fil.children, function (li, i) {
           li.classList.toggle('est-actif', i + 1 === n);
@@ -1571,11 +1582,12 @@
           debut: choix.debut,
           jour: choix.jour,
           heure: choix.heure,
-          prenom: form.prenom.value.trim(),
           nom: form.nom.value.trim(),
           email: form.email.value.trim(),
           tel: form.tel.value.trim(),
           entreprise: form.entreprise.value.trim(),
+          site: form.site ? form.site.value.trim() : '',
+          fiche: form.fiche ? form.fiche.value.trim() : '',
           message: form.message ? form.message.value.trim() : '',
           botcheck: form.botcheck.checked ? '1' : ''
         };
@@ -2022,9 +2034,14 @@
   function squeletteRdv() {
     return ''
       + '<div class="modale__tete">'
-      + '  <p class="a1__pastille modale__pastille">Trente minutes, sans engagement</p>'
+      + '  <div class="a1__preuve modale__preuve">'
+      + '    <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener" aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">'
+      + '      <span class="a1__visages" aria-hidden="true"><i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i></span>'
+      + '      <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>'
+      + '      <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>5/5</b>'
+      + '    </a>'
+      + '  </div>'
       + '  <h2 class="modale__titre">On regarde votre visibilité <span class="a1__surligne est-peint">avant de vous appeler</span><span class="a1__point a1__point--fin">.</span></h2>'
-      + '  <p class="modale__sous">Vous repartez avec ce qui vous manque pour sortir devant vos concurrents, chiffré et dans l’ordre. Même si vous ne travaillez pas avec nous.</p>'
       + '  <p class="modale__gages">'
       + '    <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratuit</span>'
       + '    <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>30 minutes</span>'
@@ -2074,11 +2091,12 @@
       + '  <p class="rdv__recap" data-rdv-recap><svg class="icon" aria-hidden="true"><use href="#i-agenda"/></svg><span data-rdv-recap-texte></span></p>'
       + '  <form data-rdv-form novalidate>'
       + '    <div class="rdv__lignes">'
-      + champ('m-rdv-prenom', 'prenom', 'Prénom', 'given-name', 'Indiquez votre prénom.')
-      + champ('m-rdv-nom', 'nom', 'Nom', 'family-name', 'Indiquez votre nom.')
+      + champ('m-rdv-nom', 'nom', 'Nom et prénom', 'name', 'Indiquez votre nom et votre prénom.')
+      + champ('m-rdv-entreprise', 'entreprise', 'Votre entreprise', 'organization', 'Dites-nous le nom de votre entreprise.', 'text', false, false, 'Charpenterie Durand')
       + champ('m-rdv-email', 'email', 'E-mail', 'email', 'Indiquez une adresse e-mail valide, c’est là que part la confirmation.', 'email')
       + champ('m-rdv-tel', 'tel', 'Téléphone', 'tel', 'Indiquez un numéro où vous joindre.', 'tel')
-      + champ('m-rdv-entreprise', 'entreprise', 'Votre entreprise', 'organization', 'Dites-nous le nom de votre entreprise.', 'text', true)
+      + champ('m-rdv-site', 'site', 'Lien de votre site', 'url', '', 'url', false, true, 'votre-entreprise.fr')
+      + champ('m-rdv-fiche', 'fiche', 'Lien de votre fiche Google', 'off', '', 'text', false, true, 'Lien ou nom sur Google')
       + '    </div>'
       + '    <p class="rdv__rgpd">Ces informations sont utilisées par OBT Agency pour tenir le rendez-vous et vous envoyer sa confirmation. Elles passent par notre service d’agenda en ligne et sont conservées trois ans après notre dernier échange. Vous pouvez y accéder, les faire corriger ou les supprimer en écrivant à <a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a>. En savoir plus&nbsp;: <a href="confidentialite.html">politique de confidentialité</a>.</p>'
       + '    <input type="checkbox" name="botcheck" class="piege-robot" tabindex="-1" autocomplete="off" aria-hidden="true">'
@@ -2108,10 +2126,13 @@
       + '</span><b>' + nom + '</b><span>' + dit + '</span></button>';
   }
 
-  function champ(id, nom, libelle, auto, erreur, type, large) {
+  /* `facultatif` : le champ n'est pas exige (le lien du site ou de la fiche
+     Google, que tout le monde n'a pas). `aide` remplit l'exemple grise. */
+  function champ(id, nom, libelle, auto, erreur, type, large, facultatif, aide) {
     return '<p class="rdv__champ' + (large ? ' rdv__champ--large' : '') + '">'
-      + '<label for="' + id + '">' + libelle + '</label>'
-      + '<input id="' + id + '" name="' + nom + '" type="' + (type || 'text') + '" autocomplete="' + auto + '" required>'
+      + '<label for="' + id + '">' + libelle + (facultatif ? ' <small>(facultatif)</small>' : '') + '</label>'
+      + '<input id="' + id + '" name="' + nom + '" type="' + (type || 'text') + '" autocomplete="' + auto + '"'
+      + (aide ? ' placeholder="' + aide + '"' : '') + (type === 'url' ? ' inputmode="url"' : '') + (facultatif ? '' : ' required') + '>'
       + '<span class="field-error" data-error-for="' + id + '" hidden>' + erreur + '</span></p>';
   }
 
@@ -2174,7 +2195,7 @@
       + '    <ul class="tv__amain-liste" data-tv-amain></ul></div>'
       + '  <p class="tv__pied">'
       + '    <button type="button" class="a1__bouton a1__bouton--bleu" data-tv-rapport>Recevoir le rapport complet<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>'
-      + '    <a href="contact.html#contact-s2" class="a1__bouton" data-tv-rdv><span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>'
+      + '    <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton" data-tv-rdv><span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>'
       + '    <button type="button" class="tv__retour" data-tv-recommencer><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>Refaire un test</button>'
       + '  </p>'
       + '  <div class="tv__rapport" data-tv-boite-rapport hidden>'
@@ -2194,7 +2215,7 @@
       + '    <span class="tv__coche" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>'
       + '    <h3>C’est parti, votre rapport arrive.</h3>'
       + '    <p>Vous le recevez par e-mail dans l’heure qui suit, avec chaque point détaillé et l’ordre dans lequel s’y prendre.</p>'
-      + '    <p class="tv__pied tv__pied--centre"><a href="contact.html#contact-s2" class="a1__bouton a1__bouton--bleu" data-tv-rdv>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>'
+      + '    <p class="tv__pied tv__pied--centre"><a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu" data-tv-rdv>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>'
       + '  </div>'
       + '</div>'
       + '</div>';
@@ -2249,6 +2270,7 @@
     }
 
     function ouvre(m) {
+      colorePlus(m);
       if (ouverte) ferme();
       ouverte = m;
       m.classList.add('est-ouverte');
@@ -2269,6 +2291,23 @@
     mRdv.querySelectorAll('[data-rdv]').forEach(initRdv);
 
     ouvreRendezVous = function () { ouvre(mRdv); return true; };
+
+    /* La page Contact a ete supprimee le 6 novembre 2026 : tous les boutons
+       de prise de rendez-vous du site ouvrent cette fenetre, la meme que la
+       bulle en bas a droite. Ils pointent sur #rendez-vous ; sans JavaScript,
+       ce lien descend aux coordonnees du bas de page. Une adresse arrivant
+       avec #rendez-vous (l'ancienne page Contact y est redirigee) ouvre la
+       fenetre des le chargement. */
+    document.addEventListener('click', function (e) {
+      var lien = e.target.closest ? e.target.closest('a[href="#rendez-vous"], [data-rdv-ouvrir]') : null;
+      if (!lien) return;
+      e.preventDefault();
+      ouvre(mRdv);
+    });
+    if (location.hash === '#rendez-vous') {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* tant pis */ }
+      ouvre(mRdv);
+    }
 
     var bulle = document.createElement('button');
     bulle.type = 'button';
@@ -2828,25 +2867,110 @@
 
 
   /* ------------------------------------------------------------------------
-     21. LE MENU PRODUIT
-     Un panneau de sept pages derrière une seule entrée. Il s'ouvre au clic
-     et au survol là où il y a une souris : au clavier comme au doigt, le clic
-     reste la seule façon sûre d'ouvrir. Il se ferme à l'Échap, au clic en
-     dehors et quand le focus sort du menu, pour ne jamais rester ouvert dans
-     le dos du visiteur.
+     21 ter. LES PAGES D'EXPERTISE
+     Deux aides a la lecture d'un guide long : une barre fine en haut de
+     l'ecran qui se remplit a mesure qu'on avance. Puis le sommaire de gauche,
+     qui allume le chapitre en cours. Sans JavaScript la page se lit pareil :
+     le sommaire reste une liste de liens vers les chapitres.
+     Nathan, 5 novembre 2026.
      ------------------------------------------------------------------------ */
+  function initExpertise(guide) {
+    var barre = document.querySelector('.ex-lecture');
+    var liens = [].slice.call(document.querySelectorAll('.ex-sommaire a[href^="#"]'));
+    var chapitres = liens.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+    var attente = false;
+
+    function mesure() {
+      attente = false;
+      if (barre) {
+        var r = guide.getBoundingClientRect();
+        var total = r.height - window.innerHeight * 0.6;
+        var lu = total > 0 ? Math.min(Math.max(-r.top / total, 0), 1) : 0;
+        barre.style.setProperty('--lu', lu.toFixed(4));
+      }
+      /* Le chapitre en cours est le dernier dont le titre a passe le tiers
+         haut de l'ecran. */
+      var seuil = window.innerHeight * 0.33, actif = 0;
+      chapitres.forEach(function (c, k) { if (c.getBoundingClientRect().top < seuil) actif = k; });
+      liens.forEach(function (a, k) { a.classList.toggle('est-actif', k === actif); });
+    }
+    /* Filet pose le 8 novembre 2026 : si le navigateur retient ses images
+       (onglet en arriere-plan, economie d'energie), la minuterie mesure a
+       sa place. La mesure n'a lieu qu'une fois, quel que soit le premier. */
+    function demande() {
+      if (attente) return;
+      attente = true;
+      window.requestAnimationFrame(function () { if (attente) mesure(); });
+      window.setTimeout(function () { if (attente) mesure(); }, 150);
+    }
+    window.addEventListener('scroll', demande, { passive: true });
+    window.addEventListener('resize', demande);
+    mesure();
+  }
+
+  /* ------------------------------------------------------------------------
+     21 bis. UN TITRE DONT LE SURLIGNAGE PASSE A LA LIGNE
+     Le fond bleu du surlignage se coupe ligne par ligne. Quand un titre est
+     compose serre, les deux bandes se chevauchent de quelques pixels et le
+     mot du bas mord sur celui du haut. On mesure donc combien de lignes
+     occupe chaque surlignage : s'il y en a plus d'une, le titre recoit un
+     interligne plus large. Un surlignage qui tient sur une ligne ne change
+     rien, le titre reste exactement comme il a ete valide.
+     Demande de Nathan le 5 novembre 2026, vue sur la page Creation de site.
+     ------------------------------------------------------------------------ */
+  function aereLesTitresSurlignes() {
+    document.querySelectorAll('.a1__surligne').forEach(function (bloc) {
+      var titre = bloc.closest('h1, h2, h3');
+      if (!titre) return;
+      /* On mesure sans la classe : sinon l'interligne deja elargi fausserait
+         la mesure suivante et le titre ne reviendrait jamais en arriere. */
+      titre.classList.remove('est-aere');
+      var lignes = bloc.getClientRects().length;
+      if (lignes > 1) titre.classList.add('est-aere');
+    });
+  }
+
+  function surveilleLesTitresSurlignes() {
+    aereLesTitresSurlignes();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(aereLesTitresSurlignes);
+    }
+    var attente;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(attente);
+      attente = window.setTimeout(aereLesTitresSurlignes, 150);
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     21. LE MENU PRODUIT
+     Plusieurs entrées du bandeau ouvrent chacune leur panneau. Deux règles
+     posées par Nathan le 5 novembre 2026 : jamais deux panneaux affichés en
+     même temps. Et le clic n'épingle rien. Pour cliquer sur une entrée il
+     faut déjà être dessus, donc le panneau est déjà ouvert : garder le clic
+     comme bascule ne faisait que laisser un panneau coincé derrière le
+     visiteur.
+     Les panneaux se déclarent dans un registre commun. Entrer sur une entrée
+     ferme les autres dans la même image, sans délai : c'est ce qui supprime
+     la superposition qu'on voyait en passant de « Nos services » à
+     « Nos secteurs ».
+     Là où il n'y a pas de souris (doigt, clavier), le clic reste la seule
+     façon d'ouvrir. Le focus ouvre aussi le panneau pour la navigation
+     au clavier. Échap, clic en dehors et sortie du focus referment.
+     ------------------------------------------------------------------------ */
+  var menusProduit = [];
+
+  function fermeMenusProduit(sauf) {
+    menusProduit.forEach(function (m) { if (m.item !== sauf) m.ferme(); });
+  }
+
   function initMenuProduit(item) {
     var bouton = item.querySelector('.nav-produit__bouton');
     var panneau = item.querySelector('.nav-produit__panneau');
     if (!bouton || !panneau) return;
     var survol = window.matchMedia('(hover: hover) and (pointer: fine)');
     var minuteur;
-
-    /* Un seul état : le panneau est-il épinglé par un clic. Le survol ouvre et
-       referme librement tant que rien n'est épinglé. Sans cet état, le clic
-       qui suit un survol refermerait ce que le survol vient d'ouvrir et le
-       bouton aurait l'air cassé. */
-    var epingle = false;
 
     function pose(ouvert) {
       panneau.hidden = !ouvert;
@@ -2855,25 +2979,42 @@
       else item.removeAttribute('data-ouvert');
     }
 
+    function ouvre() {
+      window.clearTimeout(minuteur);
+      fermeMenusProduit(item);
+      pose(true);
+    }
+
+    function ferme() {
+      window.clearTimeout(minuteur);
+      pose(false);
+      panneau.querySelectorAll('.est-survol').forEach(function (c) { c.classList.remove('est-survol'); });
+    }
+
+    menusProduit.push({ item: item, ferme: ferme });
+
+    /* À la souris, le clic ne change rien : le panneau est déjà ouvert par le
+       survol. Au doigt, il reste la bascule. */
     bouton.addEventListener('click', function () {
-      epingle = !epingle;
-      pose(epingle);
+      if (survol.matches) { ouvre(); return; }
+      if (panneau.hidden) ouvre();
+      else ferme();
     });
 
     item.addEventListener('mouseenter', function () {
-      if (!survol.matches || epingle) return;
-      window.clearTimeout(minuteur);
-      pose(true);
+      if (!survol.matches) return;
+      ouvre();
     });
     item.addEventListener('mouseleave', function () {
-      if (!survol.matches || epingle) return;
-      minuteur = window.setTimeout(function () { pose(false); }, 160);
+      if (!survol.matches) return;
+      window.clearTimeout(minuteur);
+      minuteur = window.setTimeout(ferme, 90);
     });
 
-    function ferme() {
-      epingle = false;
-      pose(false);
-    }
+    /* Le clavier : arriver sur le bouton ouvre, quitter le menu referme. */
+    bouton.addEventListener('focus', function () {
+      if (bouton.matches(':focus-visible')) ouvre();
+    });
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !panneau.hidden) {
@@ -2887,6 +3028,21 @@
     item.addEventListener('focusout', function (e) {
       if (!item.contains(e.relatedTarget)) ferme();
     });
+
+    /* Chaque case du volet se grise sous la souris. Le CSS le fait deja avec
+       :hover, mais une seule regle mal ordonnee suffisait a l'eteindre sur la
+       page courante : la classe posee ici double le mecanisme, une case
+       survolee est toujours grisee et une seule l'est a la fois.
+       Nathan, 5 novembre 2026. */
+    var cases = panneau.querySelectorAll('.nav-produit__liste a');
+    function survole(cible) {
+      cases.forEach(function (c) { c.classList.toggle('est-survol', c === cible); });
+    }
+    cases.forEach(function (c) {
+      c.addEventListener('mouseenter', function () { survole(c); });
+      c.addEventListener('focus', function () { survole(c); });
+    });
+    panneau.addEventListener('mouseleave', function () { survole(null); });
 
     /* L'apercu de droite : il suit l'entree survolee ou pointee au clavier.
        Au repos il montre la creation de site, celle qui est mise en avant.
@@ -3218,14 +3374,31 @@
       vues.forEach(function (v, i) { v.classList.toggle('est-actif', i === rang); });
     };
 
-    var oeil = new IntersectionObserver(function (entrees) {
-      entrees.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        allumer(etapes.indexOf(e.target));
-      });
-    }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 });
-
-    etapes.forEach(function (e) { oeil.observe(e); });
+    /* L'etape active est la derniere dont le haut a passe le milieu de
+       l'ecran. Corrige le 6 novembre 2026 : l'ancienne regle n'allumait une
+       etape que lorsqu'elle traversait une bande de 4 % au milieu de l'ecran.
+       En defilant vite, une etape passait la bande entre deux mesures et
+       etait sautee : la maquette restait bloquee sur la mauvaise etape.
+       Cette regle-ci ne peut rien sauter, dans un sens comme dans l'autre. */
+    var actuel = -1, attente = false;
+    function mesure() {
+      attente = false;
+      var milieu = window.innerHeight * 0.5, rang = 0;
+      etapes.forEach(function (e, i) { if (e.getBoundingClientRect().top < milieu) rang = i; });
+      if (rang !== actuel) { actuel = rang; allumer(rang); }
+    }
+    /* Filet pose le 8 novembre 2026 : si le navigateur retient ses images
+       (onglet en arriere-plan, economie d'energie), la minuterie mesure a
+       sa place. La mesure n'a lieu qu'une fois, quel que soit le premier. */
+    function demande() {
+      if (attente) return;
+      attente = true;
+      window.requestAnimationFrame(function () { if (attente) mesure(); });
+      window.setTimeout(function () { if (attente) mesure(); }, 150);
+    }
+    window.addEventListener('scroll', demande, { passive: true });
+    window.addEventListener('resize', demande);
+    mesure();
   }
 
   /* ======================================================================
@@ -3270,6 +3443,25 @@
     piste.appendChild(copie);
   }
 
+  /* Le petit rond « +3 » des bulles d'avis change de couleur d'une bulle a
+     l'autre et d'une visite a l'autre : violet, orange, vert, jaune... Le
+     depart est tire au hasard, puis chaque bulle prend la teinte suivante.
+     Demande de Nathan du 9 novembre 2026. */
+  /* Teintes pastel (fond, chiffre), passees en pastel le 9 novembre 2026 :
+     le chiffre prend la meme teinte en fonce pour rester lisible. */
+  var TEINTES_PLUS = [['#D9CCFF', '#4C2A9E'], ['#FFD8B8', '#9A4510'], ['#C7EFD2', '#1D6B3A'],
+                      ['#FFEDA8', '#7A5A00'], ['#FBCFE4', '#9A1D5A'], ['#C2EEEC', '#0F6463']];
+  var rangPlus = Math.floor(Math.random() * TEINTES_PLUS.length);
+  function colorePlus(racine) {
+    (racine || document).querySelectorAll('.a1__visages--plus:not([data-teinte])').forEach(function (rond) {
+      var teinte = TEINTES_PLUS[rangPlus % TEINTES_PLUS.length];
+      rond.style.setProperty('--plus', teinte[0]);
+      rond.style.setProperty('--plus-texte', teinte[1]);
+      rond.setAttribute('data-teinte', '');
+      rangPlus += 1;
+    });
+  }
+
   function init() {
     initNav();
     initHeader();
@@ -3287,6 +3479,8 @@
     document.querySelectorAll('[data-cascade]').forEach(initCascadeCartes);
     document.querySelectorAll('[data-defile]').forEach(initDefile);
     document.querySelectorAll('[data-nav-produit]').forEach(initMenuProduit);
+    document.querySelectorAll('[data-guide]').forEach(initExpertise);
+    surveilleLesTitresSurlignes();
     document.querySelectorAll('[data-tunnel]').forEach(initTunnel);
     document.querySelectorAll('[data-faq]').forEach(initFaq);
     document.querySelectorAll('[data-faq-plus]').forEach(initFaqRepli);
@@ -3294,6 +3488,7 @@
     document.querySelectorAll('[data-rdv]').forEach(initRdv);
     document.querySelectorAll('[data-tv]').forEach(initTestVisibilite);
     initFenetres();
+    colorePlus();
     initReveal();
     document.querySelectorAll('.marquee-track').forEach(initMarquee);
     document.querySelectorAll('.steps-row').forEach(function (el) { initPileMobile(el, '.step', true); });

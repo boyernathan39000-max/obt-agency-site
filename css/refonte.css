@@ -1075,7 +1075,7 @@
 
 /* --- la carte d'avis --- */
 .ref-preuve__etoiles { display: flex; gap: 2px; margin: 0 0 var(--sp-4); }
-.ref-preuve__etoiles .icon { width: 15px; height: 15px; color: #F5B50A; }
+.ref-preuve__etoiles .icon { width: 15px; height: 15px; color: var(--c-etoile); }
 .ref-preuve--avis blockquote {
   margin: 0;
   flex: 1;
@@ -1459,7 +1459,7 @@
 .a1__ronds--haut i:nth-child(4) { width: 46px; height: 46px; left: 118px; top: 104px; background: var(--c-accent-light); opacity: .75; }
 .a1__ronds--haut i:nth-child(5) { width: 14px; height: 14px; left: 10px;  top: 134px; background: var(--c-accent); opacity: .4; }
 
-.a1__ronds--bas { right: -70px; bottom: -56px; width: 330px; height: 300px; }
+.a1__ronds--bas { right: 18px; bottom: 24px; width: 330px; height: 300px; }
 .a1__ronds--bas i:nth-child(1) { width: 168px; height: 168px; right: 24px;  bottom: 54px; background: var(--c-accent); }
 .a1__ronds--bas i:nth-child(2) { width: 92px;  height: 92px;  right: 168px; bottom: 0;    background: var(--c-accent-light); opacity: .8; }
 .a1__ronds--bas i:nth-child(3) { width: 54px;  height: 54px;  right: 0;     bottom: 190px; background: var(--c-accent-bright); opacity: .7; }
@@ -1467,7 +1467,10 @@
 
 .a1__dedans {
   position: relative; z-index: 2;
-  width: 100%; max-width: 880px; margin-inline: auto;
+  /* Elargi le 5 novembre 2026 : a 880 px, « mais ils trouvent vos
+     concurrents. » passait a la ligne et le titre tenait sur quatre lignes au
+     lieu de trois. Le chapeau et les boutons gardent leur propre largeur. */
+  width: 100%; max-width: 1060px; margin-inline: auto;
   padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px));
 }
 
@@ -1597,9 +1600,9 @@
 .a1__visages i:nth-child(3) { background: #1E9E5A; }
 .a1__visages i:nth-child(4) { background: #B8860B; }
 .a1__visages i:nth-child(5) { background: #6A5ACD; }
-.a1__visages--plus { background: #5F6670 !important; font-size: 11px !important; }
+.a1__visages--plus { background: var(--plus, #D9CCFF) !important; color: var(--plus-texte, #4C2A9E) !important; font-size: 11px !important; transition: background-color .3s ease; }
 .a1__note .icon--google { width: 20px; height: 20px; }
-.a1__etoiles { color: #F5B300; letter-spacing: 1px; font-size: 15px; }
+.a1__etoiles { color: var(--c-etoile); letter-spacing: 1px; font-size: 15px; }
 .a1__note b { font-size: 16px; }
 .a1__note-sous { margin: 10px 0 0; font-size: 13px; color: var(--c-text-faint); }
 
@@ -1649,7 +1652,17 @@
 .a1__point { position: relative; z-index: 2; }
 /* Le point qui suit un mot surligne ne doit pas toucher le bloc : le bloc
    deborde deja de .1em a droite, il faut plus que cela. */
+/* Le point qui suit un mot surligne prend de l'air : colle au bloc bleu, il
+   se lit comme une faute de composition. Regle de Nathan, 3 novembre 2026.
+   Mais seulement apres un bloc surligne : derriere du texte simplement
+   colore, cet ecart ressemble a une coquille. Corrige le 5 novembre 2026. */
 .a1__point--fin { margin-left: .26em; }
+/* Le script qui revele les titres mot a mot deplace le surlignage dans un
+   autre span : on ne peut pas se fier au voisin precedent pour savoir s'il y
+   a un bloc bleu. On nomme donc les deux seuls cas ou le point suit du texte
+   simplement colore. */
+.a11__clair + .a1__point--fin,
+.ab-fp__clair + .a1__point--fin { margin-left: 0; }
 
 /* --- la bande, sortie du bandeau --- */
 /* La piste du defile est plus large que l'ecran par construction : sans cette
@@ -1664,7 +1677,7 @@
 @media (max-width: 760px) {
   .a1 { padding-top: calc(var(--header-height) + 20px); padding-bottom: 84px; }
   .a1__ronds--haut { transform: scale(.58); transform-origin: left top; left: -24px; }
-  .a1__ronds--bas { transform: scale(.6); transform-origin: right bottom; right: -40px; bottom: -30px; }
+  .a1__ronds--bas { transform: scale(.6); transform-origin: right bottom; right: 10px; bottom: 14px; }
   .a1__visages i { width: 28px; height: 28px; font-size: 11px; }
   .a1__bouton { font-size: 14px; padding: 13px 18px 13px 15px; }
 }
@@ -1838,8 +1851,10 @@
   /* Plus de degrade de fond : la direction artistique tient aux ronds, pas
      aux halos. Decide le 1er novembre 2026. */
   background: #FAF9F5;
-  border-top: 1px dashed rgba(18, 21, 26, .12);
-  border-bottom: 1px dashed rgba(18, 21, 26, .12);
+  /* Plus de trait en haut : le bandeau a le meme fond, la separation coupait
+     la page pour rien et tranchait les ronds. Nathan, 5 novembre 2026. */
+  /* Plus de trait en bas non plus : la section suivante ouvre sur l'arc en
+     degrade, le trait coupait la page juste au-dessus. Nathan, 5 novembre 2026. */
   padding-block: clamp(48px, 6vw, 80px) clamp(74px, 8.5vw, 116px);
 }
 .a3__ronds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
@@ -1996,9 +2011,9 @@
 }
 .a4__ronds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .a4__ronds i { position: absolute; display: block; border-radius: 50%; }
-.a4__ronds i:nth-child(1) { width: 320px; height: 320px; left: -140px; bottom: -120px; border: 1px solid rgba(255, 255, 255, .1); }
+.a4__ronds i:nth-child(1) { width: 320px; height: 320px; left: 18px;   bottom: 42px;   border: 1px solid rgba(255, 255, 255, .1); }
 .a4__ronds i:nth-child(2) { width: 180px; height: 180px; right: -60px; top: -70px;     border: 1px solid rgba(255, 255, 255, .1); }
-.a4__ronds i:nth-child(3) { width: 240px; height: 240px; right: 6%;   bottom: -110px;  background: var(--c-accent); opacity: .3; }
+.a4__ronds i:nth-child(3) { width: 240px; height: 240px; right: -120px; bottom: 14%;    background: var(--c-accent); opacity: .3; }
 .a4__ronds i:nth-child(4) { width: 58px;  height: 58px;  left: 12%;   top: -24px;      background: var(--c-accent-bright); opacity: .35; }
 
 .a4__dedans {
@@ -2901,7 +2916,7 @@
    Fond gris pale pour qu'une parole se distingue d'un releve. */
 .a7__carte--avis { width: 312px; background: var(--c-bg-panel); }
 .a7__etoiles { display: flex; gap: 3px; margin: 0; }
-.a7__etoiles .icon { width: 15px; height: 15px; color: #F5A623; fill: currentColor; stroke: none; }
+.a7__etoiles .icon { width: 15px; height: 15px; color: var(--c-etoile); fill: currentColor; stroke: none; }
 .a7__carte--avis blockquote {
   margin: 0; flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--c-text);
 }
@@ -3070,7 +3085,7 @@
   letter-spacing: -.04em; color: var(--c-text); font-variant-numeric: tabular-nums;
 }
 .a10__etoiles { display: flex; gap: 5px; }
-.a10__etoiles .icon { width: 22px; height: 22px; color: #F5A623; fill: currentColor; stroke: none; }
+.a10__etoiles .icon { width: 22px; height: 22px; color: var(--c-etoile); fill: currentColor; stroke: none; }
 .a10__source {
   display: flex; align-items: center; gap: 8px;
   font-size: 13.5px; font-weight: 600; color: var(--c-text-muted);
@@ -5065,7 +5080,7 @@
 .e-fiche__tete { display: flex; align-items: center; gap: 11px; }
 .e-fiche__logo { display: block; width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, #DCE6FB, #BFD6FF); flex: none; }
 .e-fiche__mots { display: flex; flex-direction: column; gap: 7px; flex: 1; min-width: 0; }
-.e-fiche__note { font-size: 11px; font-weight: 700; color: #F5A623; letter-spacing: .04em; }
+.e-fiche__note { font-size: 11px; font-weight: 700; color: var(--c-etoile); letter-spacing: .04em; }
 .e-fiche__note b { color: var(--c-text); }
 .e-fiche__boutons { display: flex; gap: 6px; }
 .e-fiche__boutons b {
@@ -5191,10 +5206,10 @@
 }
 .pr__tete .p2__titre { margin-bottom: 0; max-width: 22ch; margin-inline: auto; }
 .pr__carrousel { position: relative; z-index: 1; }
-/* Les cartes ne sont plus cliquables : les sites des clients ne sont pas
-   copies dans ce dossier, un bouton qui n'ouvre rien vaut moins qu'une
-   image. Le bloc garde le dessin de la carte. */
-.pr .work-open { cursor: default; }
+/* Chaque carte est un lien vers le vrai site du client, ouvert dans un
+   autre onglet. On ne reproduit jamais un site client chez nous.
+   Nathan, 5 novembre 2026. */
+.pr .work-open, .sr .work-open { cursor: pointer; }
 
 /* ===================== LES OFFRES D'UNE PRESTATION ======================
    Posees juste apres les realisations : Nathan, 2 novembre 2026, « on met
@@ -5425,7 +5440,7 @@
 /* Le G de Google, la note, puis les cinq etoiles. On n'ecrit plus le nombre
    d'avis : sept, c'est vrai, mais ca dessert. Nathan, 2 novembre 2026. */
 .po__dit .icon--google { width: 17px; height: 17px; }
-.po__etoiles { color: #F5B300; font-size: 13px; letter-spacing: .5px; }
+.po__etoiles { color: var(--c-etoile); font-size: 13px; letter-spacing: .5px; }
 .po__avis small { font-size: 12px; font-weight: 500; color: rgba(255, 255, 255, .62); }
 .po__offre--avant .po__avis small { color: var(--c-text-faint); }
 
@@ -5844,7 +5859,7 @@
   box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07);
 }
 /* Les etoiles sont jaunes partout sur le site, ici comme ailleurs. */
-.avis-card .stars { color: #F5B300; }
+.avis-card .stars { color: var(--c-etoile); }
 .rdv__cote .avis-quote { font-size: 14px; line-height: 1.6; color: var(--c-text); }
 .rdv__cote .avis-name { font-size: 13.5px; }
 
@@ -6518,3 +6533,1038 @@ body.est-bloquee { overflow: hidden; }
 .m-fichiers .icon { width: 16px; height: 16px; color: var(--c-accent); }
 .m-fichiers b { font-size: 13px; font-weight: 700; }
 .m-fichiers em { margin-left: auto; font-style: normal; font-size: 11.5px; color: var(--c-text-faint); }
+
+/* ============================================================================
+   LE BANDEAU EN PILULE (repris de la barre d'offbound.fr, citee par Nathan
+   le 4 novembre 2026). Tout le bandeau tient dans une seule barre arrondie,
+   posee a douze pixels du haut : logo a gauche, menu au milieu, bouton de
+   rendez-vous a droite. Elle porte son fond en permanence, donc elle ne se
+   confond plus avec le texte de la page.
+   ========================================================================== */
+.site-header {
+  display: block;
+  padding: 0 max(12px, env(safe-area-inset-left, 0px));
+  top: 12px;
+  background: none;
+}
+.site-header__barre {
+  pointer-events: auto;
+  max-width: 1200px; margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 8px 8px 8px 20px;
+  border-radius: 999px;
+  background: rgba(250, 249, 245, .93);
+  box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .1),
+              0 14px 34px -24px rgba(7, 18, 48, .55);
+  transition: background .25s ease, box-shadow .25s ease;
+}
+/* Au-dessus d'une section nuit, la pilule passe en nuit elle aussi. */
+.site-header.est-sombre .site-header__barre {
+  background: rgba(7, 18, 48, .93);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12),
+              0 14px 34px -22px rgba(0, 0, 0, .7);
+}
+/* Le fond pose au defilement ne sert plus : la pilule a toujours le sien. */
+.site-header.est-posee, .site-header.est-posee.est-sombre { background: none; box-shadow: none; }
+.site-header.est-posee .site-header__barre { box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .12), 0 18px 40px -24px rgba(7, 18, 48, .6); }
+.site-header.est-posee.est-sombre .site-header__barre { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), 0 18px 40px -22px rgba(0, 0, 0, .75); }
+
+/* Les deux volets simples, secteurs et expertises : une seule colonne,
+   plus etroite que le volet des services. */
+/* Les deux volets simples n'ont pas d'apercu a droite : leur grille repasse
+   sur une seule colonne, sinon la liste reste bloquee a la largeur reservee
+   a l'apercu pendant que le volet, lui, est plus large. Les cases prennent
+   donc toute la largeur, a la marge du volet pres. Nathan, 5 novembre 2026. */
+.nav-produit__panneau--simple {
+  width: min(400px, 92vw); padding: var(--sp-3);
+  grid-template-columns: minmax(0, 1fr);
+}
+.nav-produit__panneau--simple .nav-produit__liste { grid-template-columns: minmax(0, 1fr); }
+
+/* Le halo qui bat sous les boutons bleus, repris de la barre d'offbound.fr.
+   Il attire l'oeil sans bouger le bouton. */
+@keyframes battement {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 88, 214, .55); }
+  70%  { box-shadow: 0 0 0 14px rgba(37, 88, 214, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 88, 214, 0); }
+}
+.a1__bouton--bleu, .btn--nav, .header-cta, .a11__bouton--clair {
+  animation: battement 2.2s ease-out infinite;
+}
+.a1__bouton--bleu:hover, .btn--nav:hover, .header-cta:hover { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .a1__bouton--bleu, .btn--nav, .header-cta, .a11__bouton--clair { animation: none; }
+}
+
+/* ============================================================================
+   ACCUEIL : « ce qu'on fait » passe en nuit, « nos performances » en clair.
+   Nathan, 4 novembre 2026. L'ordre change aussi : les performances arrivent
+   apres ce qu'on fait, donc l'arc en degrade ouvre desormais deux sections,
+   celle-ci et la methode.
+   ========================================================================== */
+.a5--nuit {
+  --arc-ep: clamp(16px, 2.4vw, 38px);
+  --arc-dia: 300vw;
+  --arc-fleche: 8.5786vw;
+  --arc-zone: calc(var(--arc-ep) * 2 + var(--arc-fleche));
+  position: relative; overflow-x: clip; overflow-y: visible;
+  margin-top: var(--arc-zone);
+  background: #071230;
+  color: #fff;
+}
+/* Les ronds du fond clair ne se verraient pas sur la nuit : ils passent en
+   cercles ouverts, comme ceux de la methode. */
+.a5--nuit .a5__ronds i { background: none; border: 1px solid rgba(255, 255, 255, .12); }
+.a5--nuit .a5__ronds i:nth-child(2),
+.a5--nuit .a5__ronds i:nth-child(4) { background: var(--c-accent-bright); border: 0; opacity: .4; }
+.a5--nuit .a5__titre, .a5--nuit .a5__chapeau { color: #fff; }
+.a5--nuit .a5__texte, .a5--nuit .a5__dit { color: rgba(255, 255, 255, .74); }
+.a5--nuit .a5__carte {
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
+.a5--nuit .a5__sur-titre { color: var(--c-accent-light); }
+
+/* Les performances, en clair. */
+.a4--clair { background: #FAF9F5; color: var(--c-text); }
+.a4--clair .a4__ronds i { border-color: rgba(18, 21, 26, .1); }
+.a4--clair .a4__carte {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08), 0 20px 44px -30px rgba(7, 18, 48, .45);
+}
+.a4--clair .a4__logo { background: #FAF9F5; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08); }
+.a4--clair .a4__nombre { color: var(--c-text); }
+.a4--clair .a4__signe { color: var(--c-accent); }
+.a4--clair .a4__legende { color: var(--c-text-muted); }
+.a4--clair .a4__source, .a4--clair .a4__pied { color: var(--c-text-faint); }
+.a4--clair .a4__sur-titre, .a4--clair .a4__titre { color: var(--c-text); }
+
+/* La bulle d'avis remontee en haut du bandeau perd son fond : c'est elle qui
+   remplace le sur-titre, elle doit se poser sur la page sans pastille. */
+.a1__preuve--haut { margin: 0 0 18px; }
+.a1__preuve--haut .a1__note {
+  background: none; box-shadow: none; padding: 0;
+}
+/* Le point final reste colle au mot surligne, quelle que soit la largeur. */
+.a1__insecable { white-space: nowrap; }
+
+
+/* ============================================================================
+   LES AVIS SANS BULLE DE FOND
+   Partout ou la note Google apparait, on ne garde que ses elements : les
+   visages, le logo, les cinq etoiles, la note. Le fond blanc arrondi qui les
+   regroupait saute. Nathan, 5 novembre 2026.
+   ========================================================================== */
+.a1__note, .a11__note, .po__avis,
+.po__offre--avant .po__avis {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+.a1__note:hover, .a11__note:hover, .po__avis:hover,
+.po__offre--avant .po__avis:hover { background: none; transform: none; }
+
+
+/* ============================================================================
+   LES TETES DE SECTION CENTREES
+   Nathan, 5 novembre 2026 : « ce qu'on fait », « la methode » et « la
+   transparence » portent leur sur-titre, leur titre et leur chapeau au
+   centre, comme « nos performances ». Trois sections de meme nature se
+   presentent pareil.
+   ========================================================================== */
+.a5__tete, .a6__tete, .a8__tete { margin-inline: auto; text-align: center; }
+.a5__tete .a5__sur-titre,
+.a6__tete .a6__sur-titre,
+.a8__tete .a8__sur-titre { display: flex; justify-content: center; }
+.a5__tete .a5__chapeau,
+.a6__tete .a6__chapeau,
+.a8__tete .a8__chapeau { margin-inline: auto; }
+
+/* ============================================================================
+   LA SECTION DES AVIS
+   Le titre tient sur une ligne, le chapeau sur deux. Nathan, 5 novembre 2026.
+   ========================================================================== */
+.a10__titre { text-wrap: nowrap; }
+.a10__chapeau { max-width: 70ch; }
+@media (max-width: 859px) { .a10__titre { text-wrap: balance; } }
+
+/* ============================================================================
+   LES ETOILES D'AVIS SONT JAUNES
+   Regle posee par Nathan le 5 novembre 2026 : partout ou cinq etoiles
+   representent une note, elles portent le meme jaune. Dans la pastille des
+   offres, les etoiles sont dans un <small> dont la couleur grise
+   l'emportait sur la classe : il faut nommer les deux pour la reprendre.
+   ========================================================================== */
+.po__avis small.po__etoiles,
+.po__offre--avant .po__avis small.po__etoiles { color: var(--c-etoile); }
+
+
+/* ============================================================================
+   UN TITRE DONT LE SURLIGNAGE PASSE A LA LIGNE
+   Le fond du surlignage epouse chaque ligne, donc deux lignes surlignees
+   l'une sous l'autre se chevauchent quand l'interligne du titre est plus
+   serre que la hauteur du fond. Le script pose `est-aere` sur le titre, et
+   seulement dans ce cas : un titre dont le surlignage tient sur une ligne ne
+   bouge pas d'un pixel. Nathan, 5 novembre 2026.
+   ========================================================================== */
+h1.est-aere, h2.est-aere, h3.est-aere { line-height: 1.32; }
+.est-aere .a1__surligne { padding-block: .02em; }
+
+/* ============================================================================
+   AR : LA PAGE ARTISANS & BTP
+   Le telephone du bandeau. L'ecran tient trois blocs : la barre de
+   recherche, la fiche Google, les trois resultats. Rien de nouveau n'est
+   dessine ici, on repose les briques de la page du pack dans un chassis de
+   telephone. Nathan, 5 novembre 2026.
+   ========================================================================== */
+.ar__tel { max-width: 328px; margin-inline: auto; }
+.ar__ecran { display: grid; gap: 12px; padding: 56px 14px 22px; background: #FAF9F5; }
+.ar__ecran .sg__barre { background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08); }
+.ar__fiche { box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08), 0 18px 34px -26px rgba(7, 18, 48, .5); }
+.ar__resultats { gap: 8px; }
+.ar__resultats li { padding: 10px 12px; }
+
+/* Sur un ecran etroit le telephone ne prend pas toute la largeur : il
+   reste au centre, comme la maquette des autres pages. */
+@media (max-width: 760px) { .ar__tel { max-width: 290px; } }
+
+/* ============================================================================
+   LA PAGE ARTISANS & BTP
+   Elle a sa composition a elle. Les blocs des pages prestations ne sont pas
+   recopies ici : une page de secteur raconte autre chose, donc elle se
+   dessine autrement. Demande de Nathan, 5 novembre 2026.
+   La structure des trois pages de secteur, fixee par Nathan le 5 novembre
+   2026 : le bandeau, la video (la meme que l'accueil, bloc .a3), les
+   offres, les resultats, la methode, puis l'avis, les objections et la fin.
+   ========================================================================== */
+
+/* --- le bandeau ----------------------------------------------------------
+   Le meme bandeau centre que l'accueil, allege : pas de maquette a droite,
+   pas de sur-titre, la note Google au-dessus du titre. Il se termine bas,
+   pour que la video soit a portee de regard sans defiler. */
+.a1--secteur { padding-bottom: 42px; }
+.a1--secteur .a1__titre { max-width: 980px; }
+.a1--secteur .a1__sous { max-width: 48ch; }
+/* Les ronds du bas remontent : sans maquette a droite, le bandeau est plus
+   court, le groupe de ronds doit suivre pour rester entier dedans. */
+/* Le groupe du haut rentre entierement dans la section : sur une page de
+   secteur, aucun rond n'est tranche par un bord. Nathan, 5 novembre 2026. */
+.a1--secteur .a1__ronds--haut { left: 22px; }
+.a1--secteur .a1__ronds--bas { right: 24px; bottom: 18px; width: 268px; height: 240px; }
+.a1--secteur .a1__ronds--bas i:nth-child(1) { width: 134px; height: 134px; right: 18px; bottom: 44px; }
+.a1--secteur .a1__ronds--bas i:nth-child(2) { width: 58px;  height: 58px;  right: 164px; bottom: 16px; }
+.a1--secteur .a1__ronds--bas i:nth-child(3) { width: 30px;  height: 30px;  right: 6px;   bottom: 6px; }
+.a1--secteur .a1__ronds--bas i:nth-child(4) { width: 20px;  height: 20px;  right: 198px; bottom: 112px; }
+
+/* --- la fin : tout mene au pack ------------------------------------------
+   La page de secteur ne se termine pas par le meme bloc que les pages
+   prestations. Elle se termine sur le pack : a gauche la phrase et les
+   boutons, a droite ce que l'abonnement porte. Le visiteur qui arrive ici
+   a tout lu, il lui faut une porte, pas un resume. */
+.ab-fp {
+  position: relative; overflow: hidden;
+  background: #071230; color: #fff;
+  padding-block: clamp(62px, 7.6vw, 104px);
+}
+.ab-fp__dedans {
+  position: relative; z-index: 1;
+  max-width: 1060px; margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+  display: grid; gap: clamp(30px, 4vw, 52px);
+}
+@media (min-width: 900px) { .ab-fp__dedans { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: center; } }
+.ab-fp__titre {
+  margin: 0 0 16px;
+  font-size: clamp(27px, 3.6vw, 42px); line-height: 1.1;
+  letter-spacing: -.035em; font-weight: 700; color: #fff;
+}
+.ab-fp__clair { color: var(--c-accent-light); }
+.ab-fp__sous { margin: 0 0 26px; max-width: 46ch; color: rgba(255, 255, 255, .76); }
+.ab-fp__action { margin: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.ab-fp__carte {
+  padding: clamp(22px, 2.6vw, 30px); border-radius: 24px;
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14);
+}
+.ab-fp__eti {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px;
+  padding: 6px 12px; border-radius: 999px;
+  background: var(--c-accent); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+}
+.ab-fp__nom { margin: 0 0 16px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; color: #fff; }
+.ab-fp__liste { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 11px; }
+.ab-fp__liste li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 11px; align-items: start; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, .84); }
+.ab-fp__liste .icon { width: 17px; height: 17px; margin-top: 3px; color: var(--c-accent-light); }
+.ab-fp__pied { margin: 0; font-size: 13px; color: rgba(255, 255, 255, .6); }
+
+/* Sur un telephone, le bandeau de secteur n'a plus la place de porter les
+   deux groupes de ronds : la section est courte, le texte prend toute la
+   largeur, les ronds lui passaient dessus. Le groupe du bas sort, celui du
+   haut rentre dans l'angle et le texte passe devant.
+   Nathan, 5 novembre 2026. */
+@media (max-width: 760px) {
+  .a1--secteur .a1__ronds { z-index: 0; }
+  .a1--secteur .a1__dedans { position: relative; z-index: 2; }
+  .a1--secteur .a1__ronds--haut { transform: scale(.4); transform-origin: left top; left: 2px; }
+  .a1--secteur .a1__ronds--bas { display: none; }
+}
+
+/* --- la video, deux boutons ----------------------------------------------
+   Sur les pages de secteur, la section video est celle de l'accueil, a la
+   ligne pres. Seule difference : deux boutons dessous, le test de
+   visibilite et les offres de la page. Ils se tiennent cote a cote et
+   gardent la hauteur du bouton standard. Nathan, 5 novembre 2026. */
+.a3__action--deux { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+/* --- les offres a deux colonnes ------------------------------------------
+   La page Hebergements ne vend que deux offres : le site complet et le
+   pack. La grille passe a deux colonnes, plus etroite, pour que les deux
+   cartes gardent la largeur qu'elles ont a trois. */
+@media (min-width: 980px) {
+  .po__grille--deux { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 780px; margin-inline: auto; }
+}
+
+/* --- les resultats, en captures ------------------------------------------
+   Les trois pages de secteur montrent leurs resultats dans les outils
+   memes : une fenetre par outil, son nom dans la barre, la capture dedans.
+   Tant que la capture n'est pas posee, la fenetre porte un tableau de bord
+   dessine et une etiquette « capture a venir » : la place est prete, rien
+   n'est invente. Fond blanc, entre la nuit des offres et celle de la frise.
+   POUR POSER UNE CAPTURE : remplacer le bloc .sr__faux de la fenetre par
+   <img class="sr__capture" src="assets/img/..." width="1600" height="1000"
+        loading="lazy" decoding="async" alt="Ce que montre la capture">
+   ========================================================================= */
+.sr {
+  position: relative; overflow: hidden;
+  background: #fff;
+  padding-block: clamp(62px, 7.6vw, 104px);
+}
+.sr__ronds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.sr__ronds i { position: absolute; display: block; border-radius: 50%; }
+.sr__ronds i:nth-child(1) { width: 176px; height: 176px; left: 34px;  top: 64px;    background: var(--c-accent-light); opacity: .24; }
+.sr__ronds i:nth-child(2) { width: 230px; height: 230px; right: 30px; bottom: 52px; background: var(--c-accent); opacity: .07; }
+.sr__ronds i:nth-child(3) { width: 40px;  height: 40px;  right: 300px; top: 84px;   background: var(--c-accent-bright); opacity: .3; }
+.sr__dedans {
+  position: relative; z-index: 1;
+  max-width: 1120px; margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+}
+.sr__tete { max-width: 700px; margin: 0 auto clamp(34px, 4vw, 52px); text-align: center; }
+.sr__sur-titre {
+  display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 14px;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-accent);
+}
+.sr__sur-titre::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.sr__titre {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 3.4vw, 40px); line-height: 1.12;
+  letter-spacing: -.035em; font-weight: 700;
+}
+.sr__chapeau { margin: 0; color: var(--c-text-muted); }
+
+.sr__grille { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+@media (min-width: 900px) {
+  .sr__grille { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  /* La premiere fenetre prend toute la largeur : c'est l'outil qui dit le
+     plus, elle se lit en premier. */
+  .sr__grille > .sr__fenetre:first-child { grid-column: 1 / -1; }
+}
+.sr__fenetre { display: grid; gap: 12px; align-content: start; }
+.sr__cadre {
+  overflow: hidden; border-radius: 18px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .09), 0 26px 54px -36px rgba(7, 18, 48, .55);
+}
+.sr__barre {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  background: #F4F5F8; border-bottom: 1px solid rgba(18, 21, 26, .07);
+}
+.sr__barre > i { width: 9px; height: 9px; border-radius: 50%; background: #D5D9E0; }
+.sr__outil { display: inline-flex; align-items: center; gap: 8px; margin-left: 6px; font-size: 12.5px; font-weight: 700; color: var(--c-text); }
+.sr__outil .icon { width: 17px; height: 17px; }
+.sr__ecran { position: relative; aspect-ratio: 16 / 9; background: #FBFBFD; }
+.sr__fenetre:first-child .sr__ecran { aspect-ratio: 21 / 8; }
+.sr__capture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* Le tableau de bord dessine, en attendant la vraie capture. */
+.sr__faux { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr; gap: 14px; padding: clamp(14px, 2vw, 22px); }
+.sr__chiffres { display: flex; gap: 10px; }
+.sr__chiffres i { display: block; flex: 1; height: 38px; border-radius: 10px; background: #EEF1F6; }
+.sr__chiffres i:first-child { background: rgba(37, 88, 214, .1); }
+.sr__courbe { width: 100%; height: 100%; }
+.sr__courbe path:first-child { fill: rgba(61, 139, 255, .14); }
+.sr__courbe path:last-child { fill: none; stroke: var(--c-accent-bright); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sr__barres { display: flex; align-items: flex-end; gap: 8px; height: 100%; }
+.sr__barres i { flex: 1; height: var(--h); border-radius: 6px 6px 2px 2px; background: #DCE3EF; }
+.sr__barres i.est-vif { background: linear-gradient(180deg, var(--c-accent-bright), var(--c-accent)); }
+.sr__venir {
+  position: absolute; right: 14px; top: 14px;
+  padding: 5px 10px; border-radius: 999px;
+  background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .1);
+  font-size: 11px; font-weight: 700; color: var(--c-text-faint);
+}
+.sr__legende { margin: 0; padding-inline: 4px; display: grid; gap: 4px; }
+.sr__legende b { font-size: 15px; letter-spacing: -.01em; }
+.sr__legende span { font-size: 13.5px; line-height: 1.55; color: var(--c-text-muted); }
+.sr__action { margin: clamp(28px, 3.4vw, 40px) 0 0; display: flex; justify-content: center; }
+/* Une fenetre qui montre le site d'un client est un lien, rien de plus : la
+   capture de son bandeau. Un clic ouvre son vrai site dans un autre
+   onglet. On ne reproduit jamais le site d'un client chez nous : ca alourdit
+   le notre et chaque mise a jour du sien devrait etre refaite ici.
+   Nathan, 5 novembre 2026. */
+.sr__cadre, .sr__barre, .sr__ecran, .sr__faux { display: block; }
+.sr__barre { display: flex; }
+.sr__faux { display: grid; }
+.sr__lien { color: inherit; text-decoration: none; transition: transform .35s var(--ease-out-soft), box-shadow .35s var(--ease-out-soft); }
+.sr__lien:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px rgba(37, 88, 214, .3), 0 34px 64px -36px rgba(7, 18, 48, .6); }
+.sr__lien:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 4px; }
+.sr__ouvrir {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: auto;
+  font-size: 12px; font-weight: 700; color: var(--c-accent);
+}
+.sr__ouvrir .icon { width: 13px; height: 13px; }
+
+
+/* ============================================================================
+   L'ARC SUR LES OFFRES DES PAGES DE SECTEUR
+   La section des offres s'ouvre sur le meme arc en degrade que « Ce qu'on
+   fait » sur l'accueil : la section video est creme, l'arc fait la marche
+   vers la nuit. Le contenu remonte contre l'arc, il ne flotte plus sous un
+   grand vide. Nathan, 5 novembre 2026.
+   ========================================================================== */
+.po--arc {
+  --arc-ep: clamp(16px, 2.4vw, 38px);
+  --arc-dia: 300vw;
+  --arc-fleche: 8.5786vw;
+  --arc-zone: calc(var(--arc-ep) * 2 + var(--arc-fleche));
+  overflow-y: visible;
+  margin-top: var(--arc-zone);
+  padding-top: clamp(18px, 2.6vw, 38px);
+}
+/* Les ronds restent dans la section : rien ne monte dans l'arc. */
+/* Meme rapprochement sur l'accueil, sous l'arc de « Ce qu'on fait ». */
+.a5--nuit { padding-top: clamp(22px, 3vw, 44px); }
+
+/* ============================================================================
+   LE SURVOL DES CASES DES VOLETS DE MENU
+   Deux defauts corriges le 5 novembre 2026, vus par Nathan « une fois sur
+   deux » :
+   1. sur la page ou l'on se trouve, la regle qui retire le fond de la case
+      courante gagnait sur le survol : cette case-la ne grisait jamais. Ce
+      n'etait jamais la meme selon la page ouverte. Le survol est donc nomme
+      apres, avec la page courante comprise.
+   2. entre le bouton et le volet il y a un vide : la souris qui le traversait
+      lentement sortait du menu et le volet se refermait. Un pont invisible
+      couvre ce vide.
+   Le gris est aussi un cran plus franc : l'ancien se voyait a peine.
+   ========================================================================== */
+.nav-produit__liste a:hover,
+.nav-produit__liste a:focus-visible,
+.nav-produit__liste a[aria-current="page"]:hover,
+.nav-produit__liste a[aria-current="page"]:focus-visible,
+.nav-produit__liste a.est-survol { background: rgba(18, 21, 26, .07); }
+.nav-produit__liste li.est-avant a:hover,
+.nav-produit__liste li.est-avant a:focus-visible,
+.nav-produit__liste li.est-avant a[aria-current="page"]:hover,
+.nav-produit__liste li.est-avant a.est-survol { background: rgba(37, 88, 214, .14); }
+.nav-produit__panneau::before {
+  content: ""; position: absolute; left: 0; right: 0;
+  top: -26px; height: 26px;
+}
+
+
+/* --- les resultats a trois colonnes, puis les sites ----------------------
+   Page Autre : deux rangees de trois tableaux de bord, puis le carrousel des
+   sites livres, dans la meme section. */
+.sr--creme { background: #FAF9F5; }
+@media (min-width: 900px) {
+  .sr__grille--trois { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sr__grille--trois > .sr__fenetre:first-child { grid-column: auto; }
+  .sr__grille--trois .sr__fenetre:first-child .sr__ecran { aspect-ratio: 16 / 9; }
+}
+.sr__entre {
+  margin: clamp(40px, 5vw, 64px) 0 clamp(20px, 2.6vw, 30px);
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-accent);
+}
+.sr__entre::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.sr > .pr__carrousel { position: relative; z-index: 1; }
+
+/* --- deux bandes d'avis en sens contraire --------------------------------
+   Pages Hebergements et Autre : la premiere bande part vers la gauche, la
+   seconde vers la droite. Nathan, 5 novembre 2026. */
+.bd__cadre--droite .bd__piste { animation-direction: reverse; }
+.avb { background: #fff; padding-block: clamp(58px, 7.4vw, 96px); }
+.avb__tete { max-width: 700px; margin: 0 auto clamp(26px, 3.4vw, 40px); padding-inline: 20px; text-align: center; }
+.avb__bandes { display: grid; gap: 4px; }
+/* Sous l'arc, les ronds des offres restent dans la section. */
+.po--arc .po__ronds i:nth-child(1) { width: 210px; height: 210px; left: 26px;  top: 70px;    opacity: .22; }
+.po--arc .po__ronds i:nth-child(2) { left: 6%; bottom: 9%; }
+.po--arc .po__ronds i:nth-child(3) { width: 250px; height: 250px; right: 26px; bottom: 40px; opacity: .14; }
+
+
+/* ============================================================================
+   REGLE DES RONDS : UN ROND N'EST JAMAIS COUPE PAR UNE AUTRE SECTION
+   Posee par Nathan le 5 novembre 2026, etendue a tout le site le meme jour.
+   Un rond peut deborder sur la section voisine, au-dessus comme en dessous,
+   mais il est alors entier et passe devant le fond de cette section, jamais
+   devant son contenu. Le bord de l'ecran, lui, peut couper un rond : c'est
+   voulu (les performances de l'accueil).
+   Trois etages, les memes sur toutes les pages :
+   - les fonds des sections, sans niveau ;
+   - les calques de ronds, niveau 1 ;
+   - les contenus des sections, niveau 2.
+   Les sections ne coupent plus en hauteur. Le clip horizontal reste, pour
+   que la page ne s'elargisse jamais. Le bandeau de l'accueil et les vieux
+   bandeaux a taches gardent leur decoupe : leurs ronds sont dedans.
+   ========================================================================== */
+main > section:not(.a1):not(.svc-hero):not(.hero) { overflow: visible; overflow-x: clip; }
+main > section > [class*="__ronds"] { z-index: 1; overflow: visible; }
+main > section > :not([class*="__ronds"]):not([class*="__arc"]):not([class*="blobs"]) { z-index: 2; }
+main > section > .a7__cadre,
+main > section > .a11__dedans,
+main > section > .bd__cadre,
+main > section > .container { position: relative; }
+
+/* --- les ronds du dernier appel des pages de secteur --------------------
+   A la place des traits arrondis : des ronds, comme sur tout le site. */
+.ab-fp__ronds { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.ab-fp__ronds i { position: absolute; display: block; border-radius: 50%; }
+.ab-fp__ronds i:nth-child(1) { width: 230px; height: 230px; left: 30px;   top: 50px;    background: var(--c-accent); opacity: .32; }
+.ab-fp__ronds i:nth-child(2) { width: 54px;  height: 54px;  left: 280px;  bottom: 56px; background: var(--c-accent-bright); opacity: .4; }
+.ab-fp__ronds i:nth-child(3) { width: 290px; height: 290px; right: 34px;  bottom: 40px; border: 1px solid rgba(255, 255, 255, .14); }
+.ab-fp__ronds i:nth-child(4) { width: 30px;  height: 30px;  right: 360px; top: 64px;    background: var(--c-accent-light); opacity: .45; }
+
+/* --- les ecrans dessines de l'application de gestion --------------------
+   Ils ne ressemblent plus a des tableaux de bord : un panneau de dates, une
+   liste de reservations, un calendrier. En attendant les vraies captures. */
+.sr__panneau { display: grid; gap: 10px; align-content: center; padding: 6px clamp(10px, 4vw, 40px); }
+.sr__panneau span { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sr__panneau i { display: block; height: 40px; border-radius: 10px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .12); }
+.sr__panneau b { display: block; height: 42px; border-radius: 999px; background: var(--c-accent); }
+.sr__liste { display: grid; gap: 9px; align-content: start; }
+.sr__liste span { display: grid; grid-template-columns: 30px 1fr 70px; gap: 10px; align-items: center; padding: 9px 11px; border-radius: 10px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07); }
+.sr__liste span i:first-child { width: 30px; height: 30px; border-radius: 50%; background: rgba(37, 88, 214, .14); }
+.sr__liste span i:nth-child(2) { height: 8px; border-radius: 4px; background: #D7DCE4; }
+.sr__liste span i:last-child { height: 20px; border-radius: 999px; background: rgba(46, 158, 99, .18); }
+.sr__calendrier { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-content: center; }
+.sr__calendrier i { display: block; aspect-ratio: 1; border-radius: 7px; background: #EEF1F6; }
+.sr__calendrier i.est-pris { background: rgba(37, 88, 214, .22); }
+.sr__calendrier i.est-vif { background: var(--c-accent); }
+
+/* --- la case vide du carrousel ------------------------------------------
+   Page Artisans : un seul site d'artisan en ligne pour l'instant. La case
+   suivante attend le prochain, au format exact d'une capture. Ce n'est pas
+   un lien : elle n'ouvre rien tant qu'il n'y a pas de site. */
+.work-open--vide { cursor: default; }
+.work-vide {
+  display: grid; place-items: center; align-content: center; gap: 12px;
+  aspect-ratio: 1600 / 838; width: 100%;
+  background: #F4F5F8;
+  background-image: radial-gradient(rgba(37, 88, 214, .14) 1.4px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+.work-vide i { width: 58px; height: 58px; border-radius: 50%; background: rgba(37, 88, 214, .14); box-shadow: inset 0 0 0 2px rgba(37, 88, 214, .35); }
+.work-vide b { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-accent); }
+
+/* ============================================================================
+   LES PAGES D'EXPERTISE (SEO, GEO, graphisme, developpement, IA)
+   Des pages d'education, pas de vente : aucun appel a l'action, aucun avis.
+   Le but, donne par Nathan le 5 novembre 2026 : qu'on voie au premier coup
+   d'oeil qu'on sait de quoi on parle, meme sans tout lire. D'ou une page
+   longue, construite comme un guide : un bandeau, un sommaire qui suit la
+   lecture, des chapitres numerotes avec leurs schemas, les idees recues,
+   un glossaire. Le meme gabarit pour les cinq pages.
+   ========================================================================== */
+
+/* --- la barre de lecture, sous le bandeau du menu ------------------------ */
+.ex-lecture {
+  position: fixed; left: 0; top: 0; z-index: 130;
+  height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent-bright));
+  transform-origin: left center; transform: scaleX(var(--lu, 0));
+  pointer-events: none;
+}
+
+/* --- le bandeau ----------------------------------------------------------- */
+.ex1 {
+  position: relative; overflow: visible; overflow-x: clip;
+  background: #FAF9F5;
+  padding-top: calc(var(--header-height) + clamp(40px, 5vw, 70px));
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+.ex1__ronds { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.ex1__ronds i { position: absolute; display: block; border-radius: 50%; }
+.ex1__ronds i:nth-child(1) { width: 150px; height: 150px; left: 30px;   top: calc(var(--header-height) + 40px); background: var(--c-accent); opacity: .9; }
+.ex1__ronds i:nth-child(2) { width: 46px;  height: 46px;  left: 196px;  top: calc(var(--header-height) + 150px); background: var(--c-accent-light); }
+.ex1__ronds i:nth-child(3) { width: 240px; height: 240px; right: 30px;  bottom: -70px; background: var(--c-accent-bright); opacity: .22; }
+.ex1__ronds i:nth-child(4) { width: 26px;  height: 26px;  right: 300px; top: calc(var(--header-height) + 60px); background: var(--c-accent); opacity: .5; }
+.ex1__dedans {
+  position: relative; z-index: 2;
+  max-width: 900px; margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+  text-align: center;
+}
+.ex1__sur-titre {
+  display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 18px;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-accent);
+}
+.ex1__sur-titre::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.ex1__titre {
+  margin: 0 0 20px;
+  font-size: clamp(32px, 5vw, 60px); line-height: 1.06;
+  letter-spacing: -.04em; font-weight: 700; text-wrap: balance;
+}
+.ex1__chapeau { margin: 0 auto 28px; max-width: 62ch; font-size: clamp(16px, 1.8vw, 19px); line-height: 1.6; color: var(--c-text-muted); }
+.ex1__meta {
+  margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px;
+  font-size: 13px; font-weight: 600; color: var(--c-text-faint);
+}
+.ex1__meta span { display: inline-flex; align-items: center; gap: 7px; }
+.ex1__meta .icon { width: 15px; height: 15px; color: var(--c-accent); }
+
+/* Les chiffres de la page, ce qu'on va trouver dedans. */
+.ex1__plan {
+  list-style: none; margin: clamp(30px, 4vw, 44px) auto 0; padding: 0;
+  display: grid; gap: 12px; max-width: 760px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.ex1__plan li {
+  display: grid; gap: 4px; padding: 16px 18px; border-radius: 18px;
+  background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07), 0 18px 38px -30px rgba(7, 18, 48, .5);
+  text-align: left;
+}
+.ex1__plan b { font-size: 26px; letter-spacing: -.03em; color: var(--c-accent); }
+.ex1__plan span { font-size: 13px; color: var(--c-text-muted); }
+
+/* --- le corps : sommaire a gauche, guide a droite ------------------------ */
+.ex-corps {
+  position: relative; overflow: visible; overflow-x: clip;
+  background: #fff;
+  padding-block: clamp(56px, 7vw, 96px);
+}
+.ex-corps__ronds { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.ex-corps__ronds i { position: absolute; display: block; border-radius: 50%; }
+.ex-corps__ronds i:nth-child(1) { width: 200px; height: 200px; right: 26px; top: 22%;  background: var(--c-accent-light); opacity: .18; }
+.ex-corps__ronds i:nth-child(2) { width: 54px;  height: 54px;  left: 24px;  top: 48%;  background: var(--c-accent-bright); opacity: .2; }
+.ex-corps__ronds i:nth-child(3) { width: 180px; height: 180px; left: 30px;  top: 76%;  background: var(--c-accent); opacity: .07; }
+.ex-corps__dedans {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+  display: grid; gap: clamp(28px, 4vw, 64px);
+}
+@media (min-width: 1000px) { .ex-corps__dedans { grid-template-columns: 250px minmax(0, 1fr); align-items: start; } }
+
+.ex-sommaire { display: none; }
+@media (min-width: 1000px) {
+  .ex-sommaire {
+    display: block; position: sticky; top: calc(var(--header-height) + 24px);
+    padding: 18px; border-radius: 20px;
+    background: #FAF9F5; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07);
+  }
+}
+.ex-sommaire__titre { margin: 0 0 12px; font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text-faint); }
+.ex-sommaire ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: som; }
+.ex-sommaire a {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; align-items: baseline;
+  padding: 7px 9px; border-radius: 10px;
+  font-size: 13.5px; line-height: 1.4; font-weight: 600; color: var(--c-text-muted); text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.ex-sommaire a::before { counter-increment: som; content: counter(som, decimal-leading-zero); font-size: 11.5px; color: var(--c-text-faint); }
+.ex-sommaire a:hover { background: rgba(18, 21, 26, .05); color: var(--c-text); }
+.ex-sommaire a.est-actif { background: rgba(37, 88, 214, .1); color: var(--c-accent); }
+.ex-sommaire a.est-actif::before { color: var(--c-accent); }
+
+/* --- le guide ------------------------------------------------------------- */
+.ex-guide { min-width: 0; max-width: 760px; }
+.ex-chap { padding-top: 8px; margin-bottom: clamp(56px, 7vw, 88px); scroll-margin-top: calc(var(--header-height) + 24px); }
+.ex-chap:last-child { margin-bottom: 0; }
+.ex-chap__num {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 12px;
+  font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--c-accent);
+}
+.ex-chap__num b {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--c-accent); color: #fff; font-size: 13px; letter-spacing: 0;
+}
+.ex-chap h2 {
+  margin: 0 0 18px;
+  font-size: clamp(25px, 3vw, 36px); line-height: 1.14; letter-spacing: -.035em; text-wrap: balance;
+}
+.ex-chap h3 { margin: 30px 0 10px; font-size: clamp(18px, 2vw, 21px); letter-spacing: -.02em; }
+/* Seuls les paragraphes et les listes du texte courant prennent cette taille :
+   les schemas, les jauges, les encadres gardent la leur. Une regle plus large
+   ecrasait la taille des seuils de vitesse. */
+.ex-chap > p, .ex-chap > ul.ex-liste > li { font-size: 16.5px; line-height: 1.75; color: #2E333B; }
+.ex-chap > p { margin: 0 0 16px; }
+.ex-chap ul.ex-liste { margin: 0 0 18px; padding: 0; list-style: none; display: grid; gap: 10px; }
+.ex-chap ul.ex-liste li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; }
+.ex-chap ul.ex-liste li::before { content: ""; width: 8px; height: 8px; margin-top: 11px; border-radius: 50%; background: var(--c-accent); }
+.ex-chap strong { color: var(--c-text); }
+.ex-chap code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em;
+  padding: 2px 6px; border-radius: 6px; background: #F1F3F7; color: #1C2A4D;
+}
+
+/* L'encadre « a retenir » en fin de chapitre. */
+.ex-retenir {
+  margin: 24px 0 0; padding: 18px 20px 18px 22px; border-radius: 18px;
+  background: rgba(37, 88, 214, .06); box-shadow: inset 3px 0 0 var(--c-accent);
+}
+.ex-retenir b { display: block; margin-bottom: 6px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-accent); }
+.ex-retenir p { margin: 0; font-size: 15.5px; line-height: 1.65; color: var(--c-text); }
+
+/* --- les schemas ---------------------------------------------------------- */
+.ex-schema {
+  margin: 26px 0; padding: clamp(18px, 2.6vw, 28px); border-radius: 22px;
+  background: #FAF9F5; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07);
+}
+.ex-schema__legende { margin: 14px 0 0; font-size: 13px; line-height: 1.55; color: var(--c-text-faint); text-align: center; }
+
+/* Explorer, indexer, classer : trois etapes reliees par un fil anime. */
+.ex-flux { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+@media (min-width: 700px) { .ex-flux { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
+.ex-flux li {
+  position: relative; display: grid; gap: 8px; align-content: start;
+  padding: 18px; border-radius: 18px; background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07), 0 18px 34px -30px rgba(7, 18, 48, .5);
+}
+.ex-flux__icone { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(37, 88, 214, .12); color: var(--c-accent); }
+.ex-flux__icone .icon { width: 20px; height: 20px; }
+.ex-flux b { font-size: 15.5px; }
+.ex-flux span { font-size: 13.5px; line-height: 1.55; color: var(--c-text-muted); }
+@media (min-width: 700px) {
+  .ex-flux li:not(:last-child)::after {
+    content: ""; position: absolute; top: 38px; right: -18px; width: 18px; height: 2px;
+    background: var(--c-accent); opacity: .35;
+  }
+}
+.js .ex-flux[data-cascade] li { opacity: 0; transform: translateY(12px); }
+.js .ex-flux.est-entree li { animation: ex-monte .5s var(--ease-out-soft) forwards; }
+.ex-flux.est-entree li:nth-child(2) { animation-delay: .18s; }
+.ex-flux.est-entree li:nth-child(3) { animation-delay: .36s; }
+@keyframes ex-monte { to { opacity: 1; transform: none; } }
+
+/* L'anatomie d'une page de resultats. */
+.ex-serp { display: grid; gap: 10px; max-width: 560px; margin-inline: auto; }
+.ex-serp__barre {
+  display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 999px;
+  background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .1);
+  font-size: 14px; font-weight: 600; color: var(--c-text-muted);
+}
+.ex-serp__barre .icon { width: 16px; height: 16px; color: var(--c-text-faint); }
+.ex-serp__bloc {
+  position: relative; display: grid; gap: 7px; padding: 14px 16px 14px 52px; border-radius: 14px;
+  background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07);
+}
+.ex-serp__bloc i { display: block; height: 8px; border-radius: 4px; background: #DDE2EA; }
+.ex-serp__bloc i:first-of-type { width: 46%; height: 10px; background: #C9D4EA; }
+.ex-serp__bloc i:nth-of-type(2) { width: 88%; }
+.ex-serp__bloc i:nth-of-type(3) { width: 72%; }
+.ex-serp__bloc em {
+  position: absolute; left: 14px; top: 14px;
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--c-text); color: #fff; font-size: 12px; font-weight: 700; font-style: normal;
+}
+.ex-serp__bloc small { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-text-faint); }
+.ex-serp__bloc--ia { background: linear-gradient(135deg, #F3F6FF, #fff); }
+.ex-serp__bloc--carte { background: #F4F8F2; }
+.ex-serp__bloc--vous { box-shadow: inset 0 0 0 2px var(--c-accent); }
+.ex-serp__bloc--vous em { background: var(--c-accent); }
+.ex-serp__bloc--vous i:first-of-type { background: var(--c-accent); opacity: .7; }
+.ex-reperes { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+.ex-reperes li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: baseline; font-size: 14.5px; line-height: 1.55; }
+.ex-reperes em {
+  display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--c-text); color: #fff; font-size: 11px; font-weight: 700; font-style: normal;
+}
+
+/* Les trois piliers. */
+.ex-piliers { display: grid; gap: 12px; }
+@media (min-width: 700px) { .ex-piliers { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ex-pilier { padding: 18px; border-radius: 18px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07); }
+.ex-pilier b { display: block; margin: 10px 0 6px; font-size: 16px; }
+.ex-pilier span { display: block; font-size: 13.5px; line-height: 1.55; color: var(--c-text-muted); }
+.ex-pilier .ex-flux__icone { width: 38px; height: 38px; }
+
+/* Les tableaux du guide : une ligne par point, lisibles sur telephone. */
+.ex-tableau { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.ex-tableau th, .ex-tableau td { padding: 12px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(18, 21, 26, .08); line-height: 1.55; }
+.ex-tableau th { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-faint); }
+.ex-tableau td:first-child { font-weight: 700; color: var(--c-text); white-space: nowrap; }
+.ex-tableau-cadre { overflow-x: auto; }
+
+/* Les trois signaux de vitesse, avec leur seuil. */
+.ex-jauges { display: grid; gap: 12px; }
+@media (min-width: 700px) { .ex-jauges { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ex-jauge { padding: 16px; border-radius: 18px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07); }
+.ex-jauge__nom { margin: 0 0 4px; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--c-text-faint); }
+.ex-jauge__seuil { margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -.03em; }
+.ex-jauge__piste { display: flex; height: 8px; border-radius: 999px; overflow: hidden; }
+.ex-jauge__piste i:nth-child(1) { flex: 2; background: #2E9E63; }
+.ex-jauge__piste i:nth-child(2) { flex: 1; background: #F5B300; }
+.ex-jauge__piste i:nth-child(3) { flex: 1; background: #D9534F; }
+.ex-jauge__dit { margin: 10px 0 0; font-size: 13px; line-height: 1.5; color: var(--c-text-muted); }
+
+/* Le bon titre et le mauvais, cote a cote. */
+.ex-duel { display: grid; gap: 12px; }
+@media (min-width: 700px) { .ex-duel { grid-template-columns: 1fr 1fr; } }
+.ex-duel__cas { padding: 16px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07); }
+.ex-duel__cas small { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.ex-duel__cas--non small { color: var(--c-alert); }
+.ex-duel__cas--oui small { color: var(--c-ok); }
+.ex-duel__cas small .icon { width: 14px; height: 14px; }
+.ex-duel__titre { margin: 10px 0 4px; font-size: 17px; line-height: 1.35; color: #1A0DAB; font-weight: 500; }
+.ex-duel__url { margin: 0 0 6px; font-size: 12.5px; color: #1E6B3A; }
+.ex-duel__desc { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--c-text-muted); }
+
+/* Les idees recues : ce qu'on entend, ce qui est vrai. */
+.ex-mythes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ex-mythe { display: grid; gap: 0; border-radius: 18px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08); }
+@media (min-width: 700px) { .ex-mythe { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+.ex-mythe__dit { margin: 0; padding: 16px 18px; background: #FDF3F2; font-size: 15px; font-weight: 600; font-style: italic; color: #7A2B27; }
+.ex-mythe__vrai { margin: 0; padding: 16px 18px; background: #fff; font-size: 14.5px; line-height: 1.6; }
+
+/* Le glossaire. */
+.ex-glossaire { margin: 0; display: grid; gap: 0; border-top: 1px solid rgba(18, 21, 26, .1); }
+@media (min-width: 700px) { .ex-glossaire { grid-template-columns: 210px minmax(0, 1fr); } }
+.ex-glossaire dt, .ex-glossaire dd { margin: 0; padding: 13px 0; border-bottom: 1px solid rgba(18, 21, 26, .08); }
+.ex-glossaire dt { font-weight: 700; font-size: 15px; }
+.ex-glossaire dd { font-size: 15px; line-height: 1.6; color: #2E333B; }
+@media (max-width: 699px) { .ex-glossaire dt { border-bottom: 0; padding-bottom: 2px; } .ex-glossaire dd { padding-top: 0; } }
+
+/* Le resume final : cinq phrases, rien a acheter. */
+.ex-fin { margin: 0; padding: 0; list-style: none; counter-reset: fin; display: grid; gap: 12px; }
+.ex-fin li {
+  display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 14px; align-items: start;
+  padding: 16px 18px; border-radius: 18px; background: #FAF9F5;
+}
+.ex-fin li::before {
+  counter-increment: fin; content: counter(fin);
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--c-accent); color: #fff; font-weight: 700; font-size: 14px;
+}
+.ex-fin p { margin: 4px 0 0; font-size: 15.5px; line-height: 1.6; }
+
+/* --- pages d'expertise : trois briques ajoutees pour le guide GEO -------- */
+/* La frise a quatre etapes. */
+@media (min-width: 700px) { .ex-flux--quatre { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ex-flux--quatre.est-entree li:nth-child(4) { animation-delay: .54s; }
+
+/* La rangee des moteurs generatifs, logo et nom. */
+.ex-moteurs { list-style: none; margin: 22px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.ex-moteurs li {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 14px 9px 10px; border-radius: 999px;
+  background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .09);
+  font-size: 14px; font-weight: 600;
+}
+.ex-moteurs .icon { width: 20px; height: 20px; }
+
+/* Une reponse d'IA dessinee : la question, la reponse, ses sources. */
+.ex-chat { display: grid; gap: 14px; max-width: 580px; margin-inline: auto; }
+.ex-chat__question {
+  justify-self: end; max-width: 80%;
+  padding: 11px 16px; border-radius: 18px 18px 4px 18px;
+  background: var(--c-text); color: #fff; font-size: 14.5px; font-weight: 500;
+}
+.ex-chat__reponse { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.ex-chat__ia { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .1); }
+.ex-chat__ia .icon { width: 18px; height: 18px; }
+.ex-chat__texte { display: grid; gap: 8px; padding: 14px 16px; border-radius: 4px 18px 18px 18px; background: #fff; box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .08); }
+.ex-chat__texte i { display: block; height: 8px; border-radius: 4px; background: #DDE2EA; }
+.ex-chat__texte i:nth-child(2) { width: 92%; }
+.ex-chat__texte i:nth-child(3) { width: 78%; }
+.ex-chat__sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.ex-chat__sources b {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px; border-radius: 999px;
+  background: #F1F3F7; font-size: 11.5px; font-weight: 700; color: var(--c-text-muted);
+}
+.ex-chat__sources b.est-vous { background: var(--c-accent); color: #fff; }
+/* Les liens dans le texte d'un guide : bleus et soulignes, pour qu'on les
+   voie au milieu d'un paragraphe. */
+.ex-chap a:not([class]) { color: var(--c-accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.ex-chap a:not([class]):hover { text-decoration-thickness: 2px; }
+
+/* ============================================================================
+   LES GUIDES NE CASSENT JAMAIS LEUR TEXTE MOT PAR MOT
+   Deux defauts vus par Nathan le 6 novembre 2026 (« un mot, tu passes a la
+   ligne, un mot… ») :
+   1. une puce de liste en grille : un mot en gras et le texte qui suit
+      devenaient deux cases, le texte tombait dans la colonne de 20 px de la
+      puce. La puce est maintenant posee a cote du texte, sans grille.
+   2. les cases en colonnes suivaient la largeur de l'ecran, pas celle du
+      guide : avec le sommaire a cote, une frise de quatre cases tombait a
+      127 px par case. Elles suivent desormais la largeur du guide lui-meme,
+      et ne passent en colonnes que si chaque case garde au moins 200 px.
+   ========================================================================== */
+.ex-chap ul.ex-liste li { display: block; position: relative; padding-left: 22px; }
+.ex-chap ul.ex-liste li::before { position: absolute; left: 2px; top: 0; }
+
+.ex-guide { container-type: inline-size; container-name: guide; }
+.ex-flux, .ex-flux--quatre, .ex-piliers, .ex-jauges, .ex-duel { grid-template-columns: minmax(0, 1fr); }
+.ex-mythe, .ex-glossaire { grid-template-columns: minmax(0, 1fr); }
+.ex-flux li:not(:last-child)::after { content: none; }
+@container guide (min-width: 460px) {
+  .ex-flux--quatre { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-duel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-glossaire { grid-template-columns: 180px minmax(0, 1fr); }
+}
+@container guide (min-width: 640px) {
+  .ex-flux, .ex-piliers, .ex-jauges { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ex-flux--quatre { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-mythe { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .ex-glossaire { grid-template-columns: 210px minmax(0, 1fr); }
+  .ex-flux:not(.ex-flux--quatre) li:not(:last-child)::after {
+    content: ""; position: absolute; top: 38px; right: -18px; width: 18px; height: 2px;
+    background: var(--c-accent); opacity: .35;
+  }
+}
+@container guide (min-width: 900px) {
+  .ex-flux--quatre { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* Les tableaux : la premiere colonne peut passer a la ligne, sinon elle
+   ecrase les autres. Chaque colonne garde une largeur lisible. */
+.ex-tableau td:first-child { white-space: normal; min-width: 110px; }
+.ex-tableau td, .ex-tableau th { min-width: 110px; }
+/* Sur un guide etroit (telephone), un tableau a trois colonnes ne tient pas :
+   chaque ligne devient une fiche empilee, le premier champ en titre, le
+   second en petit, le troisieme en texte. Plus de colonne de 110 px. */
+@container guide (max-width: 559px) {
+  .ex-tableau thead { display: none; }
+  .ex-tableau, .ex-tableau tbody { display: block; }
+  .ex-tableau tr { display: block; padding: 12px 0; border-bottom: 1px solid rgba(18, 21, 26, .08); }
+  .ex-tableau td { display: block; min-width: 0; padding: 0; border: 0; }
+  .ex-tableau td:first-child { margin-bottom: 4px; font-size: 15px; }
+  .ex-tableau tr td:nth-child(2):not(:last-child) { margin-bottom: 4px; font-size: 13px; font-weight: 600; color: var(--c-text-faint); }
+}
+@container guide (max-width: 400px) {
+  .ex-fin li { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 14px; }
+}
+/* Sur telephone, le bandeau d'un guide est etroit : le grand rond bleu
+   passait sous le sur-titre et le titre. Les ronds se font petits et
+   rejoignent les coins, le texte reste net. */
+@media (max-width: 760px) {
+  .ex1__ronds i:nth-child(1) { width: 64px; height: 64px; left: 10px; top: calc(var(--header-height) + 6px); }
+  .ex1__ronds i:nth-child(2) { width: 22px; height: 22px; left: 84px; top: calc(var(--header-height) + 4px); }
+  .ex1__ronds i:nth-child(4) { display: none; }
+  .ex1__ronds i:nth-child(3) { width: 170px; height: 170px; right: -40px; }
+  .ex1 { padding-top: calc(var(--header-height) + 64px); }
+}
+
+/* --- le bandeau de la page Resultats -------------------------------------
+   Le bandeau centre des pages de secteur, avec deux reglages : le titre
+   tient sur une ligne et le chapeau sur deux. Nathan, 6 novembre 2026. */
+.a1--resultats .a1__titre { max-width: none; }
+@media (min-width: 900px) { .a1--resultats .a1__titre { text-wrap: nowrap; white-space: nowrap; } }
+.a1--resultats .a1__sous { max-width: 64ch; }
+
+/* --- la fenetre de rendez-vous : la note Google a la place du sur-titre --- */
+.modale__preuve { display: flex; justify-content: center; margin: 0 0 14px; }
+.modale__preuve .a1__note { background: none; box-shadow: none; padding: 0; }
+.rdv__champ label small { font-weight: 500; color: var(--c-text-faint); }
+
+/* Chaque colonne de « Ce qu'on fait » porte son bouton, au pied de la
+   colonne, pour que les deux tombent a la meme hauteur. Nathan, 6 novembre
+   2026. */
+.a5__colonne { display: flex; flex-direction: column; }
+.a5__voir { margin: auto 0 0; padding-top: 22px; }
+/* La methode de l'accueil commence droite : plus d'arc, donc plus de marge
+   reservee au-dessus. Nathan, 6 novembre 2026. */
+.a6--droit { margin-top: 0; }
+/* Pages d'expertise : la note Google remplace le sur-titre, centree. */
+.ex1__preuve { display: flex; justify-content: center; margin: 0 0 18px; }
+.ex1__titre { margin-bottom: 26px; }
+
+/* --- le bandeau du blog : la note au-dessus, le titre sur une ligne ------
+   Nathan, 6 novembre 2026. */
+.blog__preuve { display: flex; justify-content: center; margin: 0 0 18px; }
+.p1__dedans.blog__dedans .p1__mots { max-width: 1040px; }
+.p1__dedans.blog__dedans .p1__sous { margin-inline: auto; }
+@media (min-width: 900px) { .blog__titre-une { white-space: nowrap; text-wrap: nowrap; } }
+
+/* --- « Ce qu'on fait » : le bouton de chaque colonne, centre ------------- */
+.a5__voir { display: flex; justify-content: center; }
+
+/* --- pages d'expertise : les quatre chiffres dans une seule case ---------
+   Une case, quatre valeurs sur une ligne, separees par un filet gris. Le
+   chiffre est centre et deux fois plus gros, le mot dessous tient en un
+   seul mot. Nathan, 6 novembre 2026. */
+.ex1__plan {
+  display: flex; gap: 0; max-width: 720px;
+  padding: 10px 0; border-radius: 24px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(18, 21, 26, .07), 0 22px 44px -32px rgba(7, 18, 48, .5);
+}
+.ex1__plan li {
+  flex: 1 1 0; min-width: 0;
+  display: grid; gap: 4px; justify-items: center;
+  padding: 12px 8px; border-radius: 0;
+  background: none; box-shadow: none;
+  text-align: center;
+}
+.ex1__plan li + li { border-left: 1px solid rgba(18, 21, 26, .12); }
+.ex1__plan b { font-size: clamp(36px, 5vw, 52px); line-height: 1; letter-spacing: -.04em; }
+.ex1__plan span { font-size: 13.5px; font-weight: 600; color: var(--c-text-muted); }
+
+/* --- « Ce qu'on fait », colonne du site : un vrai avant-apres -------------
+   Les deux maquettes dessinees laissent la place aux captures de Legaut
+   Construction. Les images remplissent la case, cadrees sur le haut de la
+   page, la ou se joue la premiere impression. Nathan, 6 novembre 2026. */
+.a5__compare--reel { aspect-ratio: 1600 / 838; }
+.a5__compare--reel .a5__maquette { padding: 0; gap: 0; }
+.a5__compare--reel .a5__maquette img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.a5__source { margin: 10px 0 0; font-size: 13px; color: var(--c-text-faint); }
+.a5__source a { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+/* Deux boutons au pied de chaque colonne : le test, puis les offres. Ils
+   passent l'un sous l'autre si la colonne est trop etroite. */
+.a5__voir { flex-wrap: wrap; gap: 10px; }
+
+/* Les boutons ajoutes le 6 novembre 2026 sur l'accueil : sous la methode,
+   centre ; dans « Qui travaille sur votre dossier », sous le texte. */
+.a6__action { margin: clamp(30px, 4vw, 48px) 0 0; display: flex; justify-content: center; }
+.a9__action { margin: 22px 0 0; }
+
+/* Les visages des bulles d'avis : photos de personnages a la place des
+   initiales, demande de Nathan du 8 novembre 2026. */
+.a1__visages i { overflow: hidden; }
+.a1__visages i img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Les vraies captures des sites livres, posees le 8 novembre 2026 dans les
+   vues de la methode qui dessinaient un site, dans le bandeau du pack et
+   dans le comparateur de la page Site internet. Le cadre ne change pas :
+   seule la page dessinee laisse la place a la capture. */
+.e-page--capture { padding: 0; gap: 0; overflow: hidden; min-height: 0; }
+.e-page--capture img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.e-tel--capture { padding: 6px; gap: 4px; overflow: hidden; align-self: center; }
+.e-tel--capture img { display: block; width: 100%; height: auto; aspect-ratio: 585 / 996; border-radius: 10px; }
+.a6__vue--2 { padding: 0; overflow: hidden; }
+.a6__capture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* Bandeaux des pages pack, site, identite et automatisation : le visuel de
+   droite est retire et tout est centre, comme le blog. Nathan, 8 novembre
+   2026. */
+.p1__dedans--centre { grid-template-columns: minmax(0, 1fr) !important; }
+.p1__dedans--centre .p1__mots { max-width: 760px; margin-inline: auto; text-align: center; }
+.p1__dedans--centre .p1__pastille,
+.p1__dedans--centre .a1__preuve { display: inline-flex; }
+.p1__dedans--centre .a1__preuve { justify-content: center; }
+.p1__dedans--centre .p1__titre { max-width: 22ch; margin-inline: auto; }
+.p1__dedans--centre .p1__sous { max-width: 58ch; margin-inline: auto; }
+.p1__dedans--centre .p1__action,
+.p1__dedans--centre .p1__gages { justify-content: center; }
+
+/* Les avis prennent la place du sur-titre dans les bandeaux centres des
+   pages pack, site, identite et automatisation, et la section suivante
+   remonte d'autant. Nathan, 9 novembre 2026. */
+.p1__dedans--centre .p1__preuve--haut { margin: 0 0 20px; }
+.p1:has(.p1__dedans--centre) { padding-block: clamp(92px, 10vw, 128px) clamp(44px, 5.5vw, 72px); }

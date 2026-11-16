@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico?v=408" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
+<title>Le référencement naturel (SEO) expliqué · OBT Agency</title>
+<meta name="description" content="Comment Google explore, indexe et classe les pages, les trois piliers du référencement, le local, la mesure et les idées reçues. Le guide complet, sans jargon.">
+<link rel="canonical" href="https://obt-agency.fr/seo.html">
+<!-- Partage : ce qui s'affiche quand l'adresse est collee dans un
+     message, un reseau social ou une messagerie. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OBT Agency">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Le référencement naturel (SEO) expliqué · OBT Agency">
+<meta property="og:description" content="Comment Google explore, indexe et classe les pages, les trois piliers du référencement, le local, la mesure et les idées reçues. Le guide complet, sans jargon.">
+<meta property="og:url" content="https://obt-agency.fr/seo.html">
+<meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="stylesheet" href="css/tokens.css?v=408">
+<link rel="stylesheet" href="css/style.css?v=408">
+<link rel="stylesheet" href="css/refonte.css?v=408">
+<!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
+     armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
+<!-- La page voisine est préchargée : le changement de page est alors instantané. -->
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
+<script>(function () {
+  /* La seule chose que ce script fait encore : signaler que JavaScript
+     repond. La feuille de style s'en sert pour les elements qui n'ont de
+     sens qu'avec lui. Le voile de chargement a ete retire le 1er novembre. */
+  document.documentElement.classList.add('js');
+})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+  {
+    "@type": "ProfessionalService",
+    "@id": "https://obt-agency.fr/#entreprise",
+    "name": "OBT Agency",
+    "legalName": "Tom BOYER",
+    "description": "Référencement sur Google et dans les IA, avec le site refait compris dans l'abonnement.",
+    "url": "https://obt-agency.fr/",
+    "logo": "https://obt-agency.fr/assets/img/logo-obt.png",
+    "image": "https://obt-agency.fr/assets/img/logo-obt.png",
+    "email": "contact@obt-agency.fr",
+    "telephone": "+33641336451",
+    "identifier": { "@type": "PropertyValue", "propertyID": "SIREN", "value": "109317453" },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "51 chemin des Vignes",
+      "postalCode": "39210",
+      "addressLocality": "Menétru-le-Vignoble",
+      "addressRegion": "Bourgogne-Franche-Comté",
+      "addressCountry": "FR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "19:00"
+    }],
+    "areaServed": { "@type": "Country", "name": "France" },
+    "knowsLanguage": "fr"
+  },
+  {
+    "@type": "OfferCatalog",
+    "@id": "https://obt-agency.fr/services.html#catalogue",
+    "name": "Prestations OBT Agency",
+    "provider": { "@id": "https://obt-agency.fr/#entreprise" },
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création et refonte de site web", "serviceType": "Création de site internet" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création et mise à niveau de fiche Google Business", "serviceType": "Référencement local" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Identité visuelle et charte graphique", "serviceType": "Design graphique" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation IA et développement sur mesure", "serviceType": "Développement logiciel" } }
+    ]
+  }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Le référencement naturel (SEO) expliqué",
+  "description": "Comment Google explore, indexe et classe les pages, les trois piliers du référencement, le local, la mesure et les idées reçues. Le guide complet, sans jargon.",
+  "inLanguage": "fr",
+  "datePublished": "2026-11-05",
+  "dateModified": "2026-11-05",
+  "author": { "@type": "Organization", "name": "OBT Agency", "url": "https://obt-agency.fr/" },
+  "publisher": { "@id": "https://obt-agency.fr/#entreprise" },
+  "mainEntityOfPage": "https://obt-agency.fr/seo.html"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+
+<!-- Sprite d'icônes SVG, inline pour fonctionner en file:// sans requête réseau -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-claude" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol><symbol id="i-chatgpt" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+  <symbol id="i-gemini" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></symbol>
+  <symbol id="i-perplexity" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-google" viewBox="0 0 48 48" stroke="none"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol>
+    <symbol id="i-bing" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M5 2.2 9.7 3.9v12.4l5.8-3.3-2.8-1.3-1.8-4.5 8.1 2.9v4.6L9.7 21.8 5 19.2z"/></symbol>
+  <symbol id="i-recherche" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-lien" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 1 0-5.7-5.7l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 1 0 5.7 5.7l1.5-1.5"/></symbol>
+  <symbol id="i-document" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-fenetre" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></symbol>
+  <symbol id="i-etincelle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></symbol>
+  <symbol id="i-cible" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></symbol>
+  <symbol id="i-maps" viewBox="0 0 24 24" stroke="none"><path fill="#34A853" d="M4.2 15.6 8.6 10l2.6 3.1-4.3 7.4a2.1 2.1 0 0 1-2.8.8 2.1 2.1 0 0 1-.8-2.8z"/><path fill="#FBBC04" d="m8.6 10-4.4 5.6-1.1-2A9 9 0 0 1 2 9.1c0-1.1.2-2.1.6-3z"/><path fill="#4285F4" d="M19.6 11.6a9 9 0 0 1-1 2.2l-4.1 6.7a2.1 2.1 0 0 1-3.6 0l-1.7-2.9 5-8.5z"/><path fill="#1A73E8" d="M11 .4a9 9 0 0 1 8.6 11.2l-5.4-2.5-.5-.9A3 3 0 0 0 9.3 11L2.6 6.1A9 9 0 0 1 11 .4z"/><circle fill="#EA4335" cx="11" cy="9.4" r="3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.8l-6.1 3.3 1.4-6.8-5.1-4.7 6.9-.8L12 2.5z"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-2.5L17 21l-2-7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 15a8 8 0 1116 0"/><path d="M12 15l3.5-4.5"/><circle cx="12" cy="15" r="1"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 1.5l1.5 9 9 1.5-9 1.5-1.5 9-1.5-9-9-1.5 9-1.5z"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5L3 17.6 6.4 21l6.3-6.3a4 4 0 005-5.4l-3 3-2-2 3-3z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38S.93 3.35.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13s1.34 1.08 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38s1.08-1.34 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13S20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zm0 3.67a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 2.16a4.01 4.01 0 110 8.02 4.01 4.01 0 010-8.02zm6.41-3.87a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.44 1.32 4.94L2.1 22l5.35-1.4a9.8 9.8 0 004.59 1.16h.01c5.43 0 9.84-4.4 9.84-9.84 0-2.63-1.02-5.1-2.88-6.96A9.77 9.77 0 0012.04 2zm0 17.9h-.01a8.2 8.2 0 01-4.16-1.14l-.3-.18-3.09.81.83-3.02-.2-.31a8.14 8.14 0 01-1.25-4.35c0-4.51 3.68-8.18 8.19-8.18 2.19 0 4.24.85 5.79 2.4a8.13 8.13 0 012.39 5.79c0 4.51-3.67 8.18-8.19 8.18zm4.49-6.13c-.25-.13-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12s-.63.8-.77.96c-.14.17-.28.19-.53.07-.25-.13-1.04-.39-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.57.19 1.1.16 1.51.1.46-.07 1.45-.59 1.65-1.17.2-.57.2-1.06.14-1.17-.06-.1-.22-.17-.47-.29z"/></symbol>
+
+  <symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 100 17h1.4a1.9 1.9 0 001.5-3 1.9 1.9 0 011.5-3h2.1a1.9 1.9 0 001.9-1.9A9.1 9.1 0 0012 3.5z"/><circle cx="8" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10.5" r="1"/></symbol>
+  <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+</svg>
+
+<!-- ============================================================
+     BANDE MENU, commune à toutes les pages (réf. barre de nav Articool)
+     ============================================================ -->
+<header class="site-header" id="site-header">
+  <div class="site-header__barre">
+  <a href="index.html" class="logo" aria-label="OBT Agency, accueil">
+    <img class="brand-logo brand-logo--sombre" src="assets/img/logo-obt.png" width="1200" height="300"
+         decoding="async" alt="">
+    <!-- La meme image, lettres en blanc, rond bleu garde. Elle prend la place
+         de l'autre quand le bandeau passe au-dessus d'une section nuit. -->
+    <img class="brand-logo brand-logo--clair" src="assets/img/logo-obt-clair.png" width="1200" height="300"
+         decoding="async" alt="" aria-hidden="true">
+  </a>
+
+  <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-produit" data-nav-produit>
+        <button type="button" class="nav-produit__bouton" aria-expanded="false" aria-controls="menu-produit">
+          Nos services <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau" id="menu-produit" hidden>
+          <ul class="nav-produit__liste">
+            <li class="est-avant"><a href="pack.html" data-produit="pack">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
+              <span class="nav-produit__texte"><strong>Référencement SEO &amp; GEO</strong></span>
+            </a></li>
+            <li><a href="site-internet.html" data-produit="site">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Création &amp; Refonte de Site Professionnel</strong></span>
+            </a></li>
+            <li><a href="identite-visuelle.html" data-produit="identite">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Identité Visuelle &amp; Charte Graphique</strong></span>
+            </a></li>
+            <li><a href="automatisation-ia.html" data-produit="ia">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Automatisation IA</strong></span>
+            </a></li>
+          </ul>
+
+          <!-- La colonne de droite : la maquette de la prestation survolee et
+               sa phrase. Dessinee en HTML, rien d'un site client dedans. Elle
+               est decorative, le menu marche sans elle. -->
+          <div class="nav-apercu" data-nav-apercu aria-hidden="true">
+            <span class="nav-apercu__vue nav-apercu__vue--pack" data-vue="pack">
+              <span class="nav-apercu__ecran"><span class="v-paire"><span class="v-moitie"><i class="v-barre"></i><i class="v-bloc"></i><i class="v-bouton"></i><em>Le site</em></span><span class="v-moitie"><span class="v-colonnes"><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 68%"></i><i class="v-vif" style="--h: 100%"></i></span><em>Le référencement</em></span></span><span class="v-puces"><b>Mots-clés</b><b>Liens entrants</b><b>Articles</b><b>Fiche Google</b></span><span class="v-cite"><em>Cité par</em><svg class="icon icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg><svg class="icon icon--gemini" aria-hidden="true"><use href="#i-gemini"/></svg><svg class="icon icon--claude" aria-hidden="true"><use href="#i-claude"/></svg><svg class="icon icon--perplexity" aria-hidden="true"><use href="#i-perplexity"/></svg></span></span>
+              <span class="nav-apercu__mot">Le site et le référencement dans un seul abonnement, rien à rajouter.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--site" data-vue="site">
+              <span class="nav-apercu__ecran"><span class="v-fenetre"><i></i><i></i><i></i><b></b></span><span class="v-entete"><i class="v-marque"></i><span class="v-nav"><i></i><i></i><i></i></span><i class="v-cta"></i></span><span class="v-heros"><span class="v-mots"><i class="v-titre"></i><i class="v-txt"></i><i class="v-txt v-txt--court"></i><i class="v-bouton"></i></span><i class="v-image"></i></span><span class="v-trio"><i></i><i></i><i></i></span></span>
+              <span class="nav-apercu__mot">Un site qui inspire confiance en trois secondes, sur téléphone comme sur ordinateur.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--identite" data-vue="identite">
+              <span class="nav-apercu__ecran"><span class="v-charte"><span class="v-logo"><i></i><b>OBT</b></span><span class="v-teintes"><i style="--t:#2558D6"></i><i style="--t:#3D8BFF"></i><i style="--t:#7FD1FF"></i><i style="--t:#071230"></i><i style="--t:#FAF9F5"></i></span><span class="v-polices"><i class="v-titre"></i><i class="v-txt"></i><i class="v-txt v-txt--court"></i></span></span></span>
+              <span class="nav-apercu__mot">Un logo, des couleurs et une charte : la même image partout, du site au devis.</span>
+            </span>
+            <span class="nav-apercu__vue nav-apercu__vue--ia" data-vue="ia">
+              <span class="nav-apercu__ecran"><span class="v-flux"><span class="v-etape"><i></i><em>Demande reçue</em></span><span class="v-fleche"></span><span class="v-etape v-etape--vif"><i></i><em>L&rsquo;IA rédige</em></span><span class="v-fleche"></span><span class="v-etape"><i></i><em>Devis envoyé</em></span></span></span>
+              <span class="nav-apercu__mot">Les tâches qui vous prennent vos soirées, faites toutes seules.</span>
+            </span>
+          </div>
+
+          <p class="nav-produit__pied">
+            <a href="test-visibilite.html" class="a1__bouton">
+              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+              Faire un test de visibilité
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
+              Prendre rendez-vous
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-secteur">
+          Nos secteurs
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-secteur" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="artisans-btp.html" data-secteur="artisans-btp">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <span class="nav-produit__texte"><strong>Artisans &amp; BTP</strong><small>Charpentiers, maçons, électriciens, paysagistes</small></span>
+            </a></li>
+            <li><a href="hebergements.html" data-secteur="hebergements">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-maison"/></svg></span>
+              <span class="nav-produit__texte"><strong>Hébergements</strong><small>Gîtes, domaines, chambres d&rsquo;hôtes, hôtels</small></span>
+            </a></li>
+            <li><a href="autre.html" data-secteur="autre">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Autre</strong><small>Commerces, professions libérales, services</small></span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-expertise">
+          Nos expertises
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-expertise" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="seo.html" aria-current="page" data-expertise="seo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-recherche"/></svg></span>
+              <span class="nav-produit__texte"><strong>SEO</strong><small>Sortir sur Google quand on cherche votre métier</small></span>
+            </a></li>
+            <li><a href="geo.html" data-expertise="geo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>
+              <span class="nav-produit__texte"><strong>GEO</strong><small>Être cité par ChatGPT, Gemini et Perplexity</small></span>
+            </a></li>
+            <li><a href="graphisme.html" data-expertise="graphisme">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Graphisme</strong><small>Logo, couleurs, charte, supports</small></span>
+            </a></li>
+            <li><a href="developpement.html" data-expertise="developpement">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Développement</strong><small>Sites, applications, outils sur mesure</small></span>
+            </a></li>
+            <li><a href="intelligence-artificielle.html" data-expertise="intelligence-artificielle">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Intelligence Artificielle</strong><small>Automatiser ce qui vous prend vos soirées</small></span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a href="resultats.html">Résultats</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+  </div>
+</header>
+
+<main id="main" class="expertise">
+  <span class="ex-lecture" aria-hidden="true"></span>
+
+  <!-- =====================================================================
+       S1, LE BANDEAU DU GUIDE. Pas de bouton : une page d'expertise
+       n'appelle a rien, elle montre qu'on sait. Le titre, ce qu'on va
+       apprendre, le temps de lecture et ce que contient le guide.
+       Nathan, 5 novembre 2026.
+       ===================================================================== -->
+  <section id="seo-s1" class="ex1" aria-labelledby="seo-titre">
+    <span class="ex1__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="ex1__dedans">
+      <!-- La note Google a la place du sur-titre, plus de chapeau sous le
+           titre : Nathan, 6 novembre 2026. -->
+      <div class="a1__preuve a1__preuve--haut ex1__preuve">
+        <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+           aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
+          <span class="a1__visages" aria-hidden="true">
+            <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
+          </span>
+          <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+          <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5/5</b>
+        </a>
+      </div>
+      <h1 id="seo-titre" class="ex1__titre">Le référencement naturel,<br>
+        <span class="a1__insecable"><span class="a1__surligne est-peint">expliqué de A à Z</span><span class="a1__point a1__point--fin">.</span></span></h1>
+      <p class="ex1__meta">
+        <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Lecture : 17 minutes</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-agenda"/></svg>Mis à jour le 5 novembre 2026</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Écrit par l&rsquo;équipe OBT Agency</span>
+      </p>
+      <ul class="ex1__plan">
+          <li><b>12</b><span>Chapitres</span></li>
+          <li><b>3</b><span>Piliers</span></li>
+          <li><b>6</b><span>Idées</span></li>
+          <li><b>24</b><span>Termes</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S2, LE GUIDE. Le sommaire suit la lecture a gauche, les chapitres
+       se lisent a droite, chacun avec son schema et son encadre « a
+       retenir ». Sur telephone, le sommaire disparait et la barre de
+       lecture en haut de l'ecran prend le relais.
+       ===================================================================== -->
+  <section id="seo-s2" class="ex-corps" aria-label="Le guide">
+    <span class="ex-corps__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="ex-corps__dedans">
+      <nav class="ex-sommaire" aria-label="Sommaire du guide">
+        <p class="ex-sommaire__titre">Sommaire</p>
+        <ol>
+            <li><a href="#seo-c1">Ce qu&rsquo;est le référencement</a></li>
+            <li><a href="#seo-c2">Explorer, indexer, classer</a></li>
+            <li><a href="#seo-c3">La page de résultats</a></li>
+            <li><a href="#seo-c4">Les trois piliers</a></li>
+            <li><a href="#seo-c5">La technique</a></li>
+            <li><a href="#seo-c6">Le contenu</a></li>
+            <li><a href="#seo-c7">La popularité</a></li>
+            <li><a href="#seo-c8">Le référencement local</a></li>
+            <li><a href="#seo-c9">La mesure</a></li>
+            <li><a href="#seo-c10">Les idées reçues</a></li>
+            <li><a href="#seo-c11">Le glossaire</a></li>
+            <li><a href="#seo-c12">Ce qu&rsquo;il faut retenir</a></li>
+        </ol>
+      </nav>
+
+      <div class="ex-guide" data-guide>
+        <article class="ex-chap" id="seo-c1">
+          <p class="ex-chap__num"><b>01</b>Les bases</p>
+          <h2>Ce qu&rsquo;est vraiment le référencement naturel.</h2>
+          <p>Le référencement naturel, que l&rsquo;on appelle aussi <strong>SEO</strong> pour <em>Search Engine Optimization</em>, regroupe tout ce qui permet à un site d&rsquo;apparaître dans les résultats gratuits de Google quand quelqu&rsquo;un cherche ce que vous proposez. Gratuits ne veut pas dire sans effort&nbsp;: on ne paie pas Google pour ces places, on les obtient parce que Google juge que votre page répond mieux que les autres à la question posée.</p>
+          <p>Il se distingue de la publicité, le <strong>SEA</strong>, où l&rsquo;on achète des emplacements marqués «&nbsp;Sponsorisé&nbsp;». La publicité s&rsquo;arrête le jour où le budget s&rsquo;arrête. Le référencement naturel, lui, se construit&nbsp;: une page bien placée continue de recevoir des visites des mois après avoir été travaillée.</p>
+          <p>Pour une entreprise locale, l&rsquo;enjeu est simple. Un particulier qui cherche un artisan, un hébergement ou un cabinet ouvre son téléphone, tape un métier et une ville, puis contacte l&rsquo;un des premiers qu&rsquo;il voit. Être absent de ces premiers résultats revient à ne pas exister pour lui, même si votre travail est meilleur.</p>
+          <h3>Ce que le référencement n&rsquo;est pas</h3>
+          <ul class="ex-liste">
+            <li>Ce n&rsquo;est pas une manipulation&nbsp;: les techniques qui trompent Google finissent sanctionnées, parfois des années plus tard.</li>
+            <li>Ce n&rsquo;est pas un réglage qu&rsquo;on fait une fois&nbsp;: vos concurrents travaillent aussi, Google met à jour ses critères plusieurs fois par an.</li>
+            <li>Ce n&rsquo;est pas une promesse de première place&nbsp;: personne ne contrôle Google. On travaille les signaux qu&rsquo;il lit, on mesure ce qui bouge.</li>
+          </ul>
+          <div class="ex-retenir"><b>À retenir</b><p>Le référencement naturel, c&rsquo;est mériter sa place dans les résultats gratuits. Il se construit dans le temps et continue de rapporter longtemps après.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c2">
+          <p class="ex-chap__num"><b>02</b>Le fonctionnement</p>
+          <h2>Comment Google décide : explorer, indexer, classer.</h2>
+          <p>Avant de vous montrer à qui que ce soit, Google doit savoir que votre page existe, la comprendre, puis la comparer aux autres. Ces trois étapes se font dans cet ordre. Un blocage à l&rsquo;une d&rsquo;elles suffit à rendre tout le reste inutile.</p>
+          <div class="ex-schema">
+            <ol class="ex-flux" data-cascade>
+              <li><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-recherche"/></svg></span><b>1. Explorer</b><span>Des robots, dont Googlebot, suivent les liens de page en page et téléchargent ce qu&rsquo;ils trouvent.</span></li>
+              <li><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-document"/></svg></span><b>2. Indexer</b><span>Google analyse le texte, les images, la structure, puis range la page dans son index, une immense bibliothèque.</span></li>
+              <li><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span><b>3. Classer</b><span>À chaque recherche, il choisit dans cet index les pages qui répondent le mieux et les ordonne.</span></li>
+            </ol>
+            <p class="ex-schema__legende">Une page qui n&rsquo;est pas explorée n&rsquo;est pas indexée. Une page qui n&rsquo;est pas indexée ne peut pas être classée.</p>
+          </div>
+          <h3>L&rsquo;exploration</h3>
+          <p>Les robots découvrent les pages par les liens&nbsp;: ceux de votre propre site et ceux des autres sites qui pointent vers vous. Le <strong>plan du site</strong> (le fichier <code>sitemap.xml</code>) leur donne la liste de vos pages. Le fichier <code>robots.txt</code> leur dit ce qu&rsquo;ils ont le droit de visiter. Une erreur dans ce fichier peut fermer tout un site à Google sans que personne ne s&rsquo;en aperçoive.</p>
+          <h3>L&rsquo;indexation</h3>
+          <p>Une page explorée n&rsquo;est pas forcément indexée. Google écarte les pages trop pauvres, les doublons et celles qui demandent explicitement à ne pas l&rsquo;être. Depuis plusieurs années, il lit d&rsquo;abord la <strong>version mobile</strong> d&rsquo;un site&nbsp;: c&rsquo;est elle qui compte, pas celle que vous voyez sur votre ordinateur.</p>
+          <h3>Le classement</h3>
+          <p>Google utilise un grand nombre de signaux pour ordonner les résultats. On peut les regrouper en trois familles&nbsp;: la pertinence de la page pour la question posée, la qualité et la fiabilité du site, puis l&rsquo;expérience du visiteur. Aucune liste officielle complète n&rsquo;existe, mais Google publie ses principes et ses consignes. C&rsquo;est sur eux que repose un travail sérieux.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Avant de parler de première place, on vérifie que Google peut explorer et indexer chaque page importante. C&rsquo;est la première chose qu&rsquo;on contrôle sur un site.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c3">
+          <p class="ex-chap__num"><b>03</b>Ce que l&rsquo;on voit</p>
+          <h2>L&rsquo;anatomie d&rsquo;une page de résultats.</h2>
+          <p>Une page de résultats Google n&rsquo;est plus une simple liste de dix liens bleus. Selon la recherche, elle mélange plusieurs blocs, chacun avec ses propres règles. Pour une recherche locale comme «&nbsp;couvreur à Dole&nbsp;», voici ce qu&rsquo;on trouve le plus souvent, de haut en bas.</p>
+          <div class="ex-schema">
+            <div class="ex-serp" aria-hidden="true">
+              <p class="ex-serp__barre"><svg class="icon"><use href="#i-recherche"/></svg>couvreur à Dole</p>
+              <div class="ex-serp__bloc"><em>1</em><small>Sponsorisé</small><i></i><i></i></div>
+              <div class="ex-serp__bloc ex-serp__bloc--ia"><em>2</em><small>Aperçu généré par l&rsquo;IA</small><i></i><i></i><i></i></div>
+              <div class="ex-serp__bloc ex-serp__bloc--carte"><em>3</em><small>Carte et trois entreprises</small><i></i><i></i><i></i></div>
+              <div class="ex-serp__bloc ex-serp__bloc--vous"><em>4</em><small>Résultats naturels</small><i></i><i></i><i></i></div>
+            </div>
+            <ol class="ex-reperes">
+              <li><em>1</em><span><strong>Les annonces</strong>&nbsp;: payées, marquées «&nbsp;Sponsorisé&nbsp;». Elles disparaissent quand le budget s&rsquo;arrête.</span></li>
+              <li><em>2</em><span><strong>L&rsquo;aperçu par l&rsquo;IA</strong>&nbsp;: sur de plus en plus de recherches, une réponse rédigée par l&rsquo;intelligence artificielle de Google, avec ses sources. Nous l&rsquo;expliquons sur notre <a href="geo.html">guide du GEO</a>.</span></li>
+              <li><em>3</em><span><strong>Le pack local</strong>&nbsp;: la carte et trois fiches d&rsquo;entreprise. C&rsquo;est souvent le bloc qui reçoit le plus d&rsquo;appels sur un téléphone. Il dépend de votre fiche Google.</span></li>
+              <li><em>4</em><span><strong>Les résultats naturels</strong>&nbsp;: les pages des sites, classées par Google. C&rsquo;est le cœur du référencement naturel.</span></li>
+            </ol>
+          </div>
+          <p>Deux de ces quatre blocs se travaillent par le référencement&nbsp;: le pack local et les résultats naturels. Ils ne répondent pas aux mêmes critères, c&rsquo;est pour cela qu&rsquo;on les traite séparément. Une entreprise peut être absente des résultats naturels et très bien placée dans le pack local, ou l&rsquo;inverse.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Sur une recherche locale, il y a deux places à prendre&nbsp;: la carte et les résultats naturels. La fiche Google décide de la première, le site de la seconde.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c4">
+          <p class="ex-chap__num"><b>04</b>La méthode</p>
+          <h2>Les trois piliers du référencement.</h2>
+          <p>Tout le travail de référencement tient sur trois piliers. Ils se renforcent l&rsquo;un l&rsquo;autre&nbsp;: un excellent contenu sur un site que Google n&rsquo;arrive pas à lire ne sert à rien. Un site techniquement parfait sans rien à dire ne se classe pas.</p>
+          <div class="ex-schema">
+            <div class="ex-piliers">
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-gauge"/></svg></span><b>La technique</b><span>Google peut-il explorer, lire et afficher votre site rapidement, sur un téléphone&nbsp;?</span></div>
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-document"/></svg></span><b>Le contenu</b><span>Vos pages répondent-elles précisément à ce que vos clients tapent&nbsp;?</span></div>
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-lien"/></svg></span><b>La popularité</b><span>D&rsquo;autres sites, d&rsquo;autres personnes parlent-ils de vous et vous recommandent-ils&nbsp;?</span></div>
+            </div>
+            <p class="ex-schema__legende">Les trois chapitres qui suivent détaillent chaque pilier.</p>
+          </div>
+          <div class="ex-retenir"><b>À retenir</b><p>Technique, contenu, popularité. On commence toujours par la technique, parce qu&rsquo;elle conditionne l&rsquo;effet des deux autres.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c5">
+          <p class="ex-chap__num"><b>05</b>Pilier 1</p>
+          <h2>Le référencement technique : un site que Google lit sans effort.</h2>
+          <p>La technique ne se voit pas, c&rsquo;est pour cela qu&rsquo;elle est souvent négligée. Elle regroupe tout ce qui permet à Google d&rsquo;accéder à vos pages, de les comprendre et de les proposer sans hésiter. Voici les points qu&rsquo;on contrôle sur chaque site.</p>
+          <div class="ex-tableau-cadre">
+            <table class="ex-tableau">
+              <thead><tr><th scope="col">Point</th><th scope="col">Ce qu&rsquo;on vérifie</th></tr></thead>
+              <tbody>
+                <tr><td>Exploration</td><td>Le fichier <code>robots.txt</code> n&rsquo;interdit rien d&rsquo;important, le plan du site est à jour et déclaré à Google.</td></tr>
+                <tr><td>Indexation</td><td>Chaque page utile est indexée, les doublons portent une balise <code>canonical</code> qui désigne la bonne version.</td></tr>
+                <tr><td>Sécurité</td><td>Le site est servi en <code>https</code>, sans contenu mixte ni avertissement du navigateur.</td></tr>
+                <tr><td>Mobile</td><td>La version téléphone contient tout le contenu, se lit sans zoomer, les boutons se touchent du pouce.</td></tr>
+                <tr><td>Redirections</td><td>Une page déplacée renvoie vers sa nouvelle adresse par une redirection 301, aucune ne mène à une erreur 404.</td></tr>
+                <tr><td>Structure</td><td>Des adresses lisibles, une arborescence claire, chaque page atteignable en peu de clics depuis l&rsquo;accueil.</td></tr>
+                <tr><td>Données structurées</td><td>Un balisage <code>schema.org</code> décrit votre entreprise&nbsp;: nom, adresse, téléphone, horaires, zone servie.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>La vitesse, mesurée par Google</h3>
+          <p>Google mesure l&rsquo;expérience réelle des visiteurs avec trois indicateurs, les <strong>Signaux Web essentiels</strong>. Ils proviennent des navigateurs de vrais utilisateurs, pas d&rsquo;un test en laboratoire. Voici les seuils que Google considère comme bons.</p>
+          <div class="ex-schema">
+            <div class="ex-jauges">
+              <div class="ex-jauge"><p class="ex-jauge__nom">LCP · affichage</p><p class="ex-jauge__seuil">2,5 s</p><span class="ex-jauge__piste"><i></i><i></i><i></i></span><p class="ex-jauge__dit">Le temps pour afficher le plus gros élément de la page.</p></div>
+              <div class="ex-jauge"><p class="ex-jauge__nom">INP · réactivité</p><p class="ex-jauge__seuil">200 ms</p><span class="ex-jauge__piste"><i></i><i></i><i></i></span><p class="ex-jauge__dit">Le délai entre un clic ou un toucher et la réaction de la page.</p></div>
+              <div class="ex-jauge"><p class="ex-jauge__nom">CLS · stabilité</p><p class="ex-jauge__seuil">0,1</p><span class="ex-jauge__piste"><i></i><i></i><i></i></span><p class="ex-jauge__dit">Les sauts de mise en page pendant le chargement, quand le texte bouge sous le doigt.</p></div>
+            </div>
+            <p class="ex-schema__legende">En dessous de ces seuils, l&rsquo;expérience est jugée bonne. Au-dessus, le visiteur attend, se trompe de bouton ou repart.</p>
+          </div>
+          <p>Un site lent ne perd pas seulement des places&nbsp;: il perd des visiteurs avant même qu&rsquo;ils aient lu une ligne. Les causes sont presque toujours les mêmes&nbsp;: des images trop lourdes, trop de scripts tiers, un hébergement sous-dimensionné, un thème chargé de fonctions inutiles.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Un site que Google explore sans obstacle, servi en https, complet sur téléphone et rapide sur une connexion moyenne. C&rsquo;est la base, sans elle le reste ne compte pas.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c6">
+          <p class="ex-chap__num"><b>06</b>Pilier 2</p>
+          <h2>Le contenu : répondre à ce que les gens tapent vraiment.</h2>
+          <p>Google ne classe pas des sites, il classe des pages. Et il les classe pour une recherche précise. Le travail de contenu consiste donc à savoir ce que vos clients tapent, pourquoi ils le tapent, puis à leur donner une page qui y répond mieux que celles de vos concurrents.</p>
+          <h3>L&rsquo;intention de recherche</h3>
+          <p>Derrière chaque recherche, il y a une intention. La reconnaître évite de construire une page qui ne correspond pas à ce que l&rsquo;internaute attend.</p>
+          <div class="ex-tableau-cadre">
+            <table class="ex-tableau">
+              <thead><tr><th scope="col">Intention</th><th scope="col">Exemple</th><th scope="col">Ce qu&rsquo;il faut lui donner</th></tr></thead>
+              <tbody>
+                <tr><td>S&rsquo;informer</td><td>«&nbsp;comment isoler des combles&nbsp;»</td><td>Un guide clair, des étapes, des réponses honnêtes.</td></tr>
+                <tr><td>Comparer</td><td>«&nbsp;tuile ou ardoise prix&nbsp;»</td><td>Les différences, les avantages, ce qui dépend du chantier.</td></tr>
+                <tr><td>Agir</td><td>«&nbsp;devis charpentier&nbsp;»</td><td>Une page de service, un numéro visible, un formulaire court.</td></tr>
+                <tr><td>Trouver près de soi</td><td>«&nbsp;plombier Lons-le-Saunier&nbsp;»</td><td>Une fiche Google complète et une page qui nomme la zone.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Les mots-clés, sans en abuser</h3>
+          <p>Un mot-clé n&rsquo;est rien d&rsquo;autre que la façon dont un client formule son besoin. On les relève avec des outils de mesure et en écoutant la manière dont vos clients parlent, qui n&rsquo;est presque jamais celle du métier. On les place là où Google les attend&nbsp;: le titre de la page, le titre principal, les sous-titres, les premières lignes. Les répéter à l&rsquo;excès ne sert plus à rien depuis longtemps et peut même nuire.</p>
+          <h3>Une page, une question</h3>
+          <p>L&rsquo;erreur la plus courante est la page «&nbsp;Nos services&nbsp;» qui énumère douze métiers en trois lignes chacun. Elle ne répond bien à aucune recherche. Une page par service, une page par zone importante, chacune avec un vrai contenu, voilà ce qui permet de sortir sur des recherches précises.</p>
+          <h3>Le titre et la description, votre vitrine dans Google</h3>
+          <p>Chaque page porte un <strong>titre</strong> (la balise <code>title</code>) et une <strong>description</strong> que Google affiche souvent dans ses résultats. Le titre pèse dans le classement. La description, elle, ne change pas la place, mais elle décide si l&rsquo;on clique. Le titre doit rester court, autour de soixante caractères, sinon Google le coupe.</p>
+          <div class="ex-schema">
+            <div class="ex-duel">
+              <div class="ex-duel__cas ex-duel__cas--non"><small><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg>Ce qu&rsquo;on voit souvent</small><p class="ex-duel__titre">Accueil</p><p class="ex-duel__url">www.entreprise-dupont.fr</p><p class="ex-duel__desc">Bienvenue sur notre site. Nous sommes une entreprise sérieuse à votre service depuis de nombreuses années…</p></div>
+              <div class="ex-duel__cas ex-duel__cas--oui"><small><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ce qu&rsquo;on écrit</small><p class="ex-duel__titre">Couvreur à Dole · Toiture et zinguerie | Dupont</p><p class="ex-duel__url">www.entreprise-dupont.fr</p><p class="ex-duel__desc">Réfection de toiture, réparation de fuite et zinguerie à Dole et dans un rayon de 30 km. Devis gratuit sous 48 h.</p></div>
+            </div>
+            <p class="ex-schema__legende">Même entreprise, même place. Le second titre dit le métier, la ville et donne une raison de cliquer.</p>
+          </div>
+          <h3>Ce que Google appelle la qualité</h3>
+          <p>Pour évaluer ses résultats, Google demande à des évaluateurs humains de juger les pages selon quatre critères résumés par les lettres <strong>E-E-A-T</strong>&nbsp;: l&rsquo;expérience, l&rsquo;expertise, l&rsquo;autorité et la fiabilité. Ce n&rsquo;est pas un réglage technique, c&rsquo;est une grille de lecture. Elle se traduit concrètement&nbsp;: des photos de vos propres chantiers, des textes qui montrent que vous connaissez le métier, vos coordonnées complètes, vos assurances, vos avis.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Une page par besoin, écrite avec les mots de vos clients, un titre qui dit le métier et la ville. Le contenu qui montre votre vrai travail vaut plus qu&rsquo;un texte générique bien rempli de mots-clés.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c7">
+          <p class="ex-chap__num"><b>07</b>Pilier 3</p>
+          <h2>La popularité : ce que les autres disent de vous.</h2>
+          <p>Un lien d&rsquo;un autre site vers le vôtre fonctionne comme une recommandation. Plus il vient d&rsquo;une source fiable et proche de votre activité, plus il compte. C&rsquo;est l&rsquo;un des plus anciens signaux utilisés par Google. Il reste l&rsquo;un des plus importants.</p>
+          <h3>La qualité avant la quantité</h3>
+          <p>Mille liens venus de sites sans intérêt valent moins qu&rsquo;une poignée de liens bien choisis&nbsp;: l&rsquo;annuaire de votre fédération professionnelle, la mairie qui liste ses artisans, un fournisseur, un journal local, un partenaire. Les consignes de Google interdisent explicitement l&rsquo;achat de liens destinés à manipuler le classement. Un site qui en abuse s&rsquo;expose à une sanction.</p>
+          <h3>Les mentions et les annuaires</h3>
+          <p>Votre nom, votre adresse et votre téléphone apparaissent sur de nombreux sites&nbsp;: annuaires, pages jaunes, réseaux sociaux, plateformes de votre secteur. Google les recoupe. S&rsquo;ils sont identiques partout, ils confirment votre existence et votre localisation. S&rsquo;ils se contredisent (un ancien numéro, une ancienne adresse), ils sèment le doute.</p>
+          <h3>Les avis</h3>
+          <p>Les avis laissés sur votre fiche Google comptent pour le classement local et, plus encore, pour la décision du client. Leur nombre, leur régularité et vos réponses comptent. La meilleure méthode n&rsquo;a rien de secret&nbsp;: demander un avis à chaque client satisfait, au bon moment. Puis répondre à tous, y compris aux critiques.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Peu de liens, mais bons et proches de votre activité. Des coordonnées identiques partout. Des avis demandés régulièrement et toujours suivis d&rsquo;une réponse.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c8">
+          <p class="ex-chap__num"><b>08</b>Le local</p>
+          <h2>Le référencement local : sortir sur la carte.</h2>
+          <p>Dès qu&rsquo;une recherche a une dimension locale («&nbsp;près de moi&nbsp;», le nom d&rsquo;une ville, ou simplement un métier de proximité), Google affiche sa carte et trois entreprises. Ce classement repose d&rsquo;abord sur la <strong>fiche d&rsquo;établissement Google</strong>, l&rsquo;ancienne Google My Business.</p>
+          <p>Google explique lui-même que trois critères décident du classement local&nbsp;:</p>
+          <div class="ex-schema">
+            <div class="ex-piliers">
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-cible"/></svg></span><b>La pertinence</b><span>Votre fiche correspond-elle à ce qui est cherché&nbsp;? Catégories, services, description.</span></div>
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg></span><b>La distance</b><span>La proximité entre l&rsquo;entreprise et la personne qui cherche, ou la ville tapée.</span></div>
+              <div class="ex-pilier"><span class="ex-flux__icone"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><b>La notoriété</b><span>Ce que le web dit de vous&nbsp;: avis, liens, mentions, présence ailleurs.</span></div>
+            </div>
+          </div>
+          <p>La distance ne se travaille pas, les deux autres si. Une fiche bien tenue comporte la bonne catégorie principale (c&rsquo;est le réglage le plus important), des catégories secondaires justes, des horaires exacts, une zone d&rsquo;intervention, des services décrits, des photos récentes de vrais chantiers, des publications régulières et des réponses aux avis.</p>
+          <h3>Le site et la fiche travaillent ensemble</h3>
+          <p>La fiche renvoie vers le site, le site confirme ce que dit la fiche. Une page par zone d&rsquo;intervention, avec un contenu propre à chaque commune et non une simple liste de villes, aide Google à vous associer aux lieux où vous travaillez vraiment.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>La carte se gagne par la fiche Google&nbsp;: la bonne catégorie, des informations complètes, des photos, des avis. C&rsquo;est souvent le levier le plus rapide pour une entreprise locale.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c9">
+          <p class="ex-chap__num"><b>09</b>La mesure</p>
+          <h2>Mesurer : ce qu&rsquo;on regarde chaque mois.</h2>
+          <p>Le référencement se pilote avec des chiffres, pas avec des impressions. Les deux outils de référence sont gratuits et fournis par Google lui-même&nbsp;: la <strong>Search Console</strong> et <strong>Google Analytics</strong>. Ils mesurent des choses différentes.</p>
+          <div class="ex-tableau-cadre">
+            <table class="ex-tableau">
+              <thead><tr><th scope="col">Indicateur</th><th scope="col">Outil</th><th scope="col">Ce qu&rsquo;il dit</th></tr></thead>
+              <tbody>
+                <tr><td>Impressions</td><td>Search Console</td><td>Combien de fois une de vos pages s&rsquo;est affichée dans les résultats.</td></tr>
+                <tr><td>Clics</td><td>Search Console</td><td>Combien de personnes ont cliqué sur votre résultat.</td></tr>
+                <tr><td>Taux de clic</td><td>Search Console</td><td>La part des affichages qui deviennent des clics. Un taux faible signale souvent un titre peu engageant.</td></tr>
+                <tr><td>Position moyenne</td><td>Search Console</td><td>Votre place moyenne sur une recherche ou une page.</td></tr>
+                <tr><td>Visiteurs organiques</td><td>Analytics</td><td>Les visiteurs arrivés par les résultats gratuits. Puis ce qu&rsquo;ils font sur le site.</td></tr>
+                <tr><td>Conversions</td><td>Analytics</td><td>Les appels, formulaires et demandes de devis. Le seul chiffre qui paie les factures.</td></tr>
+                <tr><td>Actions sur la fiche</td><td>Fiche Google</td><td>Les appels, itinéraires et visites du site déclenchés depuis votre fiche.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Les délais, honnêtement</h3>
+          <p>Le référencement ne se mesure pas à la semaine. Une fiche Google bien reprise réagit souvent en quelques semaines. Un site refait et des pages nouvelles demandent plus de patience&nbsp;: Google doit les explorer, les indexer, puis observer comment les internautes réagissent. On compte en mois, pas en jours. Quiconque promet la première place en quinze jours ne dit pas la vérité.</p>
+          <div class="ex-retenir"><b>À retenir</b><p>Impressions, clics, positions, conversions&nbsp;: on lit ces chiffres chaque mois, dans les outils de Google eux-mêmes. Et on juge le travail sur plusieurs mois, pas sur quelques jours.</p></div>
+        </article>
+
+        <article class="ex-chap" id="seo-c10">
+          <p class="ex-chap__num"><b>10</b>Les idées reçues</p>
+          <h2>Ce qu&rsquo;on entend. Ce qui est vrai.</h2>
+          <ul class="ex-mythes">
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;Il suffit de mettre beaucoup de mots-clés.&nbsp;»</p><p class="ex-mythe__vrai">C&rsquo;était vrai il y a vingt ans. Aujourd&rsquo;hui Google comprend le sens d&rsquo;un texte. Une page qui répète un mot jusqu&rsquo;à l&rsquo;illisible est jugée de mauvaise qualité.</p></li>
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;Payer de la publicité Google aide le référencement naturel.&nbsp;»</p><p class="ex-mythe__vrai">Non. Google le répète depuis toujours&nbsp;: les annonces et les résultats naturels sont séparés. La publicité achète une place, elle n&rsquo;en fait gagner aucune ailleurs.</p></li>
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;Une fois bien placé, c&rsquo;est acquis.&nbsp;»</p><p class="ex-mythe__vrai">Vos concurrents travaillent, Google change ses critères, les recherches évoluent. Une position se tient, elle ne se possède pas.</p></li>
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;La balise keywords est indispensable.&nbsp;»</p><p class="ex-mythe__vrai">Google n&rsquo;utilise plus cette balise depuis plus de quinze ans. La remplir ne fait ni bien ni mal.</p></li>
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;Refaire mon site va me faire perdre mes positions.&nbsp;»</p><p class="ex-mythe__vrai">Seulement si la refonte est mal faite. En gardant les adresses qui se positionnent et en redirigeant les autres, une refonte améliore au contraire le référencement.</p></li>
+            <li class="ex-mythe"><p class="ex-mythe__dit">«&nbsp;On peut garantir la première place.&nbsp;»</p><p class="ex-mythe__vrai">Personne ne contrôle Google. On peut garantir le travail, la méthode et la transparence sur les chiffres, jamais une position.</p></li>
+          </ul>
+        </article>
+
+        <article class="ex-chap" id="seo-c11">
+          <p class="ex-chap__num"><b>11</b>Le vocabulaire</p>
+          <h2>Le glossaire du référencement.</h2>
+          <dl class="ex-glossaire">
+            <dt>SEO</dt><dd>Search Engine Optimization&nbsp;: l&rsquo;ensemble des actions pour apparaître dans les résultats gratuits.</dd>
+            <dt>SEA</dt><dd>Search Engine Advertising&nbsp;: la publicité payante sur les moteurs de recherche.</dd>
+            <dt>SERP</dt><dd>Search Engine Results Page&nbsp;: la page de résultats affichée après une recherche.</dd>
+            <dt>GEO</dt><dd>L&rsquo;optimisation pour les moteurs génératifs, ChatGPT ou l&rsquo;aperçu IA de Google. Expliquée sur notre <a href="geo.html">guide du GEO</a>.</dd>
+            <dt>Googlebot</dt><dd>Le robot qui explore le web pour le compte de Google.</dd>
+            <dt>Index</dt><dd>La base dans laquelle Google range les pages qu&rsquo;il a explorées et jugées utiles.</dd>
+            <dt>Balise title</dt><dd>Le titre d&rsquo;une page tel qu&rsquo;il apparaît dans l&rsquo;onglet et, souvent, dans les résultats.</dd>
+            <dt>Meta description</dt><dd>Le court résumé d&rsquo;une page, parfois repris par Google sous le titre.</dd>
+            <dt>Hn</dt><dd>Les niveaux de titres d&rsquo;une page (H1, H2, H3…), qui en donnent la structure.</dd>
+            <dt>Sitemap</dt><dd>Le fichier qui liste les pages d&rsquo;un site pour aider les robots à les trouver.</dd>
+            <dt>robots.txt</dt><dd>Le fichier qui indique aux robots ce qu&rsquo;ils peuvent explorer.</dd>
+            <dt>Canonical</dt><dd>La balise qui désigne la version de référence quand plusieurs adresses affichent le même contenu.</dd>
+            <dt>Redirection 301</dt><dd>Le renvoi permanent d&rsquo;une ancienne adresse vers la nouvelle, qui transmet sa valeur.</dd>
+            <dt>Erreur 404</dt><dd>La page introuvable. Quelques-unes sont normales, beaucoup signalent un site mal entretenu.</dd>
+            <dt>Backlink</dt><dd>Un lien d&rsquo;un autre site vers le vôtre.</dd>
+            <dt>Ancre</dt><dd>Le texte cliquable d&rsquo;un lien.</dd>
+            <dt>Données structurées</dt><dd>Un balisage invisible qui décrit précisément le contenu d&rsquo;une page à Google.</dd>
+            <dt>Signaux Web essentiels</dt><dd>Les trois mesures de vitesse et de stabilité suivies par Google&nbsp;: LCP, INP et CLS.</dd>
+            <dt>Mobile first</dt><dd>Le principe selon lequel Google lit d&rsquo;abord la version téléphone d&rsquo;un site.</dd>
+            <dt>Pack local</dt><dd>Le bloc carte et trois entreprises affiché sur les recherches locales.</dd>
+            <dt>Fiche d&rsquo;établissement</dt><dd>La fiche Google de votre entreprise&nbsp;: adresse, horaires, avis, photos.</dd>
+            <dt>Intention de recherche</dt><dd>Ce que l&rsquo;internaute cherche vraiment à obtenir derrière sa requête.</dd>
+            <dt>Taux de clic</dt><dd>La part des affichages d&rsquo;un résultat qui se transforment en clics.</dd>
+            <dt>E-E-A-T</dt><dd>Expérience, expertise, autorité, fiabilité&nbsp;: la grille utilisée par Google pour juger la qualité.</dd>
+          </dl>
+        </article>
+
+        <article class="ex-chap" id="seo-c12">
+          <p class="ex-chap__num"><b>12</b>En résumé</p>
+          <h2>Ce qu&rsquo;il faut retenir.</h2>
+          <ol class="ex-fin">
+            <li><p><strong>Google doit d&rsquo;abord pouvoir lire votre site.</strong> Exploration, indexation, vitesse, version mobile&nbsp;: sans ces bases, aucun contenu ne se classe.</p></li>
+            <li><p><strong>Une page par besoin.</strong> Écrite avec les mots de vos clients, avec un titre qui dit le métier et le lieu.</p></li>
+            <li><p><strong>La carte se gagne par la fiche Google.</strong> Bonne catégorie, informations complètes, photos, avis réguliers et réponses.</p></li>
+            <li><p><strong>Peu de liens, mais les bons.</strong> Des recommandations réelles, proches de votre activité. Des coordonnées identiques partout.</p></li>
+            <li><p><strong>On mesure dans les outils de Google, sur plusieurs mois.</strong> Impressions, clics, positions, appels. Les chiffres disent si le travail paie.</p></li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       S3, L'APPEL. Le seul de la page, tout en bas : le guide explique, la
+       derniere section propose de le faire pour vous, vers l'offre qui
+       correspond. Le bloc de fin habituel du site, sans la note d'avis (une
+       page d'expertise n'en porte pas). Nathan, 6 novembre 2026.
+       ===================================================================== -->
+  <section id="seo-s3" class="a11" aria-labelledby="seo-s3-title">
+    <div class="a11__dedans">
+      <div class="a11__bloc" data-fond="sombre">
+        <span class="a11__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+
+        <h2 id="seo-s3-title" class="a11__titre">Tout ce guide, on l&rsquo;applique<br>
+          <span class="a11__clair">à votre site, chaque mois</span><span class="a1__point a1__point--fin">.</span></h2>
+
+        <p class="a11__action">
+          <a href="pack.html" class="a11__bouton">
+            <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+            Voir l&rsquo;offre de référencement
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+          <a href="#rendez-vous" data-rdv-ouvrir class="a11__bouton a11__bouton--clair">
+            Prendre rendez-vous
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </p>
+        <p class="a11__sous">La technique, le contenu, la fiche Google, les liens et le rapport du mois&nbsp;: c&rsquo;est le travail du pack. Trente minutes pour regarder votre cas, sans engagement.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     BAS DE PAGE, identique sur toutes les pages (réf. dossier "Bas de page")
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="brand-logo brand-logo--footer" src="assets/img/logo-obt.png" width="1200" height="300"
+             decoding="async" alt="OBT Agency">
+        <p class="footer-baseline">On rend les artisans et les domaines visibles sur Google et dans les réponses des IA. On refait le site qui transforme ces visites en appels. Partout en France.</p>
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/obt.agency/" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur Instagram (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+          </a></li>
+          <li><a href="https://www.tiktok.com/@obt.agency" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur TikTok (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg>
+          </a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61594475880521" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur Facebook (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg>
+          </a></li>
+          <li><a href="https://www.linkedin.com/in/obt-agency/" target="_blank" rel="noopener"
+                 aria-label="OBT Agency sur LinkedIn (nouvel onglet)">
+            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="footer-col" aria-labelledby="pied-nav-titre">
+        <p class="footer-col-title" id="pied-nav-titre">Navigation</p>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="resultats.html">Résultats</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col" id="rendez-vous">
+        <p class="footer-col-title">Coordonnées</p>
+        <ul>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
+          <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
+          <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
+          <li class="footer-col-plain">Partout en France, à distance</li>
+          <li class="footer-col-plain">Réponse sous 24 h ouvrées</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 OBT Agency. Tous droits réservés.</p>
+      <p class="footer-legal">
+        <a href="#rendez-vous" data-rdv-ouvrir>Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="plan-du-site.html">Plan du site</a>
+      </p>
+      <p><a href="#main" class="footer-top-link">Haut de page <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></p>
+    </div>
+
+    <p class="footer-wordmark" aria-hidden="true">OBT AGENCY</p>
+  </div>
+</footer>
+
+<script src="js/main.js?v=408" defer></script>
+<!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
+     qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->
+
+</body>
+</html>

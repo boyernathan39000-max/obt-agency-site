@@ -54,6 +54,11 @@
   --c-accent-light:    #7FD1FF;  /* survol du bouton plein, accents sur fond sombre */
   --c-accent-deep:     #2558D6;  /* fond du bouton plein (texte blanc, 6,1:1) */
 
+  /* L'etoile d'avis. Regle de Nathan, 5 novembre 2026 : les etoiles sont
+     jaunes partout sur le site, une seule valeur, jamais une variante
+     orangee d'une section a l'autre. */
+  --c-etoile:          #F5B300;
+
   /* Teintes d'accent transparentes (base #2558D6 = rgb(37,88,214)) */
   --c-accent-a04:      rgba(37, 88, 214, .04);
   --c-accent-a08:      rgba(37, 88, 214, .08);

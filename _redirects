@@ -8,7 +8,7 @@
 
 # Page de référence d'un site tiers, conservée comme inspiration. Ses traceurs
 # (Google Tag Manager, Microsoft Clarity, Klaviyo) ont été retirés le
-# 4 septembre 2026 ; il reste qu'elle reproduit le site d'un tiers, et elle
+# 4 septembre 2026 ; il reste qu'elle reproduit le site d'un tiers et elle
 # n'est liée depuis nulle part. Cette règle la rend inatteignable en ligne tout
 # en la conservant sur le poste. Retirer ces deux lignes pour la publier.
 /Maquettes/Le*Gralle/ayocin.html   /404.html   404
@@ -20,3 +20,10 @@
 # 302, le déplacement est définitif, c'est ce qui transmet le poids acquis.
 /services.html       /pack.html       301
 /realisations.html   /resultats.html  301
+
+# La page Contact a ete supprimee le 6 novembre 2026 : la prise de rendez-vous
+# se fait dans la fenetre ouverte par tous les boutons du site. L'ancienne
+# adresse est indexee et partagee : 301 vers l'accueil, qui ouvre la fenetre
+# des qu'il voit #rendez-vous.
+/contact.html   /#rendez-vous   301
+/contact        /#rendez-vous   301

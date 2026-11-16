@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico?v=366" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=366">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=366">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=366">
+<link rel="icon" href="favicon.ico?v=408" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
 <title>Référencement et site internet pour artisans · OBT Agency</title>
 <meta name="description" content="On vous rend visible sur Google et dans les réponses des IA. On refait le site qui transforme ces visites en appels. Réponse sous 24 h.">
 <link rel="canonical" href="https://obt-agency.fr/">
@@ -21,14 +21,14 @@
 <meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=366">
-<link rel="stylesheet" href="css/style.css?v=366">
-<link rel="stylesheet" href="css/refonte.css?v=366">
+<link rel="stylesheet" href="css/tokens.css?v=408">
+<link rel="stylesheet" href="css/style.css?v=408">
+<link rel="stylesheet" href="css/refonte.css?v=408">
 <!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
      armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
 <!-- La page voisine est préchargée : le changement de page est alors instantané. -->
 <link rel="prefetch" href="pack.html" as="document">
-<link rel="prefetch" href="contact.html" as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
 <script>(function () {
   /* La seule chose que ce script fait encore : signaler que JavaScript
      repond. La feuille de style s'en sert pour les elements qui n'ont de
@@ -66,7 +66,6 @@
       "closes": "19:00"
     }],
     "areaServed": { "@type": "Country", "name": "France" },
-    "priceRange": "500 € à 5 000 €",
     "knowsLanguage": "fr"
   },
   {
@@ -125,12 +124,15 @@
   
   <symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
   <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 100 17h1.4a1.9 1.9 0 001.5-3 1.9 1.9 0 011.5-3h2.1a1.9 1.9 0 001.9-1.9A9.1 9.1 0 0012 3.5z"/><circle cx="8" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10.5" r="1"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5L3 17.6 6.4 21l6.3-6.3a4 4 0 005-5.4l-3 3-2-2 3-3z"/></symbol>
+  <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
 </svg>
 
 <!-- ============================================================
      BANDE MENU, commune à toutes les pages (réf. barre de nav Articool)
      ============================================================ -->
 <header class="site-header" id="site-header">
+  <div class="site-header__barre">
   <a href="index.html" class="logo" aria-label="OBT Agency, accueil">
     <img class="brand-logo brand-logo--sombre" src="assets/img/logo-obt.png" width="1200" height="300"
          decoding="async" alt="">
@@ -142,16 +144,15 @@
 
   <nav class="nav" id="primary-nav" aria-label="Navigation principale">
     <ul class="nav-list">
-      <li><a href="index.html" aria-current="page">Accueil</a></li>
       <li class="nav-produit" data-nav-produit>
         <button type="button" class="nav-produit__bouton" aria-expanded="false" aria-controls="menu-produit">
-          Prestations <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+          Nos services <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
         </button>
         <div class="nav-produit__panneau" id="menu-produit" hidden>
           <ul class="nav-produit__liste">
             <li class="est-avant"><a href="pack.html" data-produit="pack">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
-              <span class="nav-produit__texte"><strong>Pack <span class="a1__surligne est-peint">SEO &amp; GEO</span> +&nbsp;<span class="a1__surligne est-peint">Site Professionnel</span></strong></span>
+              <span class="nav-produit__texte"><strong>Référencement SEO &amp; GEO</strong></span>
             </a></li>
             <li><a href="site-internet.html" data-produit="site">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
@@ -195,11 +196,63 @@
               Faire un test de visibilité
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
-            <a href="contact.html" class="a1__bouton a1__bouton--bleu">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
           </p>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-secteur">
+          Nos secteurs
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-secteur" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="artisans-btp.html" data-secteur="artisans-btp">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <span class="nav-produit__texte"><strong>Artisans &amp; BTP</strong><small>Charpentiers, maçons, électriciens, paysagistes</small></span>
+            </a></li>
+            <li><a href="hebergements.html" data-secteur="hebergements">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-maison"/></svg></span>
+              <span class="nav-produit__texte"><strong>Hébergements</strong><small>Gîtes, domaines, chambres d&rsquo;hôtes, hôtels</small></span>
+            </a></li>
+            <li><a href="autre.html" data-secteur="autre">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Autre</strong><small>Commerces, professions libérales, services</small></span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-expertise">
+          Nos expertises
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-expertise" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="seo.html" data-expertise="seo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-recherche"/></svg></span>
+              <span class="nav-produit__texte"><strong>SEO</strong><small>Sortir sur Google quand on cherche votre métier</small></span>
+            </a></li>
+            <li><a href="geo.html" data-expertise="geo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>
+              <span class="nav-produit__texte"><strong>GEO</strong><small>Être cité par ChatGPT, Gemini et Perplexity</small></span>
+            </a></li>
+            <li><a href="graphisme.html" data-expertise="graphisme">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Graphisme</strong><small>Logo, couleurs, charte, supports</small></span>
+            </a></li>
+            <li><a href="developpement.html" data-expertise="developpement">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Développement</strong><small>Sites, applications, outils sur mesure</small></span>
+            </a></li>
+            <li><a href="intelligence-artificielle.html" data-expertise="intelligence-artificielle">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Intelligence Artificielle</strong><small>Automatiser ce qui vous prend vos soirées</small></span>
+            </a></li>
+          </ul>
         </div>
       </li>
       <li><a href="resultats.html">Résultats</a></li>
@@ -208,10 +261,11 @@
   </nav>
 
   <div class="header-actions">
-    <a href="contact.html" class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
+  </div>
   </div>
 </header>
 
@@ -230,7 +284,18 @@
     <span class="a1__ronds a1__ronds--bas" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 
     <div class="a1__dedans">
-      <p class="a1__pastille">SEO &amp; GEO et création de site</p>
+
+      <div class="a1__preuve a1__preuve--haut">
+        <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+           aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
+          <span class="a1__visages" aria-hidden="true">
+            <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
+          </span>
+          <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+          <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <b>5/5</b>
+        </a>
+      </div>
 
       <!-- Seul ChatGPT est dans le texte de la page : c'est lui que lisent un
            moteur de recherche et un visiteur sans JavaScript. Les trois autres
@@ -242,7 +307,7 @@
             <span class="a1__plateforme"><span class="a1__rond a1__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span><span class="visually-hidden">Perplexity</span></span>
             <span class="a1__plateforme"><span class="a1__rond a1__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span><span class="visually-hidden">ChatGPT</span></span>
           </template></span><span data-mots>IA,</span><br>
-        <span data-mots>mais ils trouvent vos <span class="a1__surligne">concurrents</span><span class="a1__point a1__point--fin">.</span></span>
+        <span data-mots>mais ils trouvent vos <span class="a1__insecable"><span class="a1__surligne">concurrents</span><span class="a1__point a1__point--fin">.</span></span></span>
       </h1>
 
       <p class="a1__sous">On refait votre site et votre référencement pour que vous passiez devant vos concurrents, sur Google comme dans les IA.</p>
@@ -259,7 +324,9 @@
         </a>
       </p>
 
-      <!-- La preuve sous les boutons : la note Google, reelle, avec les
+      <!-- La preuve en haut du bandeau, a la place du sur-titre. Elle perd son
+           fond : Nathan, 4 novembre 2026. La note reste vraie, c'est la bulle
+           blanche qui saute. La preuve sous les boutons : la note Google, reelle, avec les
            initiales des personnes qui ont laisse un avis. Pas de visage
            invente a cote d'une note reelle. -->
       <p class="a1__gages">
@@ -267,52 +334,9 @@
         <span><svg class="icon" aria-hidden="true"><use href="#i-cible"/></svg>14 mots-clés sur 14 placés en première page</span>
       </p>
 
-      <div class="a1__preuve">
-        <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
-           aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
-          <span class="a1__visages" aria-hidden="true">
-            <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
-          </span>
-          <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
-          <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <b>5/5</b>
-        </a>
-      </div>
     </div>
   </section>
 
-<!-- ============================ A2 : LA BANDE ==============================
-     Fond blanc, filets en haut et en bas, la mention fixe a gauche et les
-     sept marques qui defilent a droite. La piste est doublee : la copie est
-     cachee aux lecteurs d'ecran, elle ne sert qu'a boucler sans saut.
-     ========================================================================= -->
-  <section id="accueil-s2" class="a2" aria-label="Là où vos clients vous cherchent">
-    <div class="a2__dedans">
-      <p class="a2__mention">Là où vos clients vous cherchent</p>
-      <div class="a2__piste-cadre">
-        <div class="a2__piste">
-          <span class="a2__groupe">
-            <span class="a2__marque"><span class="a2__rond "><svg class="icon" aria-hidden="true"><use href="#i-google"/></svg></span>Google</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--maps"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg></span>Google Maps</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--bing"><svg class="icon" aria-hidden="true"><use href="#i-bing"/></svg></span>Bing</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>ChatGPT</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--claude"><svg class="icon" aria-hidden="true"><use href="#i-claude"/></svg></span>Claude</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--gemini"><svg class="icon" aria-hidden="true"><use href="#i-gemini"/></svg></span>Gemini</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span>Perplexity</span>
-          </span>
-          <span class="a2__groupe" aria-hidden="true">
-            <span class="a2__marque"><span class="a2__rond "><svg class="icon" aria-hidden="true"><use href="#i-google"/></svg></span>Google</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--maps"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg></span>Google Maps</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--bing"><svg class="icon" aria-hidden="true"><use href="#i-bing"/></svg></span>Bing</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>ChatGPT</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--claude"><svg class="icon" aria-hidden="true"><use href="#i-claude"/></svg></span>Claude</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--gemini"><svg class="icon" aria-hidden="true"><use href="#i-gemini"/></svg></span>Gemini</span>
-            <span class="a2__marque"><span class="a2__rond a2__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span>Perplexity</span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
 
 <!-- ===================== A3 : LA VIDEO, PUIS LES CHIFFRES ==================
      Pas de sur-titre, pas de titre, pas de chapeau : on sort de la bande des
@@ -379,8 +403,6 @@
         </ol>
       </div>
 
-      <p class="a3__note">Chiffres mesurés chez des clients que nous accompagnons, sur les trente derniers jours.</p>
-
       <p class="a3__action">
         <a href="test-visibilite.html" class="a1__bouton">
           <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -393,50 +415,6 @@
   </section>
 
 <!-- ======================= S2 : LE CALCUL QUI DÉCIDE ======================== -->
-<!-- ======================= A4 : LES CHIFFRES, SUR FOND NUIT ================
-     La premiere respiration foncee de la page. Quatre nombres enormes, rien
-     d'autre, chacun sous le logo de l'outil d'ou il sort. Les compteurs
-     montent de zero, decales de 120 ms. Aucun chiffre n'est repris de la
-     section du dessus : ici ce sont les clics, les liens, la fiche et la
-     couverture de mots-cles.
-     ========================================================================= -->
-  <section id="accueil-s4" class="a4" data-fond="sombre" aria-labelledby="a4-titre">
-    <span class="a4__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-
-    <div class="a4__dedans">
-      <p id="a4-titre" class="a4__sur-titre">Nos performances</p>
-
-      <ol class="a4__grille">
-        <li class="a4__carte">
-          <span class="a4__logo"><svg class="icon" aria-hidden="true"><use href="#i-search-console"/></svg></span>
-          <b class="a4__nombre"><span data-compteur="53500" data-compteur-delai="0">53&#8239;500</span></b>
-          <p class="a4__legende">affichages par mois dans Google</p>
-          <p class="a4__source">Search Console</p>
-        </li>
-        <li class="a4__carte">
-          <span class="a4__logo"><svg class="icon" aria-hidden="true"><use href="#i-analytics"/></svg></span>
-          <b class="a4__nombre"><span class="a4__signe">+</span><span data-compteur="12.7" data-compteur-delai="120">12,7</span>&#8239;%</b>
-          <p class="a4__legende">de nouveaux visiteurs venus de Google</p>
-          <p class="a4__source">Analytics</p>
-        </li>
-        <li class="a4__carte">
-          <span class="a4__logo"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg></span>
-          <b class="a4__nombre"><span data-compteur="175" data-compteur-delai="240">175</span></b>
-          <p class="a4__legende">vues de la fiche Google en un mois</p>
-          <p class="a4__source">Google Business</p>
-        </li>
-        <li class="a4__carte">
-          <span class="a4__logo"><svg class="icon" aria-hidden="true"><use href="#i-semrush"/></svg></span>
-          <b class="a4__nombre"><span data-compteur="589" data-compteur-delai="360">589</span></b>
-          <p class="a4__legende">mots-clés positionnés sur un seul site</p>
-          <p class="a4__source">Semrush</p>
-        </li>
-      </ol>
-
-      <p class="a4__pied">Relevés dans les comptes de nos clients. Les accès restent à leur nom.</p>
-    </div>
-  </section>
-
 <!-- ========================= A5 : LES DEUX LEVIERS =========================
      Fond creme avec un halo bleu a droite. Deux colonnes hautes : a gauche
      le referencement, a droite le site. Chacune porte une maquette qui
@@ -447,7 +425,12 @@
      l'image en deux entre l'ancien site et le site refait.
      Les deux maquettes sont dessinees, aucune capture d'un site client.
      ========================================================================= -->
-  <section id="accueil-s5" class="a5" aria-labelledby="a5-titre">
+  <section id="accueil-s5" class="a5 a5--nuit" data-fond="sombre" aria-labelledby="a5-titre">
+    <span class="a6__arc" aria-hidden="true">
+      <i class="a6__arc-cercle a6__arc-cercle--3"></i>
+      <i class="a6__arc-cercle a6__arc-cercle--2"></i>
+      <i class="a6__arc-cercle a6__arc-cercle--1"></i>
+    </span>
     <span class="a5__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 
     <div class="a5__dedans">
@@ -487,6 +470,17 @@
             <li><span class="a5__rond a5__rond--claude"><svg class="icon" aria-hidden="true"><use href="#i-claude"/></svg></span>Claude</li>
             <li><span class="a5__rond a5__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span>Perplexity</li>
           </ul>
+          <p class="a5__voir">
+            <a href="test-visibilite.html" class="a1__bouton">
+              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+              Tester ma visibilité
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a href="pack.html#pack-s4" class="a1__bouton a1__bouton--bleu">
+              Voir nos offres
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
         </article>
 
         <!-- ---------------------- a droite : le site ---------------------- -->
@@ -495,22 +489,18 @@
           <h3 class="a5__nom">Le site</h3>
           <p class="a5__phrase">On refait la page qui reçoit ces visiteurs, pour qu&rsquo;elle transforme la visite en appel.</p>
 
-          <div class="a5__compare" data-compare style="--x: 46%">
-            <div class="a5__maquette a5__maquette--avant" aria-hidden="true">
-              <span class="a5__faux-barre"><i></i><i></i><i></i></span>
-              <span class="a5__faux-titre"></span>
-              <span class="a5__faux-bloc"></span>
-              <span class="a5__faux-ligne"></span>
-              <span class="a5__faux-ligne a5__faux-ligne--courte"></span>
-              <span class="a5__faux-ligne"></span>
-              <span class="a5__faux-ligne a5__faux-ligne--courte"></span>
+          <!-- L'avant-apres d'un vrai site : Legaut Construction, maconnerie
+               dans le Jura. A gauche son ancien site, releve dans les archives
+               du web au 11 mars 2026 ; a droite celui qu'on a livre. Aucune
+               personne sur les deux captures, verifie le 6 novembre 2026. -->
+          <div class="a5__compare a5__compare--reel" data-compare style="--x: 46%">
+            <div class="a5__maquette a5__maquette--avant">
+              <img src="assets/img/realisation-legaut-avant.jpg" width="800" height="419" loading="lazy" decoding="async"
+                   alt="L&rsquo;ancien site de Légaut Construction, avant la refonte">
             </div>
-            <div class="a5__maquette a5__maquette--apres" aria-hidden="true">
-              <span class="a5__bandeau"></span>
-              <span class="a5__faux-titre"></span>
-              <span class="a5__faux-ligne"></span>
-              <span class="a5__faux-bouton"></span>
-              <span class="a5__faux-cartes"><i></i><i></i><i></i></span>
+            <div class="a5__maquette a5__maquette--apres">
+              <img src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async"
+                   alt="Le site de Légaut Construction refait par OBT Agency">
             </div>
             <span class="a5__barre" aria-hidden="true"><i></i></span>
             <span class="a5__etiquette a5__etiquette--avant" aria-hidden="true">Avant</span>
@@ -519,24 +509,223 @@
                    aria-label="Comparer l&rsquo;ancien site et le site refait">
           </div>
 
+          <p class="a5__source"><a href="https://www.legautconstruction.fr/" target="_blank" rel="noopener">Légaut Construction</a>, maçonnerie dans le Jura. Tirez la poignée.</p>
           <p class="a5__legende">Ce qui change pour vos clients</p>
           <ul class="a5__atouts">
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Lisible du premier coup sur un téléphone</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Appeler ou demander un devis en un geste</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Vos chantiers et vos avis, mis en avant</li>
           </ul>
+          <p class="a5__voir">
+            <a href="test-visibilite.html" class="a1__bouton">
+              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+              Tester ma visibilité
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a href="site-internet.html#site-internet-s3" class="a1__bouton a1__bouton--bleu">
+              Voir nos offres
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
         </article>
 
       </div>
 
-      <!-- Les deux moities se vendent ensemble : le bouton mene a la page
-           du pack, pas au formulaire. 2 novembre 2026. -->
-      <p class="a5__action">
-        <a href="pack.html" class="a1__bouton a1__bouton--bleu">
-          Voir le pack, le site est dedans
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
-      </p>
+      <!-- Le bouton commun sous les deux colonnes a saute le 6 novembre 2026 :
+           chaque colonne porte le sien, vers les offres qui lui correspondent
+           (les formules de referencement, les offres de site). -->
+    </div>
+  </section>
+
+<!-- ======================= A4 : NOS PERFORMANCES ===========================
+     Depuis le 6 novembre 2026, la section des resultats des pages de secteur,
+     en grand : trois rangees de trois tableaux de bord (les fenetres
+     attendent leurs captures), puis le carrousel de tous les sites livres.
+     Chaque carte ouvre le vrai site du client dans un autre onglet.
+     ========================================================================= -->
+  <section id="accueil-s4" class="sr" aria-labelledby="a4-titre">
+    <span class="sr__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="sr__dedans">
+      <div class="sr__tete">
+        <p class="sr__sur-titre">Nos performances</p>
+        <h2 id="a4-titre" class="sr__titre">Ce que ça donne, dans les outils et en ligne.</h2>
+        <p class="sr__chapeau">Les mêmes écrans que nos clients reçoivent chaque mois, commentés. Rien n&rsquo;est fait maison&nbsp;: tout se vérifie dans les outils de Google.</p>
+      </div>
+
+      <ul class="sr__grille sr__grille--trois">
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-search-console"/></svg>Search Console</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i><i></i></span>
+                <svg class="sr__courbe" viewBox="0 0 300 100" preserveAspectRatio="none">
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14 L300 100 L0 100 Z"/>
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14"/>
+                </svg>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les clics depuis Google</b><span>Ceux qui ont cliqué sur le site après une recherche.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-search-console"/></svg>Search Console</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i></span>
+                <span class="sr__barres"><i style="--h: 30%"></i><i style="--h: 38%"></i><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 61%"></i><i class="est-vif" style="--h: 78%"></i><i class="est-vif" style="--h: 96%"></i></span>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les positions</b><span>Les recherches où le site sort et à quelle place.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-search-console"/></svg>Search Console</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i><i></i></span>
+                <svg class="sr__courbe" viewBox="0 0 300 100" preserveAspectRatio="none">
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14 L300 100 L0 100 Z"/>
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14"/>
+                </svg>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les affichages</b><span>Combien de fois le site apparaît dans les résultats.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg>Fiche Google</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i></span>
+                <span class="sr__barres"><i style="--h: 30%"></i><i style="--h: 38%"></i><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 61%"></i><i class="est-vif" style="--h: 78%"></i><i class="est-vif" style="--h: 96%"></i></span>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les appels depuis la fiche</b><span>Ceux qui ont appelé directement depuis Google.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg>Fiche Google</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i><i></i></span>
+                <svg class="sr__courbe" viewBox="0 0 300 100" preserveAspectRatio="none">
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14 L300 100 L0 100 Z"/>
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14"/>
+                </svg>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les itinéraires demandés</b><span>Ceux qui ont lancé le trajet jusqu&rsquo;à l&rsquo;entreprise.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-maps"/></svg>Fiche Google</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i></span>
+                <span class="sr__barres"><i style="--h: 30%"></i><i style="--h: 38%"></i><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 61%"></i><i class="est-vif" style="--h: 78%"></i><i class="est-vif" style="--h: 96%"></i></span>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les vues de la fiche</b><span>Combien de personnes ont vu la fiche sur Google et Maps.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-analytics"/></svg>Google Analytics</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i><i></i></span>
+                <svg class="sr__courbe" viewBox="0 0 300 100" preserveAspectRatio="none">
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14 L300 100 L0 100 Z"/>
+                  <path d="M0 82 L40 78 L80 80 L120 66 L160 60 L200 44 L240 34 L300 14"/>
+                </svg>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les visiteurs venus de Google</b><span>Combien arrivent sur le site et ce qu&rsquo;ils y font.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-analytics"/></svg>Google Analytics</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i></span>
+                <span class="sr__barres"><i style="--h: 30%"></i><i style="--h: 38%"></i><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 61%"></i><i class="est-vif" style="--h: 78%"></i><i class="est-vif" style="--h: 96%"></i></span>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Les demandes de devis</b><span>Les visiteurs qui ont rempli le formulaire ou appelé.</span></p>
+        </li>
+        <li class="sr__fenetre">
+          <div class="sr__cadre">
+            <span class="sr__barre"><i></i><i></i><i></i><span class="sr__outil"><svg class="icon" aria-hidden="true"><use href="#i-semrush"/></svg>Semrush</span></span>
+            <span class="sr__ecran">
+              <span class="sr__faux" aria-hidden="true">
+                <span class="sr__chiffres"><i></i><i></i><i></i></span>
+                <span class="sr__barres"><i style="--h: 30%"></i><i style="--h: 38%"></i><i style="--h: 34%"></i><i style="--h: 52%"></i><i style="--h: 61%"></i><i class="est-vif" style="--h: 78%"></i><i class="est-vif" style="--h: 96%"></i></span>
+              </span>
+              <span class="sr__venir">Capture à venir</span>
+            </span>
+          </div>
+          <p class="sr__legende"><b>Un mot-clé suivi</b><span>La place gagnée mois après mois sur une recherche précise.</span></p>
+        </li>
+      </ul>
+
+      <p class="sr__entre">Et les sites qu&rsquo;on a mis en ligne</p>
+    </div>
+    <div class="carousel pr__carrousel" data-carousel>
+      <button class="carousel-arrow carousel-arrow--prev" type="button" data-carousel-prev aria-label="Réalisation précédente">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </button>
+
+      <div class="carousel-viewport">
+        <ul class="carousel-track" data-carousel-track>
+          <li class="work-card" data-carousel-slide>
+            <a class="work-open" href="https://www.legautconstruction.fr/" target="_blank" rel="noopener" aria-label="Voir le site Légaut Construction (nouvel onglet)">
+              <img class="work-shot" src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Légaut Construction, réalisé par OBT Agency">
+              <span class="work-caption">
+                <span class="work-title">Légaut Construction</span>
+                <span class="work-sub">Maçonnerie et éco-construction &middot; Jura</span>
+              </span>
+            </a>
+          </li>
+          <li class="work-card" data-carousel-slide>
+            <a class="work-open" href="https://tnature.fr/" target="_blank" rel="noopener" aria-label="Voir le site T&rsquo;Nature (nouvel onglet)">
+              <img class="work-shot" src="assets/img/realisation-tnature.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site T&rsquo;Nature, réalisé par OBT Agency">
+              <span class="work-caption">
+                <span class="work-title">T&rsquo;Nature</span>
+                <span class="work-sub">Gîte et chambres d&rsquo;hôtes &middot; Château-Chalon</span>
+              </span>
+            </a>
+          </li>
+          <li class="work-card" data-carousel-slide>
+            <a class="work-open" href="https://www.les-terrasses-de-merlue.com/" target="_blank" rel="noopener" aria-label="Voir le site Les Terrasses de Merlue (nouvel onglet)">
+              <img class="work-shot" src="assets/img/realisation-merlue.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Les Terrasses de Merlue, réalisé par OBT Agency">
+              <span class="work-caption">
+                <span class="work-title">Les Terrasses de Merlue</span>
+                <span class="work-sub">Gîte de groupe 4 épis &middot; Lac de Vouglans</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="carousel-arrow carousel-arrow--next" type="button" data-carousel-next aria-label="Réalisation suivante">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </button>
     </div>
   </section>
 
@@ -547,15 +736,10 @@
      la maquette change avec elle. Toute la section repond a une seule
      question : est-ce que j'aurai quelque chose a gerer.
      ========================================================================= -->
-  <section id="accueil-s6" class="a6" data-fond="sombre" aria-labelledby="a6-titre">
-    <!-- L'arc de la section « L'expertise d'OBT » du site actuel : trois
-         cercles concentriques de trois largeurs d'ecran, dont on ne voit que
-         la calotte. Repris ici en bleu nuit. -->
-    <span class="a6__arc" aria-hidden="true">
-      <i class="a6__arc-cercle a6__arc-cercle--3"></i>
-      <i class="a6__arc-cercle a6__arc-cercle--2"></i>
-      <i class="a6__arc-cercle a6__arc-cercle--1"></i>
-    </span>
+  <!-- La methode commence droite depuis le 6 novembre 2026 : l'arc en
+       degrade ouvre deja « Ce qu'on fait », le repeter ici faisait deux fois
+       la meme entree. -->
+  <section id="accueil-s6" class="a6 a6--droit" data-fond="sombre" aria-labelledby="a6-titre">
     <span class="a6__ronds" aria-hidden="true"><i></i><i></i></span>
 
     <div class="a6__dedans">
@@ -583,13 +767,7 @@
               </ul>
             </div>
 
-            <div class="a6__vue a6__vue--2" aria-hidden="true">
-              <span class="a6__bandeau"></span>
-              <span class="a6__titre-faux"></span>
-              <span class="a6__ligne"></span>
-              <span class="a6__bouton-faux"></span>
-              <span class="a6__cartes"><i></i><i></i><i></i></span>
-            </div>
+            <div class="a6__vue a6__vue--2" aria-hidden="true"><img class="a6__capture" src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async" alt=""></div>
 
             <div class="a6__vue a6__vue--3" aria-hidden="true">
               <span class="a6__entete"><i></i><b>Les positions</b></span>
@@ -653,6 +831,16 @@
         </ol>
 
       </div>
+
+      <!-- De la methode a l'appel final, la page n'avait plus aucun bouton.
+           Celui-ci ouvre la prise de rendez-vous. Nathan, 6 novembre 2026. -->
+      <p class="a6__action">
+        <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
+          <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+          Nous faire confiance
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </p>
     </div>
   </section>
 
@@ -817,7 +1005,60 @@
     </div>
   </section>
 
-<!-- ========================== A8 : LA TRANSPARENCE =========================
+<!-- ========================= A9 : QUI FAIT LE TRAVAIL ======================
+     Repond a « a qui je parle ». Un seul cadre, une seule photo : les deux
+     freres de trois quarts, un de chaque cote. Deux pastilles posees sur
+     l'image nomment celui de gauche et celui de droite, comme les pastilles
+     flottantes de Blast.
+     LA PHOTO : le cadre porte pour l'instant deux silhouettes dessinees. Pour
+     poser la vraie image, remplacer le <svg class="a9__silhouettes"> par :
+       <img class="a9__photo" src="assets/img/tom-et-nathan.jpg?v=408"
+            width="1000" height="1200" loading="lazy" decoding="async"
+            alt="Tom et Nathan Boyer">
+     Cadrage a respecter : Tom a gauche, Nathan a droite, de trois quarts,
+     tous les deux tournes vers le centre. Les pastilles ne bougent pas.
+     ========================================================================= -->
+  <section id="accueil-s9" class="a9" aria-labelledby="a9-titre">
+    <span class="a9__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="a9__dedans">
+
+      <div class="a9__scene">
+        <div class="a9__cadre">
+          <svg class="a9__silhouettes" viewBox="0 0 300 360" aria-hidden="true" focusable="false">
+            <g class="a9__silhouette a9__silhouette--droite">
+              <circle cx="200" cy="156" r="46"/>
+              <path d="M110 360c0-100 40-162 90-162s90 62 90 162z"/>
+            </g>
+            <g class="a9__silhouette a9__silhouette--gauche">
+              <circle cx="100" cy="170" r="46"/>
+              <path d="M10 360c0-92 40-148 90-148s90 56 90 148z"/>
+            </g>
+          </svg>
+          <span class="a9__pastille a9__pastille--gauche"><i>T</i>Tom Boyer</span>
+          <span class="a9__pastille a9__pastille--droite"><i>N</i>Nathan Boyer</span>
+        </div>
+      </div>
+
+      <div class="a9__mots">
+        <p class="a9__sur-titre">Qui travaille sur votre dossier</p>
+        <h2 id="a9-titre" class="a9__titre">Deux frères experts<br>
+          <span class="a1__insecable"><span class="a1__surligne est-peint">pour vous</span><span class="a1__point a1__point--fin">.</span></span></h2>
+        <p class="a9__chapeau">Vous avez au téléphone ceux qui font le travail. Pas un chargé de compte qui transmet ce que vous venez de dire.</p>
+        <p class="a9__texte">On prend votre dossier à deux et on le garde du début à la fin : le premier appel, le rendez-vous, le site, les corrections, le rapport du mois. Personne ne reprend le dossier en route, personne ne redécouvre votre métier. Quand vous rappelez six mois plus tard, c&rsquo;est la même voix et elle sait déjà de quoi vous parlez.</p>
+        <p class="a9__pied">Si quelque chose ne va pas, vous savez à qui le dire.</p>
+        <p class="a9__action">
+          <a href="test-visibilite.html" class="a1__bouton">
+            <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
+            Tester votre visibilité
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================== A8 : LA TRANSPARENCE =========================
      Fond creme, huit cartes blanches, une par outil, chacune avec son vrai
      logo en couleur et un point vert qui bat. Les cartes entrent en cascade.
      Elle repond a une seule question : comment savoir que vous ne me
@@ -893,52 +1134,6 @@
     </div>
   </section>
 
-  <!-- ========================= A9 : QUI FAIT LE TRAVAIL ======================
-     Repond a « a qui je parle ». Un seul cadre, une seule photo : les deux
-     freres de trois quarts, un de chaque cote. Deux pastilles posees sur
-     l'image nomment celui de gauche et celui de droite, comme les pastilles
-     flottantes de Blast.
-     LA PHOTO : le cadre porte pour l'instant deux silhouettes dessinees. Pour
-     poser la vraie image, remplacer le <svg class="a9__silhouettes"> par :
-       <img class="a9__photo" src="assets/img/tom-et-nathan.jpg?v=366"
-            width="1000" height="1200" loading="lazy" decoding="async"
-            alt="Tom et Nathan Boyer">
-     Cadrage a respecter : Tom a gauche, Nathan a droite, de trois quarts,
-     tous les deux tournes vers le centre. Les pastilles ne bougent pas.
-     ========================================================================= -->
-  <section id="accueil-s9" class="a9" aria-labelledby="a9-titre">
-    <span class="a9__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <div class="a9__dedans">
-
-      <div class="a9__scene">
-        <div class="a9__cadre">
-          <svg class="a9__silhouettes" viewBox="0 0 300 360" aria-hidden="true" focusable="false">
-            <g class="a9__silhouette a9__silhouette--droite">
-              <circle cx="200" cy="156" r="46"/>
-              <path d="M110 360c0-100 40-162 90-162s90 62 90 162z"/>
-            </g>
-            <g class="a9__silhouette a9__silhouette--gauche">
-              <circle cx="100" cy="170" r="46"/>
-              <path d="M10 360c0-92 40-148 90-148s90 56 90 148z"/>
-            </g>
-          </svg>
-          <span class="a9__pastille a9__pastille--gauche"><i>T</i>Tom Boyer</span>
-          <span class="a9__pastille a9__pastille--droite"><i>N</i>Nathan Boyer</span>
-        </div>
-      </div>
-
-      <div class="a9__mots">
-        <p class="a9__sur-titre">Qui travaille sur votre dossier</p>
-        <h2 id="a9-titre" class="a9__titre">Deux frères experts<br>
-          <span class="a1__surligne">pour vous</span><span class="a1__point a1__point--fin">.</span></h2>
-        <p class="a9__chapeau">Vous avez au téléphone ceux qui font le travail. Pas un chargé de compte qui transmet ce que vous venez de dire.</p>
-        <p class="a9__texte">On prend votre dossier à deux et on le garde du début à la fin : le premier appel, le rendez-vous, le site, les corrections, le rapport du mois. Personne ne reprend le dossier en route, personne ne redécouvre votre métier. Quand vous rappelez six mois plus tard, c&rsquo;est la même voix et elle sait déjà de quoi vous parlez.</p>
-        <p class="a9__pied">Si quelque chose ne va pas, vous savez à qui le dire.</p>
-      </div>
-
-    </div>
-  </section>
-
 
 
 
@@ -962,8 +1157,7 @@
       <div class="a10__tete">
         <div>
           <p class="a10__sur-titre">Les avis</p>
-          <h2 id="a10-titre" class="a10__titre">Ce que disent<br>
-            <span class="a1__surligne">nos clients</span><span class="a1__point a1__point--fin">.</span></h2>
+          <h2 id="a10-titre" class="a10__titre">Ce que disent <span class="a1__insecable"><span class="a1__surligne est-peint">nos clients</span><span class="a1__point a1__point--fin">.</span></span></h2>
           <p class="a10__chapeau">Pas de témoignage recopié sur notre site : des avis publiés sur notre fiche Google, sous leur nom, que n&rsquo;importe qui peut aller relire.</p>
         </div>
 
@@ -1050,7 +1244,7 @@
      pas tenir la promesse des 24 heures.
      LA PHOTO DE TOM : la signature porte une pastille a son initiale. Pour
      poser sa photo, remplacer <span class="a11__initiale">T</span> par :
-       <img class="a11__visage" src="assets/img/tom.jpg?v=366" width="96"
+       <img class="a11__visage" src="assets/img/tom.jpg?v=408" width="96"
             height="96" loading="lazy" decoding="async" alt="Tom Boyer">
      ========================================================================= -->
   <section id="accueil-s11" class="a11" aria-labelledby="a11-titre">
@@ -1065,7 +1259,7 @@
         <a class="a11__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
            aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
           <span class="a1__visages" aria-hidden="true">
-            <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
+            <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
           </span>
           <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
           <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -1081,7 +1275,7 @@
             Faire un test de visibilité
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
-          <a href="contact.html" class="a11__bouton a11__bouton--clair">
+          <a href="#rendez-vous" data-rdv-ouvrir class="a11__bouton a11__bouton--clair">
             Prendre rendez-vous
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
@@ -1128,14 +1322,14 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="resultats.html">Résultats</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Prendre rendez-vous</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
         </ul>
       </nav>
 
-      <div class="footer-col">
+      <div class="footer-col" id="rendez-vous">
         <p class="footer-col-title">Coordonnées</p>
         <ul>
-          <li><a href="contact.html#contact-s2">Formulaire de contact</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
           <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
           <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
           <li class="footer-col-plain">Partout en France, à distance</li>
@@ -1147,7 +1341,7 @@
     <div class="footer-bottom">
       <p>© 2026 OBT Agency. Tous droits réservés.</p>
       <p class="footer-legal">
-        <a href="contact.html">Contact</a>
+        <a href="#rendez-vous" data-rdv-ouvrir>Contact</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="confidentialite.html">Confidentialité</a>
         <a href="plan-du-site.html">Plan du site</a>
@@ -1159,32 +1353,11 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=366" defer></script>
-<!-- Visionneuse de réalisation : le site du client s'ouvre dans un cadre posé
-     par-dessus la page, avec une marge tout autour pour que le site de l'agence
-     reste visible derrière. Le cadre est vide tant qu'on ne l'ouvre pas : la
-     source de l'iframe n'est posée qu'au clic et retirée à la fermeture, sans
-     quoi la vidéo du site invité tournerait en fond en permanence. -->
-<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Aperçu d’une réalisation">
-  <div class="viewer-backdrop" data-viewer-close></div>
-  <div class="viewer-frame">
-    <div class="viewer-bar">
-      <span class="viewer-title" data-viewer-nom>Réalisation</span>
-      <button type="button" class="viewer-close" data-viewer-close aria-label="Fermer l’aperçu">
-        <svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg>
-      </button>
-    </div>
-    <!-- `sandbox` : les sites de démonstration gardent le droit de s'exécuter
-         et de rester de même origine, la visionneuse lit leur document pour
-         masquer le curseur et neutraliser leurs boutons, mais ils ne peuvent
-         plus emporter la fenêtre ailleurs, ouvrir de fenêtre, soumettre un
-         formulaire ni déclencher un téléchargement. -->
-    <iframe class="viewer-frame-page" data-viewer-iframe title="Site de la réalisation"
-            src="about:blank"
-            sandbox="allow-same-origin allow-scripts"
-            allow="autoplay; fullscreen; picture-in-picture"></iframe>
-  </div>
-</div>
+<script src="js/main.js?v=408" defer></script>
+<!-- La visionneuse qui ouvrait le site d'un client dans un cadre, par-dessus
+     la page, a ete retiree le 5 novembre 2026 : on ne reproduit jamais le site
+     d'un client chez nous. Sa capture est un lien vers son adresse, ouvert
+     dans un autre onglet. Regle de Nathan. -->
 
 <!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
      qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->

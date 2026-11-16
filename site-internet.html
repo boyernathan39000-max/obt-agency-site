@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico?v=366" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=366">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=366">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=366">
+<link rel="icon" href="favicon.ico?v=408" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
 <title>Création et refonte de site internet · OBT Agency</title>
 <meta name="description" content="Un site professionnel, rapide et construit pour le référencement dès la première page blanche. Création ou refonte, à la main, par nous.">
 <link rel="canonical" href="https://obt-agency.fr/site-internet.html">
@@ -21,14 +21,14 @@
 <meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=366">
-<link rel="stylesheet" href="css/style.css?v=366">
-<link rel="stylesheet" href="css/refonte.css?v=366">
+<link rel="stylesheet" href="css/tokens.css?v=408">
+<link rel="stylesheet" href="css/style.css?v=408">
+<link rel="stylesheet" href="css/refonte.css?v=408">
 <!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
      armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
 <!-- La page voisine est préchargée : le changement de page est alors instantané. -->
-<link rel="prefetch" href="contact.html" as="document">
-<link rel="prefetch" href="contact.html" as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
 <script>(function () {
   /* La seule chose que ce script fait encore : signaler que JavaScript
      repond. La feuille de style s'en sert pour les elements qui n'ont de
@@ -66,7 +66,6 @@
       "closes": "19:00"
     }],
     "areaServed": { "@type": "Country", "name": "France" },
-    "priceRange": "500 € à 5 000 €",
     "knowsLanguage": "fr"
   },
   {
@@ -125,12 +124,14 @@
 
   <symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
   <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 100 17h1.4a1.9 1.9 0 001.5-3 1.9 1.9 0 011.5-3h2.1a1.9 1.9 0 001.9-1.9A9.1 9.1 0 0012 3.5z"/><circle cx="8" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10.5" r="1"/></symbol>
+  <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
 </svg>
 
 <!-- ============================================================
      BANDE MENU, commune à toutes les pages (réf. barre de nav Articool)
      ============================================================ -->
 <header class="site-header" id="site-header">
+  <div class="site-header__barre">
   <a href="index.html" class="logo" aria-label="OBT Agency, accueil">
     <img class="brand-logo brand-logo--sombre" src="assets/img/logo-obt.png" width="1200" height="300"
          decoding="async" alt="">
@@ -142,16 +143,15 @@
 
   <nav class="nav" id="primary-nav" aria-label="Navigation principale">
     <ul class="nav-list">
-      <li><a href="index.html">Accueil</a></li>
       <li class="nav-produit" data-nav-produit>
         <button type="button" class="nav-produit__bouton" aria-expanded="false" aria-controls="menu-produit">
-          Prestations <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+          Nos services <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
         </button>
         <div class="nav-produit__panneau" id="menu-produit" hidden>
           <ul class="nav-produit__liste">
             <li class="est-avant"><a href="pack.html" data-produit="pack">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
-              <span class="nav-produit__texte"><strong>Pack <span class="a1__surligne est-peint">SEO &amp; GEO</span> +&nbsp;<span class="a1__surligne est-peint">Site Professionnel</span></strong></span>
+              <span class="nav-produit__texte"><strong>Référencement SEO &amp; GEO</strong></span>
             </a></li>
             <li><a href="site-internet.html" aria-current="page" data-produit="site">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
@@ -195,11 +195,63 @@
               Faire un test de visibilité
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
-            <a href="contact.html" class="a1__bouton a1__bouton--bleu">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
           </p>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-secteur">
+          Nos secteurs
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-secteur" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="artisans-btp.html" data-secteur="artisans-btp">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <span class="nav-produit__texte"><strong>Artisans &amp; BTP</strong><small>Charpentiers, maçons, électriciens, paysagistes</small></span>
+            </a></li>
+            <li><a href="hebergements.html" data-secteur="hebergements">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-maison"/></svg></span>
+              <span class="nav-produit__texte"><strong>Hébergements</strong><small>Gîtes, domaines, chambres d&rsquo;hôtes, hôtels</small></span>
+            </a></li>
+            <li><a href="autre.html" data-secteur="autre">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Autre</strong><small>Commerces, professions libérales, services</small></span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-expertise">
+          Nos expertises
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-expertise" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="seo.html" data-expertise="seo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-recherche"/></svg></span>
+              <span class="nav-produit__texte"><strong>SEO</strong><small>Sortir sur Google quand on cherche votre métier</small></span>
+            </a></li>
+            <li><a href="geo.html" data-expertise="geo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>
+              <span class="nav-produit__texte"><strong>GEO</strong><small>Être cité par ChatGPT, Gemini et Perplexity</small></span>
+            </a></li>
+            <li><a href="graphisme.html" data-expertise="graphisme">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Graphisme</strong><small>Logo, couleurs, charte, supports</small></span>
+            </a></li>
+            <li><a href="developpement.html" data-expertise="developpement">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Développement</strong><small>Sites, applications, outils sur mesure</small></span>
+            </a></li>
+            <li><a href="intelligence-artificielle.html" data-expertise="intelligence-artificielle">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Intelligence Artificielle</strong><small>Automatiser ce qui vous prend vos soirées</small></span>
+            </a></li>
+          </ul>
         </div>
       </li>
       <li><a href="resultats.html">Résultats</a></li>
@@ -208,10 +260,11 @@
   </nav>
 
   <div class="header-actions">
-    <a href="contact.html" class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
+  </div>
   </div>
 </header>
 
@@ -227,14 +280,24 @@
   <section id="site-internet-s1" class="p1" aria-labelledby="p1-titre">
     <span class="p1__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 
-    <div class="p1__dedans">
+    <div class="p1__dedans p1__dedans--centre">
       <div class="p1__mots">
-        <p class="a1__pastille p1__pastille">Création et refonte de site</p>
+        <div class="a1__preuve p1__preuve p1__preuve--haut">
+          <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+             aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
+            <span class="a1__visages" aria-hidden="true">
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
+            </span>
+            <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+            <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <b>5/5</b>
+          </a>
+        </div>
         <h1 id="p1-titre" class="p1__titre">Un beau site ne suffit pas.<br>
           <span class="a1__surligne est-peint">Il doit faire sonner le téléphone</span><span class="a1__point a1__point--fin">.</span></h1>
         <p class="p1__sous">On refait votre site de fond en comble, référencement posé dès le départ. Un visiteur qui arrive repart en demande de devis, pas en onglet fermé.</p>
         <p class="p1__action">
-          <a href="contact.html#contact-s2" class="a1__bouton">
+          <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton">
             <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
             Parler de votre projet
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
@@ -248,51 +311,6 @@
           <span><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Satisfait ou remboursé</span>
           <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Le site compris dans l&rsquo;abonnement</span>
         </p>
-        <div class="a1__preuve p1__preuve">
-          <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
-             aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
-            <span class="a1__visages" aria-hidden="true">
-              <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
-            </span>
-            <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
-            <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <b>5/5</b>
-          </a>
-        </div>
-      </div>
-
-      <div class="p1__vue">
-        <!-- Le comparateur est pose dans l'ecran de bureau : le chassis vient
-             du bloc .cadre, le comparateur ne change pas. 2 novembre 2026. -->
-        <div class="cadre cadre--mac p1__poste">
-          <div class="cadre__ecran">
-        <div class="a5__compare p1__compare" data-compare style="--x: 46%">
-          <div class="a5__maquette a5__maquette--avant" aria-hidden="true">
-            <span class="a5__faux-barre"><i></i><i></i><i></i></span>
-            <span class="a5__faux-titre"></span>
-            <span class="a5__faux-bloc"></span>
-            <span class="a5__faux-ligne"></span>
-            <span class="a5__faux-ligne a5__faux-ligne--courte"></span>
-            <span class="a5__faux-ligne"></span>
-            <span class="a5__faux-ligne a5__faux-ligne--courte"></span>
-          </div>
-          <div class="a5__maquette a5__maquette--apres" aria-hidden="true">
-            <span class="a5__bandeau"></span>
-            <span class="a5__faux-titre"></span>
-            <span class="a5__faux-ligne"></span>
-            <span class="a5__faux-bouton"></span>
-            <span class="a5__faux-cartes"><i></i><i></i><i></i></span>
-          </div>
-          <span class="a5__barre" aria-hidden="true"><i></i></span>
-          <span class="a5__etiquette a5__etiquette--avant" aria-hidden="true">Avant</span>
-          <span class="a5__etiquette a5__etiquette--apres" aria-hidden="true">Après</span>
-          <input class="a5__curseur" type="range" min="0" max="100" value="46" step="1"
-                 aria-label="Comparer l&rsquo;ancien site et le site refait">
-        </div>
-          </div>
-          <span class="cadre__menton" aria-hidden="true"></span>
-        </div>
-        <p class="p1__legende">Tirez la poignée : à gauche un site qui dort, à droite celui qu&rsquo;on livre.</p>
       </div>
     </div>
   </section>
@@ -322,31 +340,31 @@
       <div class="carousel-viewport">
         <ul class="carousel-track" data-carousel-track>
           <li class="work-card" data-carousel-slide>
-            <span class="work-open">
+            <a class="work-open" href="https://www.legautconstruction.fr/" target="_blank" rel="noopener" aria-label="Voir le site Légaut Construction (nouvel onglet)">
               <img class="work-shot" src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Légaut Construction, réalisé par OBT Agency">
               <span class="work-caption">
                 <span class="work-title">Légaut Construction</span>
                 <span class="work-sub">Maçonnerie et éco-construction &middot; Jura</span>
               </span>
-            </span>
+            </a>
           </li>
           <li class="work-card" data-carousel-slide>
-            <span class="work-open">
+            <a class="work-open" href="https://tnature.fr/" target="_blank" rel="noopener" aria-label="Voir le site T&rsquo;Nature (nouvel onglet)">
               <img class="work-shot" src="assets/img/realisation-tnature.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site T&rsquo;Nature, réalisé par OBT Agency">
               <span class="work-caption">
                 <span class="work-title">T&rsquo;Nature</span>
                 <span class="work-sub">Gîte et chambres d&rsquo;hôtes &middot; Château-Chalon</span>
               </span>
-            </span>
+            </a>
           </li>
           <li class="work-card" data-carousel-slide>
-            <span class="work-open">
+            <a class="work-open" href="https://www.les-terrasses-de-merlue.com/" target="_blank" rel="noopener" aria-label="Voir le site Les Terrasses de Merlue (nouvel onglet)">
               <img class="work-shot" src="assets/img/realisation-merlue.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Les Terrasses de Merlue, réalisé par OBT Agency">
               <span class="work-caption">
                 <span class="work-title">Les Terrasses de Merlue</span>
                 <span class="work-sub">Gîte de groupe 4 épis &middot; Lac de Vouglans</span>
               </span>
-            </span>
+            </a>
           </li>
         </ul>
       </div>
@@ -391,7 +409,7 @@
             <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Site dessiné pour vous, pages et fonctions sur mesure</span><b class="visually-hidden">non compris</b></li>
           </ul>
           <p class="po__action">
-            <a href="contact.html" class="a1__bouton a1__bouton--nuit">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--nuit">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
@@ -399,7 +417,7 @@
           <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
              aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
             <span class="a1__visages po__visages" aria-hidden="true">
-              <i>B</i><i>R</i><i>T</i><i class="a1__visages--plus">+4</i>
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
             </span>
             <span class="po__dit">
               <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
@@ -427,7 +445,7 @@
             <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Site dessiné pour vous, pages et fonctions sur mesure</span><b class="visually-hidden">non compris</b></li>
           </ul>
           <p class="po__action">
-            <a href="contact.html" class="a1__bouton a1__bouton--bleu">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
@@ -435,7 +453,7 @@
           <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
              aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
             <span class="a1__visages po__visages" aria-hidden="true">
-              <i>B</i><i>R</i><i>T</i><i class="a1__visages--plus">+4</i>
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
             </span>
             <span class="po__dit">
               <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
@@ -462,7 +480,7 @@
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Site dessiné pour vous, pages et fonctions sur mesure</span><b class="visually-hidden">compris</b></li>
           </ul>
           <p class="po__action">
-            <a href="contact.html" class="a1__bouton a1__bouton--nuit">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--nuit">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
@@ -470,7 +488,7 @@
           <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
              aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
             <span class="a1__visages po__visages" aria-hidden="true">
-              <i>B</i><i>R</i><i>T</i><i class="a1__visages--plus">+4</i>
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
             </span>
             <span class="po__dit">
               <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
@@ -612,14 +630,7 @@
               <p class="e-chapitre">Vous parcourez, vous validez</p>
               <div class="e-navigateur">
                 <span class="e-fenetre"><i></i><i></i><i></i><b class="e-url">version ordinateur</b></span>
-                <div class="e-page e-page--serre">
-                  <span class="e-entete"><i class="e-marque"></i><i class="e-nav"></i><i class="e-nav"></i><b class="e-cta"></b></span>
-                  <span class="e-heros">
-                    <span class="e-mots"><i class="e-titre"></i><i class="e-ligne"></i><i class="e-ligne e-ligne--court"></i></span>
-                    <i class="e-image"></i>
-                  </span>
-                  <span class="e-trio"><i></i><i></i><i></i></span>
-                </div>
+                <div class="e-page e-page--capture"><img src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Légaut Construction"></div>
               </div>
               <p class="e-valide"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Vos retours, puis votre accord</p>
             </div>
@@ -628,21 +639,8 @@
             <div class="p3__vue">
               <p class="e-chapitre">Le même site, sur téléphone</p>
               <div class="e-duo">
-                <div class="e-page e-page--mince">
-                  <span class="e-entete"><i class="e-marque"></i><i class="e-nav"></i><b class="e-cta"></b></span>
-                  <span class="e-heros">
-                    <span class="e-mots"><i class="e-titre"></i><i class="e-ligne"></i></span>
-                    <i class="e-image"></i>
-                  </span>
-                </div>
-                <div class="e-tel">
-                  <span class="e-tel__encoche"></span>
-                  <i class="e-titre"></i>
-                  <i class="e-ligne"></i>
-                  <i class="e-ligne e-ligne--court"></i>
-                  <i class="e-tel__image"></i>
-                  <b class="e-bouton">Appeler</b>
-                </div>
+                <div class="e-page e-page--capture"><img src="assets/img/realisation-merlue.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Les Terrasses de Merlue"></div>
+                <div class="e-tel e-tel--capture"><span class="e-tel__encoche"></span><img src="assets/img/realisation-merlue-mobile.jpg" width="585" height="996" loading="lazy" decoding="async" alt="Le site Les Terrasses de Merlue sur téléphone"></div>
               </div>
             </div>
 
@@ -663,14 +661,8 @@
             <div class="p3__vue">
               <p class="e-chapitre">Avant d&rsquo;ouvrir au public</p>
               <div class="e-navigateur">
-                <span class="e-fenetre"><i></i><i></i><i></i><b class="e-url e-url--sur"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>https://votre-entreprise.fr</b></span>
-                <div class="e-page e-page--serre">
-                  <span class="e-entete"><i class="e-marque"></i><i class="e-nav"></i><i class="e-nav"></i><b class="e-cta"></b></span>
-                  <span class="e-heros">
-                    <span class="e-mots"><i class="e-titre"></i><i class="e-ligne"></i></span>
-                    <i class="e-image"></i>
-                  </span>
-                </div>
+                <span class="e-fenetre"><i></i><i></i><i></i><b class="e-url e-url--sur"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>https://tnature.fr</b></span>
+                <div class="e-page e-page--capture"><img src="assets/img/realisation-tnature.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site T&rsquo;Nature"></div>
               </div>
               <span class="e-lancement"><b>Certificat</b><b>Sauvegardes</b><b>Mentions légales</b><b>Cookies</b></span>
             </div>
@@ -694,14 +686,8 @@
             <div class="p3__vue">
               <p class="e-chapitre">Le jour de la mise en ligne</p>
               <div class="e-navigateur">
-                <span class="e-fenetre"><i></i><i></i><i></i><b class="e-url">votre-entreprise.fr</b></span>
-                <div class="e-page e-page--serre">
-                  <span class="e-entete"><i class="e-marque"></i><i class="e-nav"></i><i class="e-nav"></i><b class="e-cta e-cta--vif"></b></span>
-                  <span class="e-heros">
-                    <span class="e-mots"><i class="e-titre"></i><i class="e-ligne"></i></span>
-                    <i class="e-image"></i>
-                  </span>
-                </div>
+                <span class="e-fenetre"><i></i><i></i><i></i><b class="e-url">legautconstruction.fr</b></span>
+                <div class="e-page e-page--capture"><img src="assets/img/realisation-legaut.jpg" width="1600" height="838" loading="lazy" decoding="async" alt="Page d&rsquo;accueil du site Légaut Construction"></div>
               </div>
               <span class="e-lancement"><b>Nom de domaine</b><b>Formulaire testé</b><b>Google et Bing</b></span>
             </div>
@@ -889,7 +875,7 @@
         <a class="a11__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
            aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
           <span class="a1__visages" aria-hidden="true">
-            <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
+            <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
           </span>
           <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
           <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -905,7 +891,7 @@
             Voir la qualité de votre référencement
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
-          <a href="contact.html" class="a11__bouton a11__bouton--clair">
+          <a href="#rendez-vous" data-rdv-ouvrir class="a11__bouton a11__bouton--clair">
             Prendre rendez-vous
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
@@ -952,14 +938,14 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="resultats.html">Résultats</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Prendre rendez-vous</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
         </ul>
       </nav>
 
-      <div class="footer-col">
+      <div class="footer-col" id="rendez-vous">
         <p class="footer-col-title">Coordonnées</p>
         <ul>
-          <li><a href="contact.html#contact-s2">Formulaire de contact</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
           <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
           <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
           <li class="footer-col-plain">Partout en France, à distance</li>
@@ -971,7 +957,7 @@
     <div class="footer-bottom">
       <p>© 2026 OBT Agency. Tous droits réservés.</p>
       <p class="footer-legal">
-        <a href="contact.html">Contact</a>
+        <a href="#rendez-vous" data-rdv-ouvrir>Contact</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="confidentialite.html">Confidentialité</a>
         <a href="plan-du-site.html">Plan du site</a>
@@ -983,7 +969,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=366" defer></script>
+<script src="js/main.js?v=408" defer></script>
 <!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
      qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->
 

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico?v=366" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=366">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=366">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=366">
+<link rel="icon" href="favicon.ico?v=408" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
 <title>Liens entrants et autorité du domaine · OBT Agency</title>
 <meta name="description" content="Les liens qui pointent vers votre site font votre autorité aux yeux de Google. Comment on les obtient et ce qu'on refuse de faire.">
 <link rel="canonical" href="https://obt-agency.fr/backlinks.html">
@@ -21,14 +21,14 @@
 <meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=366">
-<link rel="stylesheet" href="css/style.css?v=366">
-<link rel="stylesheet" href="css/refonte.css?v=366">
+<link rel="stylesheet" href="css/tokens.css?v=408">
+<link rel="stylesheet" href="css/style.css?v=408">
+<link rel="stylesheet" href="css/refonte.css?v=408">
 <!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
      armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
 <!-- La page voisine est préchargée : le changement de page est alors instantané. -->
-<link rel="prefetch" href="contact.html" as="document">
-<link rel="prefetch" href="contact.html" as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
+<link rel="prefetch" href="#rendez-vous" data-rdv-ouvrir as="document">
 <script>(function () {
   /* La seule chose que ce script fait encore : signaler que JavaScript
      repond. La feuille de style s'en sert pour les elements qui n'ont de
@@ -66,7 +66,6 @@
       "closes": "19:00"
     }],
     "areaServed": { "@type": "Country", "name": "France" },
-    "priceRange": "500 € à 5 000 €",
     "knowsLanguage": "fr"
   },
   {
@@ -122,12 +121,14 @@
 
   <symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="i-cross" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 100 17h1.4a1.9 1.9 0 001.5-3 1.9 1.9 0 011.5-3h2.1a1.9 1.9 0 001.9-1.9A9.1 9.1 0 0012 3.5z"/><circle cx="8" cy="10.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="10.5" r="1"/></symbol>
+  <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
 </svg>
 
 <!-- ============================================================
      BANDE MENU, commune à toutes les pages (réf. barre de nav Articool)
      ============================================================ -->
 <header class="site-header" id="site-header">
+  <div class="site-header__barre">
   <a href="index.html" class="logo" aria-label="OBT Agency, accueil">
     <img class="brand-logo brand-logo--sombre" src="assets/img/logo-obt.png" width="1200" height="300"
          decoding="async" alt="">
@@ -139,16 +140,15 @@
 
   <nav class="nav" id="primary-nav" aria-label="Navigation principale">
     <ul class="nav-list">
-      <li><a href="index.html">Accueil</a></li>
       <li class="nav-produit" data-nav-produit>
         <button type="button" class="nav-produit__bouton" aria-expanded="false" aria-controls="menu-produit">
-          Prestations <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+          Nos services <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
         </button>
         <div class="nav-produit__panneau" id="menu-produit" hidden>
           <ul class="nav-produit__liste">
             <li class="est-avant"><a href="pack.html" data-produit="pack">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-badge"/></svg></span>
-              <span class="nav-produit__texte"><strong>Pack <span class="a1__surligne est-peint">SEO &amp; GEO</span> +&nbsp;<span class="a1__surligne est-peint">Site Professionnel</span></strong></span>
+              <span class="nav-produit__texte"><strong>Référencement SEO &amp; GEO</strong></span>
             </a></li>
             <li><a href="site-internet.html" data-produit="site">
               <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
@@ -192,11 +192,63 @@
               Faire un test de visibilité
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
-            <a href="contact.html" class="a1__bouton a1__bouton--bleu">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
               Prendre rendez-vous
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
           </p>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-secteur">
+          Nos secteurs
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-secteur" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="artisans-btp.html" data-secteur="artisans-btp">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <span class="nav-produit__texte"><strong>Artisans &amp; BTP</strong><small>Charpentiers, maçons, électriciens, paysagistes</small></span>
+            </a></li>
+            <li><a href="hebergements.html" data-secteur="hebergements">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-maison"/></svg></span>
+              <span class="nav-produit__texte"><strong>Hébergements</strong><small>Gîtes, domaines, chambres d&rsquo;hôtes, hôtels</small></span>
+            </a></li>
+            <li><a href="autre.html" data-secteur="autre">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-etincelle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Autre</strong><small>Commerces, professions libérales, services</small></span>
+            </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-produit nav-produit--simple" data-nav-produit>
+        <button class="nav-produit__bouton" type="button" aria-expanded="false" aria-controls="volet-expertise">
+          Nos expertises
+          <svg class="icon nav-produit__fleche" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+        </button>
+        <div class="nav-produit__panneau nav-produit__panneau--simple" id="volet-expertise" hidden>
+          <ul class="nav-produit__liste">
+            <li><a href="seo.html" data-expertise="seo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-recherche"/></svg></span>
+              <span class="nav-produit__texte"><strong>SEO</strong><small>Sortir sur Google quand on cherche votre métier</small></span>
+            </a></li>
+            <li><a href="geo.html" data-expertise="geo">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span>
+              <span class="nav-produit__texte"><strong>GEO</strong><small>Être cité par ChatGPT, Gemini et Perplexity</small></span>
+            </a></li>
+            <li><a href="graphisme.html" data-expertise="graphisme">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></span>
+              <span class="nav-produit__texte"><strong>Graphisme</strong><small>Logo, couleurs, charte, supports</small></span>
+            </a></li>
+            <li><a href="developpement.html" data-expertise="developpement">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-fenetre"/></svg></span>
+              <span class="nav-produit__texte"><strong>Développement</strong><small>Sites, applications, outils sur mesure</small></span>
+            </a></li>
+            <li><a href="intelligence-artificielle.html" data-expertise="intelligence-artificielle">
+              <span class="nav-produit__icone"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+              <span class="nav-produit__texte"><strong>Intelligence Artificielle</strong><small>Automatiser ce qui vous prend vos soirées</small></span>
+            </a></li>
+          </ul>
         </div>
       </li>
       <li><a href="resultats.html">Résultats</a></li>
@@ -205,10 +257,11 @@
   </nav>
 
   <div class="header-actions">
-    <a href="contact.html" class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
+  </div>
   </div>
 </header>
 
@@ -231,7 +284,7 @@
           <a class="a1__note" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
              aria-label="Note 5 sur 5 : voir nos avis Google (nouvel onglet)">
             <span class="a1__visages" aria-hidden="true">
-              <i>B</i><i>R</i><i>T</i><i>M</i><i>C</i><i class="a1__visages--plus">+2</i>
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-plombier.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+3</i>
             </span>
             <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
             <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -279,14 +332,14 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="resultats.html">Résultats</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Prendre rendez-vous</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
         </ul>
       </nav>
 
-      <div class="footer-col">
+      <div class="footer-col" id="rendez-vous">
         <p class="footer-col-title">Coordonnées</p>
         <ul>
-          <li><a href="contact.html#contact-s2">Formulaire de contact</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
           <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
           <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
           <li class="footer-col-plain">Partout en France, à distance</li>
@@ -298,7 +351,7 @@
     <div class="footer-bottom">
       <p>© 2026 OBT Agency. Tous droits réservés.</p>
       <p class="footer-legal">
-        <a href="contact.html">Contact</a>
+        <a href="#rendez-vous" data-rdv-ouvrir>Contact</a>
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="confidentialite.html">Confidentialité</a>
         <a href="plan-du-site.html">Plan du site</a>
@@ -310,7 +363,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=366" defer></script>
+<script src="js/main.js?v=408" defer></script>
 <!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
      qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->
 
