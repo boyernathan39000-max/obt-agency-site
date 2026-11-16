@@ -7828,3 +7828,36 @@ main [class*="__titre"] + .ab-fp__sous { margin-top: 20px; }
 /* La colonne du bandeau centre garde la largeur de sa piste : c'est le titre
    seul qui deborde, des deux cotes. */
 .p1__dedans--centre .p1__mots { min-width: 0; width: 100%; }
+
+/* ============================================================================
+   REVUE DES MARGES, 16 novembre 2026 (section par section, mesure faite a
+   1366, 1000 et 390 px).
+   ========================================================================== */
+/* Le titre des offres touchait l'etiquette « Populaire » de la carte du
+   milieu, qui depasse vers le haut. */
+.po .po__tete, .po--arc .po__tete { margin-bottom: clamp(44px, 4.6vw, 64px); }
+.rail__num { display: block; margin-bottom: 4px; }
+.cs__source { margin-top: 18px; }
+.ex-mythe__vrai { margin-top: 6px; }
+/* Le paragraphe qui suit un tableau des guides collait a sa derniere ligne. */
+.ex-tableau-cadre + p, .ex-tableau + p { margin-top: 18px; }
+/* Sur telephone, le titre de l'accueil et celui de la page Autre
+   touchaient le bord de l'ecran. */
+@media (max-width: 560px) {
+  .a1__titre { padding-inline: 6px; }
+  .titre--accueil { font-size: clamp(28px, 7.6vw, 34px); }
+}
+main .ex-chap > .ex-tableau-cadre + p { margin-top: 18px; }
+/* Sur telephone, un surlignage trop long pour l'ecran passe a la ligne :
+   chaque morceau garde son bloc bleu. */
+@media (max-width: 560px) {
+  .a1__titre .a1__insecable { white-space: normal; }
+  .a1__titre .a1__surligne {
+    display: inline; white-space: normal;
+    padding: 0 .1em; border-radius: 6px;
+    background: linear-gradient(100deg, var(--c-accent), var(--c-accent-bright));
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .a1__titre .a1__surligne::before { content: none; }
+}
+.rail .rail__num { margin: 0 0 8px; }
