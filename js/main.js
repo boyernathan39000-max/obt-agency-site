@@ -1265,7 +1265,7 @@
         dire('Merci, votre message est parti. Nous vous répondons sous 24 h ouvrées.', 'reussi');
       }).catch(function () {
         if (bouton) { bouton.disabled = false; bouton.textContent = libelleBouton; }
-        dire('L’envoi n’a pas abouti. Écrivez-nous à contact@obt-agency.fr ou appelez le 06 41 33 64 51, nous répondons aussi vite.', 'echec');
+        dire('L’envoi n’a pas abouti. Écrivez-nous à contact@obt-agency.fr, nous répondons vite.', 'echec');
       });
     });
   }
@@ -1606,7 +1606,7 @@
           /* En apercu local, la fonction serveur n'existe pas : on montre
              l'ecran de fin pour juger le dessin, sans rien reserver. */
           if (LOCAL) { termine(); return; }
-          parle('La réservation n’a pas abouti. Appelez le 06 41 33 64 51 ou écrivez à contact@obt-agency.fr, on vous donne un créneau tout de suite.', 'echec');
+          parle('La réservation n’a pas abouti. Écrivez à contact@obt-agency.fr, on vous donne un créneau tout de suite.', 'echec');
         });
       });
     }
@@ -1920,9 +1920,9 @@
           montrer('demande');
           parle(dit, err.statut === 404
             ? (quoi === 'fiche'
-              ? 'On ne retrouve pas cette fiche. Collez le lien depuis Google Maps, ou appelez-nous au 06 41 33 64 51.'
-              : 'On n’arrive pas à ouvrir ce site. Vérifiez l’adresse, ou appelez-nous au 06 41 33 64 51.')
-            : 'L’analyse n’a pas abouti. Réessayez dans un instant, ou appelez-nous au 06 41 33 64 51.', 'echec');
+              ? 'On ne retrouve pas cette fiche. Collez le lien depuis Google Maps.'
+              : 'On n’arrive pas à ouvrir ce site. Vérifiez l’adresse et réessayez.')
+            : 'L’analyse n’a pas abouti. Réessayez dans un instant.', 'echec');
         });
       });
     });
@@ -2026,7 +2026,7 @@
          page, sauf sur la page du test, ou il serait en double.
      Nathan, 3 novembre 2026.
      ------------------------------------------------------------------------ */
-  var DELAI_TEST = 5000;
+  var DELAI_TEST = 10000;
   /* Rempli par initFenetres : permet au test de visibilite d'ouvrir la
      fenetre de rendez-vous au lieu de quitter la page. */
   var ouvreRendezVous = null;
@@ -2041,7 +2041,7 @@
       + '      <span class="a1__etoiles" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><b>5/5</b>'
       + '    </a>'
       + '  </div>'
-      + '  <h2 class="modale__titre">On regarde votre visibilité <span class="a1__surligne est-peint">avant de vous appeler</span><span class="a1__point a1__point--fin">.</span></h2>'
+      + '  <h2 class="modale__titre">Votre diagnostic de visibilité, <span class="a1__surligne est-peint">en trente minutes</span><span class="a1__point a1__point--fin">.</span></h2>'
       + '  <p class="modale__gages">'
       + '    <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Gratuit</span>'
       + '    <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>30 minutes</span>'
@@ -2102,7 +2102,7 @@
       + '    <input type="checkbox" name="botcheck" class="piege-robot" tabindex="-1" autocomplete="off" aria-hidden="true">'
       + '    <p class="rdv__pied">'
       + '      <button type="button" class="rdv__retour" data-rdv-retour="2"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>Changer de prestation</button>'
-      + '      <button type="submit" class="a1__bouton a1__bouton--bleu">Confirmer le rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>'
+      + '      <button type="submit" class="a1__bouton a1__bouton--bleu">Réserver mon diagnostic<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>'
       + '      <span class="rdv__dit" data-rdv-dit role="status" hidden></span>'
       + '    </p>'
       + '  </form>'
@@ -2110,7 +2110,7 @@
 
       + '<div class="rdv__fini" data-rdv-fini hidden>'
       + '  <span class="rdv__coche" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>'
-      + '  <h3>C’est noté, le rendez-vous est bloqué.</h3>'
+      + '  <h3>C’est noté, votre diagnostic est réservé.</h3>'
       + '  <p>Vous recevez la confirmation par e-mail d’ici une minute, avec le lien de l’appel et de quoi le déplacer si besoin.</p>'
       + '  <p class="rdv__quand"><svg class="icon" aria-hidden="true"><use href="#i-agenda"/></svg><span data-rdv-fini-quand></span></p>'
       + '</div>'
@@ -2134,6 +2134,141 @@
       + '<input id="' + id + '" name="' + nom + '" type="' + (type || 'text') + '" autocomplete="' + auto + '"'
       + (aide ? ' placeholder="' + aide + '"' : '') + (type === 'url' ? ' inputmode="url"' : '') + (facultatif ? '' : ' required') + '>'
       + '<span class="field-error" data-error-for="' + id + '" hidden>' + erreur + '</span></p>';
+  }
+
+
+  /* ------------------------------------------------------------------------
+     LA FENETRE D'AUDIT (accueil, dix secondes apres l'ouverture)
+     Nathan et Tom, 16 novembre 2026. Trois temps dans la meme carte :
+       1. l'adresse du site (obligatoire) et la fiche Google (facultative) ;
+       2. un apercu flou du rapport, l'e-mail et l'accord RGPD a cocher ;
+       3. le merci, avec le bouton du diagnostic.
+     La demande part chez nous par le formulaire du site. En fond, on lance
+     l'analyse du site pour joindre la note a la demande : si elle ne repond
+     pas a temps, la demande part sans elle.
+     ------------------------------------------------------------------------ */
+  function squeletteAudit() {
+    var coche = function (texte) {
+      return '<li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>' + texte + '</li>';
+    };
+    return ''
+      + '<div class="au" data-au>'
+      + '<div class="au__etape" data-au-etape="1">'
+      + '  <h2 class="modale__titre au__titre">Vos concurrents sortent avant vous <span class="a1__surligne est-peint">sur Google et les IA</span>&nbsp;?</h2>'
+      + '  <form class="au__case" data-au-form="1" novalidate>'
+      + '    <p class="au__champ"><label for="au-site">L’adresse de votre site</label>'
+      + '      <input id="au-site" name="site" type="text" inputmode="url" autocomplete="url" placeholder="charpenterie-durand.fr" required>'
+      + '      <span class="field-error" data-error-for="au-site" hidden>Indiquez l’adresse de votre site, par exemple charpenterie-durand.fr</span></p>'
+      + '    <p class="au__champ"><label for="au-fiche">Le lien de votre fiche Google <small>(facultatif)</small></label>'
+      + '      <input id="au-fiche" name="fiche" type="text" inputmode="url" placeholder="maps.app.goo.gl/…"></p>'
+      + '    <p class="au__action"><button type="submit" class="a1__bouton a1__bouton--bleu">Recevoir mon audit gratuit en 2 minutes<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></p>'
+      + '    <ul class="au__coches">' + coche('Titres, balises, structure') + coche('Mobile, vitesse, sécurité') + coche('Fiche Google et avis') + coche('Ce qui manque face aux voisins') + '</ul>'
+      + '  </form>'
+      + '</div>'
+      + '<div class="au__etape" data-au-etape="2" hidden>'
+      + '  <h2 class="modale__titre au__titre">Votre audit est prêt <span class="a1__surligne est-peint">à partir</span><span class="a1__point a1__point--fin">.</span></h2>'
+      + '  <div class="au__rapport" aria-hidden="true">'
+      + '    <div class="au__flou">'
+      + '      <p class="au__r-tete"><b data-au-cible>votre-site.fr</b><span>Audit de visibilité</span></p>'
+      + '      <div class="au__r-note"><span class="au__r-anneau"><b>??</b><i>sur 100</i></span>'
+      + '        <span class="au__r-lignes"><i></i><i></i><i class="court"></i></span></div>'
+      + '      <ul class="au__r-points"><li class="ko"><i></i></li><li class="moyen"><i></i></li><li class="ko"><i></i></li><li class="ok"><i></i></li><li class="ko"><i></i></li></ul>'
+      + '    </div>'
+      + '    <span class="au__cadenas"><svg class="icon"><use href="#i-shield"/></svg></span>'
+      + '  </div>'
+      + '  <form class="au__case" data-au-form="2" novalidate>'
+      + '    <p class="au__champ"><label for="au-mail">Votre e-mail, pour recevoir l’audit</label>'
+      + '      <input id="au-mail" name="email" type="email" autocomplete="email" placeholder="vous@votre-entreprise.fr" required>'
+      + '      <span class="field-error" data-error-for="au-mail" hidden>Indiquez une adresse e-mail valide.</span></p>'
+      + '    <p class="au__accord"><input id="au-accord" name="accord" type="checkbox" value="oui" required>'
+      + '      <label for="au-accord">J’accepte qu’OBT Agency utilise ces informations pour m’envoyer mon audit et me recontacter à son sujet. <a href="confidentialite.html" target="_blank" rel="noopener">Confidentialité</a></label></p>'
+      + '    <span class="field-error au__accord-erreur" data-error-for="au-accord" hidden>Cochez la case pour recevoir l’audit.</span>'
+      + '    <input type="checkbox" name="botcheck" class="piege-robot" tabindex="-1" autocomplete="off" aria-hidden="true">'
+      + '    <p class="au__action"><button type="submit" class="a1__bouton a1__bouton--bleu">Envoyer<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></p>'
+      + '    <p class="au__dit" data-au-dit role="status" hidden></p>'
+      + '  </form>'
+      + '</div>'
+      + '<div class="au__etape au__merci" data-au-etape="3" hidden>'
+      + '  <span class="au__coche-merci" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>'
+      + '  <h2 class="modale__titre au__titre">Merci, votre audit <span class="a1__surligne est-peint">est en route</span><span class="a1__point a1__point--fin">.</span></h2>'
+      + '  <p class="au__merci-dit">Il arrive dans votre boîte mail. Pour le lire avec nous et savoir par quoi commencer, réservez votre diagnostic.</p>'
+      + '  <p class="au__action"><a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">Réserver mon diagnostic de visibilité<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>'
+      + '</div>'
+      + '</div>';
+  }
+
+  function initAudit(racine) {
+    var API = '/api';
+    var etapes = {};
+    racine.querySelectorAll('[data-au-etape]').forEach(function (e) { etapes[e.getAttribute('data-au-etape')] = e; });
+    var f1 = racine.querySelector('[data-au-form="1"]');
+    var f2 = racine.querySelector('[data-au-form="2"]');
+    var dit = racine.querySelector('[data-au-dit]');
+    var cible = racine.querySelector('[data-au-cible]');
+    var demande = { site: '', fiche: '' };
+    var analyse = null;
+
+    function montre(n) {
+      Object.keys(etapes).forEach(function (k) { etapes[k].hidden = (k !== String(n)); });
+      var champ = etapes[n] && etapes[n].querySelector('input:not(.piege-robot)');
+      if (champ) { try { champ.focus({ preventScroll: true }); } catch (e) { /* rien */ } }
+    }
+    function adresse(v) { return (v || '').trim().replace(/^https?:\/\//i, '').replace(/\/+$/, ''); }
+    function erreur(champ, ok) {
+      var msg = racine.querySelector('[data-error-for="' + champ.id + '"]');
+      if (msg) msg.hidden = ok;
+      champ.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    }
+
+    f1.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var site = f1.querySelector('#au-site');
+      var ok = /^[^\s/]+\.[a-z]{2,}([/?#].*)?$/i.test(adresse(site.value));
+      if (!erreur(site, ok)) { site.focus(); return; }
+      demande.site = adresse(site.value);
+      demande.fiche = (f1.querySelector('#au-fiche').value || '').trim();
+      if (cible) cible.textContent = demande.site;
+      /* L'analyse part en fond : on ne l'attend pas pour avancer. */
+      try {
+        analyse = fetch(API + '/test-visibilite', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ quoi: 'site', site: demande.site })
+        }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+      } catch (err) { analyse = null; }
+      montre(2);
+    });
+
+    f2.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var mail = f2.querySelector('#au-mail');
+      var accord = f2.querySelector('#au-accord');
+      var okMail = erreur(mail, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim()));
+      var okAccord = erreur(accord, accord.checked);
+      if (!okMail) { mail.focus(); return; }
+      if (!okAccord) { accord.focus(); return; }
+      var bouton = f2.querySelector('[type="submit"]');
+      var libelle = bouton.innerHTML;
+      bouton.disabled = true; bouton.textContent = 'Envoi en cours…';
+      if (dit) dit.hidden = true;
+      var attente = new Promise(function (ok) { setTimeout(function () { ok(null); }, 4000); });
+      Promise.race([analyse || Promise.resolve(null), attente]).then(function (res) {
+        return envoyerFormulaire(f2, 'Demande d’audit de visibilité', {
+          origine: 'Fenêtre d’audit, page d’accueil',
+          site: demande.site,
+          fiche: demande.fiche || '(non donnée)',
+          accord_rgpd: 'oui',
+          note: res && typeof res.score === 'number' ? res.score + '/100' : '(non mesurée)',
+          a_corriger: res && res.points ? res.points.filter(function (p) { return p.etat !== 'ok'; }).map(function (p) { return p.titre; }).join(' | ') : ''
+        });
+      }).then(function () {
+        montre(3);
+        try { confettis(); } catch (err) { /* rien */ }
+      }).catch(function () {
+        bouton.disabled = false; bouton.innerHTML = libelle;
+        if (dit) { dit.hidden = false; dit.textContent = 'L’envoi n’a pas abouti. Réessayez, ou écrivez-nous à contact@obt-agency.fr.'; }
+      });
+    });
   }
 
   function squeletteTest() {
@@ -2195,7 +2330,7 @@
       + '    <ul class="tv__amain-liste" data-tv-amain></ul></div>'
       + '  <p class="tv__pied">'
       + '    <button type="button" class="a1__bouton a1__bouton--bleu" data-tv-rapport>Recevoir le rapport complet<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>'
-      + '    <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton" data-tv-rdv><span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>'
+      + '    <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton" data-tv-rdv><span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>Réserver un diagnostic<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>'
       + '    <button type="button" class="tv__retour" data-tv-recommencer><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>Refaire un test</button>'
       + '  </p>'
       + '  <div class="tv__rapport" data-tv-boite-rapport hidden>'
@@ -2215,7 +2350,7 @@
       + '    <span class="tv__coche" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>'
       + '    <h3>C’est parti, votre rapport arrive.</h3>'
       + '    <p>Vous le recevez par e-mail dans l’heure qui suit, avec chaque point détaillé et l’ordre dans lequel s’y prendre.</p>'
-      + '    <p class="tv__pied tv__pied--centre"><a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu" data-tv-rdv>Prendre rendez-vous<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>'
+      + '    <p class="tv__pied tv__pied--centre"><a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu" data-tv-rdv>Réserver un diagnostic<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>'
       + '  </div>'
       + '</div>'
       + '</div>';
@@ -2287,7 +2422,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ferme(); });
 
     /* --- la prise de rendez-vous, ouverte par la bulle --- */
-    var mRdv = fabrique('rdv', squeletteRdv(), 'Prendre rendez-vous');
+    var mRdv = fabrique('rdv', squeletteRdv(), 'Réserver un diagnostic');
     mRdv.querySelectorAll('[data-rdv]').forEach(initRdv);
 
     ouvreRendezVous = function () { ouvre(mRdv); return true; };
@@ -2312,9 +2447,9 @@
     var bulle = document.createElement('button');
     bulle.type = 'button';
     bulle.className = 'bulle-rdv';
-    bulle.setAttribute('aria-label', 'Prendre rendez-vous');
+    bulle.setAttribute('aria-label', 'Réserver un diagnostic');
     bulle.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#i-agenda"/></svg>'
-      + '<span class="bulle-rdv__infobulle">Prendre rendez-vous</span>';
+      + '<span class="bulle-rdv__infobulle">Réserver un diagnostic</span>';
     bulle.addEventListener('click', function () { ouvre(mRdv); });
     document.body.appendChild(bulle);
 
@@ -2327,8 +2462,9 @@
     var dejaVu = false;
     try { dejaVu = sessionStorage.getItem('obt-test-vu') === '1'; } catch (e) { dejaVu = false; }
     if (!surLaPageDuTest && surAccueil && !dejaVu) {
-      var mTest = fabrique('test', squeletteTest(), 'Test de visibilité');
-      mTest.querySelectorAll('[data-tv]').forEach(initTestVisibilite);
+      var mTest = fabrique('test', squeletteAudit(), 'Audit de visibilité gratuit');
+      mTest.classList.add('modale--audit');
+      mTest.querySelectorAll('[data-au]').forEach(initAudit);
       setTimeout(function () {
         /* On n'interrompt personne : si une autre fenetre est deja ouverte, le
            test attend la prochaine visite. */

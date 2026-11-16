@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico?v=408" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
+<link rel="icon" href="favicon.ico?v=420" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=420">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=420">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=420">
 <title>Référencement et site internet pour artisans · OBT Agency</title>
 <meta name="description" content="On vous rend visible sur Google et dans les réponses des IA. On refait le site qui transforme ces visites en appels. Réponse sous 24 h.">
 <link rel="canonical" href="https://obt-agency.fr/">
@@ -21,9 +21,9 @@
 <meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=408">
-<link rel="stylesheet" href="css/style.css?v=408">
-<link rel="stylesheet" href="css/refonte.css?v=408">
+<link rel="stylesheet" href="css/tokens.css?v=420">
+<link rel="stylesheet" href="css/style.css?v=420">
+<link rel="stylesheet" href="css/refonte.css?v=420">
 <!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
      armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
 <!-- La page voisine est préchargée : le changement de page est alors instantané. -->
@@ -197,7 +197,7 @@
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
             <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
-              Prendre rendez-vous
+              Réserver un diagnostic
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
           </p>
@@ -261,7 +261,7 @@
   </nav>
 
   <div class="header-actions">
-    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Réserver un diagnostic</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
@@ -300,29 +300,18 @@
       <!-- Seul ChatGPT est dans le texte de la page : c'est lui que lisent un
            moteur de recherche et un visiteur sans JavaScript. Les trois autres
            attendent dans un `template`, donc hors du texte. -->
-      <h1 class="a1__titre">
-        <span data-mots>Vos clients vous cherchent sur Google et les</span><span class="a1__rotor a1__rotor--bulle" data-rotor><span class="a1__rotor-piste"><span class="a1__plateforme"><span class="a1__rond a1__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span><span class="visually-hidden">ChatGPT</span></span></span><template data-rotor-suite>
+      <h1 class="a1__titre titre--deux titre--accueil" style="--fit-l: min(72px, 3.70vw)">
+        <span class="titre__ligne"><span data-mots>Vos clients vous cherchent sur Google et les</span><span class="a1__rotor a1__rotor--bulle" data-rotor><span class="a1__rotor-piste"><span class="a1__plateforme"><span class="a1__rond a1__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span><span class="visually-hidden">ChatGPT</span></span></span><template data-rotor-suite>
             <span class="a1__plateforme"><span class="a1__rond a1__rond--claude"><svg class="icon" aria-hidden="true"><use href="#i-claude"/></svg></span><span class="visually-hidden">Claude</span></span>
             <span class="a1__plateforme"><span class="a1__rond a1__rond--gemini"><svg class="icon" aria-hidden="true"><use href="#i-gemini"/></svg></span><span class="visually-hidden">Gemini</span></span>
             <span class="a1__plateforme"><span class="a1__rond a1__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span><span class="visually-hidden">Perplexity</span></span>
             <span class="a1__plateforme"><span class="a1__rond a1__rond--chatgpt"><svg class="icon" aria-hidden="true"><use href="#i-chatgpt"/></svg></span><span class="visually-hidden">ChatGPT</span></span>
-          </template></span><span data-mots>IA,</span><br>
+          </template></span><span data-mots>IA,</span></span><br>
         <span data-mots>mais ils trouvent vos <span class="a1__insecable"><span class="a1__surligne">concurrents</span><span class="a1__point a1__point--fin">.</span></span></span>
       </h1>
 
       <p class="a1__sous">On refait votre site et votre référencement pour que vous passiez devant vos concurrents, sur Google comme dans les IA.</p>
 
-      <p class="a1__action">
-        <a href="test-visibilite.html" class="a1__bouton">
-          <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-          Tester votre visibilité
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
-        <a href="resultats.html" class="a1__bouton a1__bouton--bleu">
-          Voir les résultats
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
-      </p>
 
       <!-- La preuve en haut du bandeau, a la place du sur-titre. Elle perd son
            fond : Nathan, 4 novembre 2026. La note reste vraie, c'est la bulle
@@ -353,21 +342,14 @@
 
     <div class="a3__dedans">
 
-      <!-- L'ecran de bureau : la video dedans, le bras et le socle dessous,
-           et la case des chiffres posee par-dessus. Le chassis est le bloc
-           .cadre, il ne connait pas ce qu'on met dans son ecran.
-           Nathan, 2 novembre 2026. -->
       <div class="a3__poste">
-        <div class="cadre cadre--mac a3__cadre">
+        <div class="a3__cadre a3__cadre--nu">
           <div class="cadre__ecran">
             <div class="a3__film a3__film--vide" role="img" aria-label="La vidéo de présentation arrive bientôt">
               <span class="a3__play" aria-hidden="true"><i></i></span>
             </div>
           </div>
-          <span class="cadre__menton" aria-hidden="true"></span>
         </div>
-        <span class="cadre__bras" aria-hidden="true"></span>
-        <span class="cadre__socle" aria-hidden="true"></span>
 
         <ol class="a3__stats a3__case">
         <li class="a3__stat">
@@ -406,7 +388,7 @@
       <p class="a3__action">
         <a href="test-visibilite.html" class="a1__bouton">
           <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-          Voir la qualité de votre référencement
+          Tester votre visibilité
           <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
       </p>
@@ -435,10 +417,8 @@
 
     <div class="a5__dedans">
       <div class="a5__tete">
-        <p class="a5__sur-titre">Ce qu&rsquo;on fait</p>
-        <h2 id="a5-titre" class="a5__titre" data-mots>On vous amène les clients.<br>
-          Et on refait le site qui <span class="a1__surligne">les retient</span><span class="a1__point a1__point--fin">.</span></h2>
-        <p class="a5__chapeau">Séparés, les deux ne servent à rien. De la visibilité sur un site qui ne convertit pas, c&rsquo;est un seau percé.</p>
+        <h2 id="a5-titre" class="a5__titre titre--ligne" data-mots style="--fit-l: min(60px, 3.43vw)">On vous amène les clients. Et on refait le site qui <span class="a1__surligne">les retient</span><span class="a1__point a1__point--fin">.</span></h2>
+        <p class="a5__chapeau sous--ligne">Séparés, les deux ne servent à rien. De la visibilité sur un site qui ne convertit pas, c&rsquo;est un seau percé.</p>
       </div>
 
       <div class="a5__colonnes">
@@ -471,11 +451,6 @@
             <li><span class="a5__rond a5__rond--perplexity"><svg class="icon" aria-hidden="true"><use href="#i-perplexity"/></svg></span>Perplexity</li>
           </ul>
           <p class="a5__voir">
-            <a href="test-visibilite.html" class="a1__bouton">
-              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-              Tester ma visibilité
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
             <a href="pack.html#pack-s4" class="a1__bouton a1__bouton--bleu">
               Voir nos offres
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
@@ -517,11 +492,6 @@
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Vos chantiers et vos avis, mis en avant</li>
           </ul>
           <p class="a5__voir">
-            <a href="test-visibilite.html" class="a1__bouton">
-              <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-              Tester ma visibilité
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
             <a href="site-internet.html#site-internet-s3" class="a1__bouton a1__bouton--bleu">
               Voir nos offres
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
@@ -547,8 +517,7 @@
     <span class="sr__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
     <div class="sr__dedans">
       <div class="sr__tete">
-        <p class="sr__sur-titre">Nos performances</p>
-        <h2 id="a4-titre" class="sr__titre">Ce que ça donne, dans les outils et en ligne.</h2>
+        <h2 id="a4-titre" class="sr__titre titre--ligne" style="--fit-l: min(60px, 4.70vw)">Ce que ça donne, dans les outils et en ligne.</h2>
         <p class="sr__chapeau">Les mêmes écrans que nos clients reçoivent chaque mois, commentés. Rien n&rsquo;est fait maison&nbsp;: tout se vérifie dans les outils de Google.</p>
       </div>
 
@@ -684,7 +653,6 @@
         </li>
       </ul>
 
-      <p class="sr__entre">Et les sites qu&rsquo;on a mis en ligne</p>
     </div>
     <div class="carousel pr__carrousel" data-carousel>
       <button class="carousel-arrow carousel-arrow--prev" type="button" data-carousel-prev aria-label="Réalisation précédente">
@@ -744,9 +712,7 @@
 
     <div class="a6__dedans">
       <div class="a6__tete">
-        <p class="a6__sur-titre">La méthode</p>
-        <h2 id="a6-titre" class="a6__titre" data-mots>Quatre étapes.<br>
-          Vous n&rsquo;avez <span class="a1__surligne">rien à gérer</span><span class="a1__point a1__point--fin">.</span></h2>
+        <h2 id="a6-titre" class="a6__titre titre--ligne" data-mots style="--fit-l: min(60px, 5.09vw)">Quatre étapes. Vous n&rsquo;avez <span class="a1__surligne">rien à gérer</span><span class="a1__point a1__point--fin">.</span></h2>
         <p class="a6__chapeau">On prend le site, les positions et la fiche Google en main. Vous gardez les accès, vous recevez les résultats.</p>
       </div>
 
@@ -837,7 +803,7 @@
       <p class="a6__action">
         <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
           <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-          Nous faire confiance
+          Réserver mon diagnostic
           <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
       </p>
@@ -1012,7 +978,7 @@
      flottantes de Blast.
      LA PHOTO : le cadre porte pour l'instant deux silhouettes dessinees. Pour
      poser la vraie image, remplacer le <svg class="a9__silhouettes"> par :
-       <img class="a9__photo" src="assets/img/tom-et-nathan.jpg?v=408"
+       <img class="a9__photo" src="assets/img/tom-et-nathan.jpg?v=420"
             width="1000" height="1200" loading="lazy" decoding="async"
             alt="Tom et Nathan Boyer">
      Cadrage a respecter : Tom a gauche, Nathan a droite, de trois quarts,
@@ -1040,10 +1006,8 @@
       </div>
 
       <div class="a9__mots">
-        <p class="a9__sur-titre">Qui travaille sur votre dossier</p>
         <h2 id="a9-titre" class="a9__titre">Deux frères experts<br>
           <span class="a1__insecable"><span class="a1__surligne est-peint">pour vous</span><span class="a1__point a1__point--fin">.</span></span></h2>
-        <p class="a9__chapeau">Vous avez au téléphone ceux qui font le travail. Pas un chargé de compte qui transmet ce que vous venez de dire.</p>
         <p class="a9__texte">On prend votre dossier à deux et on le garde du début à la fin : le premier appel, le rendez-vous, le site, les corrections, le rapport du mois. Personne ne reprend le dossier en route, personne ne redécouvre votre métier. Quand vous rappelez six mois plus tard, c&rsquo;est la même voix et elle sait déjà de quoi vous parlez.</p>
         <p class="a9__pied">Si quelque chose ne va pas, vous savez à qui le dire.</p>
         <p class="a9__action">
@@ -1070,9 +1034,7 @@
 
     <div class="a8__dedans">
       <div class="a8__tete">
-        <p class="a8__sur-titre">La transparence</p>
-        <h2 id="a8-titre" class="a8__titre" data-mots>Tous nos chiffres sortent d&rsquo;ici.<br>
-          <span class="a1__surligne">Vous y avez accès</span><span class="a1__point a1__point--fin">.</span></h2>
+        <h2 id="a8-titre" class="a8__titre titre--ligne" data-mots style="--fit-l: min(60px, 4.09vw)">Tous nos chiffres sortent d&rsquo;ici. <span class="a1__surligne">Vous y avez accès</span><span class="a1__point a1__point--fin">.</span></h2>
         <p class="a8__chapeau">Pas de tableau fait maison : tout vient des outils de Google et des plateformes de référence. Vous pouvez les ouvrir quand vous voulez.</p>
       </div>
 
@@ -1156,7 +1118,6 @@
 
       <div class="a10__tete">
         <div>
-          <p class="a10__sur-titre">Les avis</p>
           <h2 id="a10-titre" class="a10__titre">Ce que disent <span class="a1__insecable"><span class="a1__surligne est-peint">nos clients</span><span class="a1__point a1__point--fin">.</span></span></h2>
           <p class="a10__chapeau">Pas de témoignage recopié sur notre site : des avis publiés sur notre fiche Google, sous leur nom, que n&rsquo;importe qui peut aller relire.</p>
         </div>
@@ -1244,7 +1205,7 @@
      pas tenir la promesse des 24 heures.
      LA PHOTO DE TOM : la signature porte une pastille a son initiale. Pour
      poser sa photo, remplacer <span class="a11__initiale">T</span> par :
-       <img class="a11__visage" src="assets/img/tom.jpg?v=408" width="96"
+       <img class="a11__visage" src="assets/img/tom.jpg?v=420" width="96"
             height="96" loading="lazy" decoding="async" alt="Tom Boyer">
      ========================================================================= -->
   <section id="accueil-s11" class="a11" aria-labelledby="a11-titre">
@@ -1266,8 +1227,7 @@
           <b>5/5</b>
         </a>
 
-        <h2 id="a11-titre" class="a11__titre">Le meilleur ne gagne pas le chantier.<br>
-          <span class="a11__clair">Celui qu&rsquo;on trouve, oui</span><span class="a1__point a1__point--fin">.</span></h2>
+        <h2 id="a11-titre" class="a11__titre titre--deux" style="--fit-l: min(60px, 5.61vw)"><span class="titre__ligne">Le meilleur ne gagne pas le chantier.</span><br><span class="titre__ligne"><span class="a11__clair">Celui qu&rsquo;on trouve, oui</span><span class="a1__point a1__point--fin">.</span></span></h2>
 
         <p class="a11__action">
           <a href="test-visibilite.html" class="a11__bouton">
@@ -1276,7 +1236,7 @@
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
           <a href="#rendez-vous" data-rdv-ouvrir class="a11__bouton a11__bouton--clair">
-            Prendre rendez-vous
+            Réserver un diagnostic
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
         </p>
@@ -1322,16 +1282,15 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="resultats.html">Résultats</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Réserver un diagnostic</a></li>
         </ul>
       </nav>
 
       <div class="footer-col" id="rendez-vous">
         <p class="footer-col-title">Coordonnées</p>
         <ul>
-          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Réserver un diagnostic en ligne</a></li>
           <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
-          <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
           <li class="footer-col-plain">Partout en France, à distance</li>
           <li class="footer-col-plain">Réponse sous 24 h ouvrées</li>
         </ul>
@@ -1353,7 +1312,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=408" defer></script>
+<script src="js/main.js?v=420" defer></script>
 <!-- La visionneuse qui ouvrait le site d'un client dans un cadre, par-dessus
      la page, a ete retiree le 5 novembre 2026 : on ne reproduit jamais le site
      d'un client chez nous. Sa capture est un lien vers son adresse, ouvert

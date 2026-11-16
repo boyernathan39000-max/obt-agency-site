@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico?v=408" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=408">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=408">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=408">
+<link rel="icon" href="favicon.ico?v=420" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=420">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=420">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=420">
 <title>Site internet pour gîtes, chambres d’hôtes et domaines · OBT Agency</title>
 <meta name="description" content="Gîtes, chambres d’hôtes, domaines : un site qui donne envie de séjourner et qui reçoit vos réservations en direct. Hébergé et entretenu par nous.">
 <link rel="canonical" href="https://obt-agency.fr/hebergements.html">
@@ -21,9 +21,9 @@
 <meta property="og:image" content="https://obt-agency.fr/assets/img/logo-obt.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/InterVariable.woff2" crossorigin>
-<link rel="stylesheet" href="css/tokens.css?v=408">
-<link rel="stylesheet" href="css/style.css?v=408">
-<link rel="stylesheet" href="css/refonte.css?v=408">
+<link rel="stylesheet" href="css/tokens.css?v=420">
+<link rel="stylesheet" href="css/style.css?v=420">
+<link rel="stylesheet" href="css/refonte.css?v=420">
 <!-- Marque la page comme pilotée par JS : les animations d'apparition ne sont
      armées que dans ce cas, pour que le contenu reste visible sans JavaScript. -->
 <!-- La page voisine est préchargée : le changement de page est alors instantané. -->
@@ -196,7 +196,7 @@
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
             <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
-              Prendre rendez-vous
+              Réserver un diagnostic
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
             </a>
           </p>
@@ -260,7 +260,7 @@
   </nav>
 
   <div class="header-actions">
-    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Prendre rendez-vous</a>
+    <a href="#rendez-vous" data-rdv-ouvrir class="btn btn--nav header-cta">Réserver un diagnostic</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
       <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
@@ -294,7 +294,7 @@
         </a>
       </div>
 
-      <h1 class="a1__titre"><span data-mots>Vos voyageurs vous trouvent sur Booking.</span><br>
+      <h1 class="a1__titre titre--deux" style="--fit-l: min(72px, 4.40vw)"><span data-mots>Vos voyageurs vous trouvent sur Booking.</span><br>
         <span data-mots>Faites-les <span class="a1__insecable"><span class="a1__surligne">réserver chez vous</span><span class="a1__point a1__point--fin">.</span></span></span></h1>
 
       <p class="a1__sous">Gîtes, chambres d&rsquo;hôtes, domaines&nbsp;: un site qui donne envie de séjourner et qui reçoit vos réservations en direct.</p>
@@ -302,11 +302,7 @@
       <p class="a1__action">
         <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton">
           <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-          Parler de votre hébergement
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
-        <a href="#hebergements-s3" class="a1__bouton a1__bouton--bleu">
-          Voir nos offres
+          Réserver le diagnostic de mon site
           <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
       </p>
@@ -332,21 +328,14 @@
 
     <div class="a3__dedans">
 
-      <!-- L'ecran de bureau : la video dedans, le bras et le socle dessous,
-           et la case des chiffres posee par-dessus. Le chassis est le bloc
-           .cadre, il ne connait pas ce qu'on met dans son ecran.
-           Nathan, 2 novembre 2026. -->
       <div class="a3__poste">
-        <div class="cadre cadre--mac a3__cadre">
+        <div class="a3__cadre a3__cadre--nu">
           <div class="cadre__ecran">
             <div class="a3__film a3__film--vide" role="img" aria-label="La vidéo de présentation arrive bientôt">
               <span class="a3__play" aria-hidden="true"><i></i></span>
             </div>
           </div>
-          <span class="cadre__menton" aria-hidden="true"></span>
         </div>
-        <span class="cadre__bras" aria-hidden="true"></span>
-        <span class="cadre__socle" aria-hidden="true"></span>
 
         <ol class="a3__stats a3__case">
         <li class="a3__stat">
@@ -382,14 +371,10 @@
         </ol>
       </div>
 
-      <p class="a3__action a3__action--deux">
+      <p class="a3__action">
         <a href="test-visibilite.html" class="a1__bouton">
           <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
           Tester votre visibilité
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-        </a>
-        <a href="#hebergements-s3" class="a1__bouton a1__bouton--bleu">
-          Voir nos offres
           <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
         </a>
       </p>
@@ -404,111 +389,12 @@
        de la page du pack, pour qui veut aussi passer devant sur Google.
        Aucun montant. Nathan, 5 novembre 2026.
        ===================================================================== -->
-  <section id="hebergements-s3" class="po po--arc" data-fond="sombre" aria-labelledby="hebergements-s3-title">
-    <span class="a6__arc" aria-hidden="true">
-      <i class="a6__arc-cercle a6__arc-cercle--3"></i>
-      <i class="a6__arc-cercle a6__arc-cercle--2"></i>
-      <i class="a6__arc-cercle a6__arc-cercle--1"></i>
-    </span>
-    <span class="po__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
-    <div class="po__dedans">
-      <div class="po__tete">
-        <p class="p2__sur-titre po__sur-titre">Les offres</p>
-        <h2 id="hebergements-s3-title" class="po__titre">Deux façons d&rsquo;avoir votre site.</h2>
-        <p class="po__chapeau">Le site complet pour recevoir vos réservations en direct. Le pack si vous voulez aussi sortir devant sur Google. Le prix se fixe au rendez-vous, devant vous.</p>
-      </div>
-
-      <div class="po__grille po__grille--deux">
-        <article class="po__offre po__offre--avant">
-          <p class="po__etiquette">Populaire</p>
-          <h3 class="po__nom">Le site complet</h3>
-          <p class="po__pour">Le site posé pour durer, entretenu par nous, mois après mois.</p>
-          <p class="po__compte"><b>9</b> des 10 lignes comprises</p>
-          <ul class="po__liste">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Version ordinateur et version mobile</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Formulaire de contact créé puis testé par nous</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Mise en sécurité et conformité du site</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Rendez-vous de cadrage de votre activité</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Référencement posé à la mise en ligne : mots-clés, balises, descriptions</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Déclaration de votre site à Google&nbsp;<svg class="icon icon--marque icon--google" aria-hidden="true"><use href="#i-google"/></svg> et à Bing&nbsp;<svg class="icon icon--marque icon--bing" aria-hidden="true"><use href="#i-bing"/></svg></span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Hébergement, sauvegardes et mises à jour</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Assistance 24 h sur 24 et modifications de contenu</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Application de gestion reliée au site, pour les hébergements</span><b class="visually-hidden">compris</b></li>
-            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Site dessiné pour vous, pages et fonctions sur mesure</span><b class="visually-hidden">non compris</b></li>
-          </ul>
-          <p class="po__action">
-            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
-              Prendre rendez-vous
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
-          </p>
-          <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
-             aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
-            <span class="a1__visages po__visages" aria-hidden="true">
-              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
-            </span>
-            <span class="po__dit">
-              <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
-              <b>5,0</b>
-              <small class="po__etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</small>
-            </span>
-          </a>
-        </article>
-
-        <article class="po__offre">
-          <h3 class="po__nom">Le pack Visibilité + Site</h3>
-          <p class="po__pour">Votre site date, ou vous n&rsquo;en avez pas. On repart de zéro.</p>
-          <p class="po__compte"><b>9</b> des 11 lignes comprises</p>
-          <ul class="po__liste">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Votre site créé ou refait, compris</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Hébergement, nom de domaine et maintenance compris</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>40 mots-clés travaillés chaque mois</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>60 liens obtenus par mois</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Fiche Google&nbsp;<svg class="icon icon--marque icon--google" aria-hidden="true"><use href="#i-google"/></svg> tenue et optimisée, Maps&nbsp;<svg class="icon icon--marque icon--maps" aria-hidden="true"><use href="#i-maps"/></svg> compris</span><b class="visually-hidden">compris</b></li>
-            <li class="a-marques"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Visibilité dans les IA</span><span class="po__marques" aria-hidden="true"><i class="po__marque"><svg class="icon icon--marque icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--gemini" aria-hidden="true"><use href="#i-gemini"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--claude" aria-hidden="true"><use href="#i-claude"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--perplexity" aria-hidden="true"><use href="#i-perplexity"/></svg></i></span><b class="visually-hidden">ChatGPT, Gemini, Claude et Perplexity</b><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Analyse des questions posées aux IA</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>3 articles et 3 publications par mois</span><b class="visually-hidden">compris</b></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Rapport mensuel commenté en français</span><b class="visually-hidden">compris</b></li>
-            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Suivi renforcé de vos concurrents</span><b class="visually-hidden">non compris</b></li>
-            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Un point stratégique avec nous chaque mois</span><b class="visually-hidden">non compris</b></li>
-          </ul>
-          <p class="po__action">
-            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--nuit">
-              Prendre rendez-vous
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
-          </p>
-          <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
-             aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
-            <span class="a1__visages po__visages" aria-hidden="true">
-              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
-            </span>
-            <span class="po__dit">
-              <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
-              <b>5,0</b>
-              <small class="po__etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</small>
-            </span>
-          </a>
-          <p class="po__note">Vingt-quatre mois, le temps que le site soit amorti.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       S4, LES RESULTATS. Le carrousel des realisations de la page Creation
-       de site, avec les seuls sites du secteur (demande de Nathan, 5 novembre
-       2026 : une page de secteur ne montre que son secteur). Chaque
-       carte montre la capture du bandeau et ouvre le vrai site du client
-       dans un autre onglet : on ne reproduit jamais un site client ici.
-       ===================================================================== -->
-  <section id="hebergements-s4" class="pr" aria-labelledby="hebergements-s4-title">
+  <section id="hebergements-s3" class="pr" aria-labelledby="hebergements-s3-title">
     <span class="pr__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
 
     <div class="pr__dedans">
       <div class="pr__tete">
-        <p class="p2__sur-titre">Les résultats</p>
-        <h2 id="hebergements-s4-title" class="p2__titre">Des sites en ligne, pas des promesses.</h2>
+        <h2 id="hebergements-s3-title" class="p2__titre titre--ligne" style="--fit-l: min(60px, 5.30vw)">Des sites en ligne, pas des promesses.</h2>
       </div>
     </div>
 
@@ -547,6 +433,102 @@
   </section>
 
   <!-- =====================================================================
+       S4, LES RESULTATS. Le carrousel des realisations de la page Creation
+       de site, avec les seuls sites du secteur (demande de Nathan, 5 novembre
+       2026 : une page de secteur ne montre que son secteur). Chaque
+       carte montre la capture du bandeau et ouvre le vrai site du client
+       dans un autre onglet : on ne reproduit jamais un site client ici.
+       ===================================================================== -->
+  <section id="hebergements-s4" class="po po--arc" data-fond="sombre" aria-labelledby="hebergements-s4-title">
+    <span class="a6__arc" aria-hidden="true">
+      <i class="a6__arc-cercle a6__arc-cercle--3"></i>
+      <i class="a6__arc-cercle a6__arc-cercle--2"></i>
+      <i class="a6__arc-cercle a6__arc-cercle--1"></i>
+    </span>
+    <span class="po__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="po__dedans">
+      <div class="po__tete">
+        <h2 id="hebergements-s4-title" class="po__titre">Deux façons d&rsquo;avoir votre site.</h2>
+      </div>
+
+      <div class="po__grille po__grille--deux">
+        <article class="po__offre po__offre--avant">
+          <p class="po__etiquette">Populaire</p>
+          <h3 class="po__nom">Le site complet</h3>
+          <p class="po__pour">Le site posé pour durer, entretenu par nous, mois après mois.</p>
+          <p class="po__compte"><b>9</b> des 10 lignes comprises</p>
+          <ul class="po__liste">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Version ordinateur et version mobile</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Formulaire de contact créé puis testé par nous</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Mise en sécurité et conformité du site</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Rendez-vous de cadrage de votre activité</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Référencement posé à la mise en ligne : mots-clés, balises, descriptions</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Déclaration de votre site à Google&nbsp;<svg class="icon icon--marque icon--google" aria-hidden="true"><use href="#i-google"/></svg> et à Bing&nbsp;<svg class="icon icon--marque icon--bing" aria-hidden="true"><use href="#i-bing"/></svg></span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Hébergement, sauvegardes et mises à jour</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Assistance 24 h sur 24 et modifications de contenu</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Application de gestion reliée au site, pour les hébergements</span><b class="visually-hidden">compris</b></li>
+            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Site dessiné pour vous, pages et fonctions sur mesure</span><b class="visually-hidden">non compris</b></li>
+          </ul>
+          <p class="po__action">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
+              Réserver le diagnostic de mon site
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
+          <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+             aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
+            <span class="a1__visages po__visages" aria-hidden="true">
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
+            </span>
+            <span class="po__dit">
+              <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+              <b>5,0</b>
+              <small class="po__etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</small>
+            </span>
+          </a>
+        </article>
+
+        <article class="po__offre">
+          <h3 class="po__nom">Le pack Visibilité + Site</h3>
+          <p class="po__pour">Votre site date, ou vous n&rsquo;en avez pas. On repart de zéro.</p>
+          <p class="po__compte"><b>9</b> des 11 lignes comprises</p>
+          <ul class="po__liste">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Votre site créé ou refait, compris</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Hébergement, nom de domaine et maintenance compris</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>40 mots-clés travaillés chaque mois</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>60 liens obtenus par mois</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Fiche Google&nbsp;<svg class="icon icon--marque icon--google" aria-hidden="true"><use href="#i-google"/></svg> tenue et optimisée, Maps&nbsp;<svg class="icon icon--marque icon--maps" aria-hidden="true"><use href="#i-maps"/></svg> compris</span><b class="visually-hidden">compris</b></li>
+            <li class="a-marques"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Visibilité dans les IA</span><span class="po__marques" aria-hidden="true"><i class="po__marque"><svg class="icon icon--marque icon--chatgpt" aria-hidden="true"><use href="#i-chatgpt"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--gemini" aria-hidden="true"><use href="#i-gemini"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--claude" aria-hidden="true"><use href="#i-claude"/></svg></i><i class="po__marque"><svg class="icon icon--marque icon--perplexity" aria-hidden="true"><use href="#i-perplexity"/></svg></i></span><b class="visually-hidden">ChatGPT, Gemini, Claude et Perplexity</b><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Analyse des questions posées aux IA</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>3 articles et 3 publications par mois</span><b class="visually-hidden">compris</b></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Rapport mensuel commenté en français</span><b class="visually-hidden">compris</b></li>
+            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Suivi renforcé de vos concurrents</span><b class="visually-hidden">non compris</b></li>
+            <li class="est-absent"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span>Un point stratégique avec nous chaque mois</span><b class="visually-hidden">non compris</b></li>
+          </ul>
+          <p class="po__action">
+            <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--nuit">
+              Réserver le diagnostic de mon site
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+          </p>
+          <a class="po__avis" href="https://share.google/RHD0CkD38IK6VSCKV" target="_blank" rel="noopener"
+             aria-label="Note 5 sur 5 : lire nos avis Google (nouvel onglet)">
+            <span class="a1__visages po__visages" aria-hidden="true">
+              <i><img src="assets/img/humains/visage-charpentier.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-gite.jpg" alt="" width="32" height="32" decoding="async"></i><i><img src="assets/img/humains/visage-peintre.jpg" alt="" width="32" height="32" decoding="async"></i><i class="a1__visages--plus">+4</i>
+            </span>
+            <span class="po__dit">
+              <svg class="icon icon--google" aria-hidden="true"><use href="#i-google"/></svg>
+              <b>5,0</b>
+              <small class="po__etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</small>
+            </span>
+          </a>
+          <p class="po__note">Vingt-quatre mois, le temps que le site soit amorti.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
        S5, L'APPLICATION DE GESTION. Les captures de l'application et du
        panneau de reservation viendront ici : la place est prete, chaque
        fenetre porte un ecran dessine et l'etiquette « capture a venir ».
@@ -557,8 +539,7 @@
     <span class="sr__ronds" aria-hidden="true"><i></i><i></i><i></i></span>
     <div class="sr__dedans">
       <div class="sr__tete">
-        <p class="sr__sur-titre">L&rsquo;application de gestion</p>
-        <h2 id="hebergements-s5-title" class="sr__titre">Vos réservations arrivent chez vous, pas chez une plateforme.</h2>
+        <h2 id="hebergements-s5-title" class="sr__titre titre--ligne" style="--fit-l: min(60px, 3.28vw)">Vos réservations arrivent chez vous, pas chez une plateforme.</h2>
         <p class="sr__chapeau">Le site est relié à une application de gestion&nbsp;: le panneau de réservation sur votre site, vos demandes et vos disponibilités au même endroit.</p>
       </div>
 
@@ -615,9 +596,8 @@
     <span class="p3__ronds" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="p3__dedans">
       <div class="p3__tete">
-        <p class="p2__sur-titre">La méthode de création du site</p>
-        <h2 id="hebergements-s6-title" class="p2__titre">Sept étapes, du devis signé à la mise en ligne.</h2>
-        <p class="p2__texte">C&rsquo;est la méthode de l&rsquo;offre <b>Le site complet</b>, celle qu&rsquo;on vous remet par écrit avec le devis. Rien n&rsquo;avance sans votre accord : vous validez l&rsquo;ordinateur, puis le téléphone, puis l&rsquo;ensemble.</p>
+        <h2 id="hebergements-s6-title" class="p2__titre titre--ligne" style="--fit-l: min(60px, 4.48vw)">Sept étapes, du devis signé à la mise en ligne.</h2>
+        <p class="p2__texte sous--deux">C&rsquo;est la méthode de l&rsquo;offre <b>Le site complet</b>, celle qu&rsquo;on vous remet par écrit avec le devis. Rien n&rsquo;avance sans votre accord : vous validez l&rsquo;ordinateur, puis le téléphone, puis l&rsquo;ensemble.</p>
       </div>
 
       <div class="p3__corps" data-etapier>
@@ -802,10 +782,8 @@
       </div>
 
       <div class="a9__mots">
-        <p class="a9__sur-titre">Qui travaille sur votre dossier</p>
         <h2 id="hebergements-s7-title" class="a9__titre">Votre lieu, raconté par<br>
           <span class="a1__insecable"><span class="a1__surligne est-peint">deux frères du Jura</span><span class="a1__point a1__point--fin">.</span></span></h2>
-        <p class="a9__chapeau">On regarde votre hébergement avant d&rsquo;écrire une ligne. Un site qui donne envie de séjourner se fait avec le lieu sous les yeux.</p>
         <p class="a9__texte">Tom vous rencontre, sur place quand c&rsquo;est possible. Il écoute ce qui fait revenir vos voyageurs, la vue, le calme, l&rsquo;accueil. Nathan construit le site, le relie à votre application de gestion et le tient à jour saison après saison. D&rsquo;un bout à l&rsquo;autre, vous avez les deux mêmes interlocuteurs&nbsp;: ceux qui connaissent votre lieu.</p>
         <p class="a9__pied">Vous accueillez vos voyageurs vous-même. On fait pareil avec vous.</p>
       </div>
@@ -821,7 +799,6 @@
        ===================================================================== -->
   <section id="hebergements-s8" class="bd bd--avis avb" aria-labelledby="hebergements-s8-title">
     <div class="avb__tete">
-      <p class="sr__sur-titre">Les avis</p>
       <h2 id="hebergements-s8-title" class="sr__titre">Ce que disent <span class="a1__insecable"><span class="a1__surligne est-peint">nos clients</span><span class="a1__point a1__point--fin">.</span></span></h2>
     </div>
     <div class="avb__bandes">
@@ -923,7 +900,7 @@
         <p class="ab-fp__action">
           <a href="#rendez-vous" data-rdv-ouvrir class="a1__bouton a1__bouton--bleu">
             <span class="a1__bouton-points" aria-hidden="true"><i></i><i></i><i></i></span>
-            Prendre rendez-vous
+            Réserver le diagnostic de mon site
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
           </a>
           <a href="test-visibilite.html" class="a11__bouton a11__bouton--clair">
@@ -942,7 +919,7 @@
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Hébergement, sauvegardes et mises à jour</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Modifications de contenu sur simple message</li>
         </ul>
-        <p class="ab-fp__pied">Le site est à votre nom depuis le premier jour. <a href="#hebergements-s3">Comparer les offres</a>.</p>
+        <p class="ab-fp__pied">Le site est à votre nom depuis le premier jour. <a href="#hebergements-s4">Comparer les offres</a>.</p>
       </div>
     </div>
   </section>
@@ -984,16 +961,15 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="resultats.html">Résultats</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Réserver un diagnostic</a></li>
         </ul>
       </nav>
 
       <div class="footer-col" id="rendez-vous">
         <p class="footer-col-title">Coordonnées</p>
         <ul>
-          <li><a href="#rendez-vous" data-rdv-ouvrir>Prendre rendez-vous en ligne</a></li>
+          <li><a href="#rendez-vous" data-rdv-ouvrir>Réserver un diagnostic en ligne</a></li>
           <li><a href="mailto:contact@obt-agency.fr">contact@obt-agency.fr</a></li>
-          <li><a href="tel:+33641336451">06 41 33 64 51</a></li>
           <li class="footer-col-plain">Partout en France, à distance</li>
           <li class="footer-col-plain">Réponse sous 24 h ouvrées</li>
         </ul>
@@ -1015,7 +991,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=408" defer></script>
+<script src="js/main.js?v=420" defer></script>
 <!-- Barre d'appel flottante, commune aux cinq pages. Elle reste accessible où
      qu'on soit dans la page : c'est le raccourci vers la prise de contact. -->
 

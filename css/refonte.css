@@ -7564,7 +7564,267 @@ main > section > .container { position: relative; }
 .p1__dedans--centre .p1__gages { justify-content: center; }
 
 /* Les avis prennent la place du sur-titre dans les bandeaux centres des
-   pages pack, site, identite et automatisation, et la section suivante
+   pages pack, site, identite et automatisation. La section suivante
    remonte d'autant. Nathan, 9 novembre 2026. */
 .p1__dedans--centre .p1__preuve--haut { margin: 0 0 20px; }
 .p1:has(.p1__dedans--centre) { padding-block: clamp(92px, 10vw, 128px) clamp(44px, 5.5vw, 72px); }
+
+/* Titres sur une ligne, ou sur deux lignes exactement, demandes par Nathan
+   le 16 novembre 2026. En dessous de 900 px, le titre reprend sa coupe
+   naturelle : une ligne forcee deborderait de l'ecran. */
+@media (min-width: 900px) {
+  .titre--ligne { max-width: none !important; white-space: nowrap; }
+  .titre--deux { max-width: none !important; }
+  .titre--deux .titre__ligne, .titre--deux > [data-mots] { white-space: nowrap; }
+  .titre--ligne .a1__surligne, .titre--deux .a1__surligne { white-space: nowrap; }
+}
+/* « En deux mots » de la page Site internet : beaucoup de mots, titre
+   plus petit. */
+.p2__titre--petit { font-size: clamp(22px, 2.5vw, 30px); max-width: 34ch; }
+
+/* Ronds des bandeaux : plus aucun rond du bleu plein des boutons. Ils
+   reprennent les teintes du bandeau de la page Referencement (p1__ronds) :
+   bleu a 13-22 %, bleu vif a 30 %, bleu clair a 34 %. Le regard va aux
+   boutons, pas au decor. Nathan, 16 novembre 2026. */
+.a1__ronds--haut i:nth-child(1), .a1__ronds--bas i:nth-child(1) { background: var(--c-accent); opacity: .16; }
+.a1__ronds--haut i:nth-child(2), .a1__ronds--bas i:nth-child(3) { background: var(--c-accent-bright); opacity: .3; }
+.a1__ronds--haut i:nth-child(3), .a1__ronds--bas i:nth-child(4) { background: var(--c-accent-bright); opacity: .3; }
+.a1__ronds--haut i:nth-child(4), .a1__ronds--bas i:nth-child(2) { background: var(--c-accent-light); opacity: .34; }
+.a1__ronds--haut i:nth-child(5) { background: var(--c-accent); opacity: .22; }
+.ex1__ronds i:nth-child(1) { opacity: .16; }
+.ex1__ronds i:nth-child(2) { background: var(--c-accent-light); opacity: .34; }
+.ex1__ronds i:nth-child(3) { background: var(--c-accent-light); opacity: .34; }
+.ex1__ronds i:nth-child(4) { opacity: .22; }
+
+/* La video remonte sous le bandeau (accueil et pages secteur) : on la voit
+   des l'arrivee. Nathan, 16 novembre 2026. */
+.a1 { padding-bottom: 30px; }
+.a1--secteur:not(.a1--resultats) { padding-bottom: 22px; }
+.a1 + .a3 { padding-top: clamp(10px, 1.6vw, 22px); }
+@media (max-width: 760px) { .a1 { padding-bottom: 28px; } }
+
+/* « Ce qu'on fait » et les sections offre sous l'arc : le contenu colle a
+   l'arc, la section est moins haute. Meme reglage partout. */
+.a5--nuit { padding-top: clamp(2px, .8vw, 10px); padding-bottom: clamp(44px, 5.5vw, 76px); }
+.a5--nuit .a5__tete { margin-bottom: clamp(26px, 3vw, 40px); }
+.po--arc { padding-top: clamp(2px, .8vw, 10px); }
+.po--arc .po__tete { margin-bottom: clamp(22px, 2.8vw, 36px); }
+
+/* ============================================================================
+   UN SEUL FOND CLAIR POUR TOUT LE SITE
+   Nathan, 16 novembre 2026 : toutes les sections qui ne sont pas en nuit
+   prennent le fond creme du bandeau du blog (#FAF9F5). Les sections en
+   nuit ne bougent pas. Les sections encore blanches au releve du jour sont
+   nommees une a une.
+   ========================================================================== */
+body { background-color: #FAF9F5; }
+main > section.sr,
+main > section.a7,
+main > section.a9,
+main > section.bd:not(.bd--nuit),
+main > section.pc,
+main > section.pr,
+main > section.p2,
+main > section.gf,
+main > section.blog,
+main > section.ex-corps,
+main > section.svc-hero { background-color: #FAF9F5; }
+/* Le bloc de texte du bandeau centre s'elargit pour qu'un titre sur une ou
+   deux lignes reste centre au lieu de deborder a droite. */
+@media (min-width: 900px) {
+  .p1__dedans--centre .p1__mots { max-width: none; }
+}
+
+/* ============================================================================
+   LA VIDEO SANS ECRAN D'ORDINATEUR
+   Nathan et Tom, 16 novembre 2026 : plus de chassis, de bras ni de socle.
+   La video est posee seule, coins arrondis, un filet fin et une ombre douce.
+   La case des chiffres remonte : elle mord sur le bas de la video.
+   ========================================================================== */
+.a3__cadre--nu {
+  position: relative; overflow: hidden;
+  border-radius: 22px;
+  background: #0B0D12;
+  box-shadow: 0 40px 80px -44px rgba(7, 18, 48, .55), 0 0 0 1px rgba(18, 21, 26, .08);
+}
+.a3__cadre--nu .cadre__ecran { position: relative; border-radius: inherit; overflow: hidden; }
+.a3__cadre--nu ~ .a3__stats.a3__case { margin-top: -34px; }
+@media (max-width: 560px) { .a3__cadre--nu ~ .a3__stats.a3__case { margin-top: -18px; } }
+.a3__cadre--nu + .a3__case, .a3__poste .a3__case { max-width: 900px; }
+.a3__action { margin-top: clamp(20px, 2.4vw, 28px); }
+
+/* ============================================================================
+   LA FENETRE D'AUDIT (accueil). Nathan et Tom, 16 novembre 2026.
+   La fenetre est en nuit, la case du formulaire en creme pour ressortir.
+   Tout est centre : titre, case, bouton, coches.
+   ========================================================================== */
+.modale--audit .modale__boite {
+  width: min(100%, 620px);
+  background: #071230; color: #fff;
+  text-align: center;
+}
+.modale--audit .modale__fermer { color: #fff; background: rgba(255, 255, 255, .08); }
+.modale--audit .modale__ronds i { opacity: .18; }
+.au { position: relative; z-index: 1; }
+.au__titre { color: #fff; margin: 4px auto 20px; max-width: 22ch; text-wrap: balance; font-size: clamp(22px, 2.8vw, 30px); }
+.au__case {
+  margin: 0 auto; max-width: 460px;
+  padding: clamp(18px, 2.6vw, 26px);
+  border-radius: 18px; background: #FAF9F5; color: var(--c-text);
+  text-align: left;
+}
+.au__champ { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
+.au__champ label { font-size: 13.5px; font-weight: 700; color: var(--c-text); }
+.au__champ label small { font-weight: 500; color: var(--c-text-faint); }
+.au__champ input {
+  width: 100%; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid rgba(18, 21, 26, .14); background: #fff;
+  font: inherit; font-size: 15px; color: var(--c-text);
+}
+.au__champ input:focus { outline: 2px solid var(--c-accent-bright); outline-offset: 1px; }
+.au__champ input[aria-invalid="true"] { border-color: #D64545; }
+.au__action { margin: 18px 0 0; display: flex; justify-content: center; }
+.au__case .au__action { margin-top: 6px; }
+.au__coches {
+  list-style: none; margin: 16px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px;
+  font-size: 13px; color: var(--c-text-muted);
+}
+.au__coches li { display: inline-flex; align-items: center; gap: 6px; }
+.au__coches .icon { width: 14px; height: 14px; color: #1E9E5A; }
+/* Le rapport flou : un apercu qui donne envie, illisible tant qu'on n'a pas
+   laisse son e-mail. */
+.au__rapport { position: relative; margin: 0 auto 16px; max-width: 460px; border-radius: 16px; overflow: hidden; }
+.au__flou {
+  padding: 18px; background: #fff; color: var(--c-text); text-align: left;
+  filter: blur(5px); transform: scale(1.02); user-select: none;
+}
+.au__r-tete { margin: 0 0 12px; display: flex; justify-content: space-between; font-size: 13px; }
+.au__r-tete span { color: var(--c-text-faint); }
+.au__r-note { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.au__r-anneau {
+  flex: none; width: 74px; height: 74px; border-radius: 50%;
+  border: 7px solid #F2B84B; display: grid; place-items: center; align-content: center;
+}
+.au__r-anneau b { font-size: 20px; line-height: 1; }
+.au__r-anneau i { font-style: normal; font-size: 10px; color: var(--c-text-faint); }
+.au__r-lignes { flex: 1; display: grid; gap: 7px; }
+.au__r-lignes i, .au__r-points i { display: block; height: 9px; border-radius: 5px; background: #E3E6EC; }
+.au__r-lignes i.court { width: 60%; }
+.au__r-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.au__r-points li { display: flex; align-items: center; gap: 10px; }
+.au__r-points li::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: #D64545; }
+.au__r-points li.moyen::before { background: #F2B84B; }
+.au__r-points li.ok::before { background: #1E9E5A; }
+.au__r-points li i { flex: 1; }
+.au__cadenas {
+  position: absolute; inset: 0; margin: auto; width: 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center; background: #071230; color: #fff;
+  box-shadow: 0 10px 30px -10px rgba(7, 18, 48, .6);
+}
+.au__cadenas .icon { width: 22px; height: 22px; }
+.au__accord { margin: 4px 0 0; display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.5; color: var(--c-text-muted); }
+.au__accord input { flex: none; width: 18px; height: 18px; margin-top: 1px; accent-color: var(--c-accent); }
+.au__accord a { color: var(--c-accent); }
+.au__accord-erreur { display: block; margin-top: 6px; }
+.au__dit { margin: 12px 0 0; font-size: 13px; color: #D64545; text-align: center; }
+.au__coche-merci {
+  display: grid; place-items: center; margin: 4px auto 14px;
+  width: 58px; height: 58px; border-radius: 50%; background: #1E9E5A; color: #fff;
+}
+.au__coche-merci .icon { width: 26px; height: 26px; }
+.au__merci-dit { margin: 0 auto; max-width: 42ch; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, .78); }
+
+/* Sous-titres sur une ligne ou sur deux lignes, 16 novembre 2026. La
+   largeur des sous-titres a deux lignes est reglee a la mesure, section par
+   section, par la variable --sous. */
+@media (min-width: 900px) {
+  .sous--ligne { max-width: none !important; white-space: nowrap; }
+  .sous--deux { max-width: var(--sous, 60ch) !important; margin-inline: auto; text-wrap: balance; }
+  .titre--accueil .titre__ligne { white-space: nowrap; }
+}
+/* Un titre force sur une ligne peut etre plus large que sa colonne : il
+   deborde alors des deux cotes a parts egales et reste centre sur la page. */
+@media (min-width: 900px) {
+  .titre--ligne, .sous--ligne {
+    width: max-content; max-width: none !important;
+    position: relative; left: 50%; transform: translateX(-50%);
+    margin-left: 0 !important; margin-right: 0 !important;
+  }
+  .sous--deux {
+    width: min(var(--sous, 740px), 92vw); max-width: none !important;
+    position: relative; left: 50%; transform: translateX(-50%);
+    margin-left: 0 !important; margin-right: 0 !important;
+  }
+}
+@media (min-width: 900px) {
+  .sous--deux { width: min(var(--sous, 900px), 92vw); }
+}
+
+/* ============================================================================
+   LE CONTOUR DES VSL, repris d'offbound.fr le 16 novembre 2026 (demande de
+   Nathan) : une marge de 8 px couleur sable, coins de 24 px dehors et 16 px
+   dedans, un filet de 1 px et une ombre douce.
+   ========================================================================== */
+.a3__cadre--nu {
+  padding: 8px; border-radius: 24px; overflow: hidden;
+  background: #E9E3D2;
+  box-shadow: 0 0 0 1px #D5D0C3, 0 8px 40px rgba(26, 26, 26, .16);
+}
+.a3__cadre--nu .cadre__ecran { border-radius: 16px; overflow: hidden; }
+.a3__cadre--nu .a3__film { border-radius: 16px; }
+
+/* ============================================================================
+   LES TAILLES DE TITRES, reprises d'offbound.fr le 16 novembre 2026 :
+   titre de bandeau 72 px, titre de section 60 px, interligne serre, lettres
+   resserrees de 2,5 %, sous-titre 18 px sur 28 px a 20 px du titre.
+   Les titres que Nathan veut sur une ou deux lignes gardent ce nombre de
+   lignes : ceux-la seulement descendent sous 60 px quand la ligne ne tient
+   pas dans l'ecran (reglage --fit pose sur la balise).
+   ========================================================================== */
+main .a1__titre, main .p1__titre, main .ex1__titre {
+  font-size: var(--fit, clamp(34px, 5.3vw, 72px));
+  line-height: 1.04; letter-spacing: -.025em;
+}
+main .a5__titre, main .sr__titre, main .a6__titre, main .a7__titre, main .a8__titre,
+main .a9__titre, main .a10__titre, main .a11__titre, main .p2__titre, main .po__titre,
+main .ab-fp__titre {
+  font-size: var(--fit, clamp(28px, 4.4vw, 60px));
+  line-height: 1.04; letter-spacing: -.025em;
+}
+main .a1__sous, main .p1__sous, main .a5__chapeau, main .sr__chapeau, main .a6__chapeau,
+main .a8__chapeau, main .a10__chapeau, main .ab-fp__sous,
+main [class*="__tete"] > .p2__texte {
+  font-size: 18px; line-height: 28px;
+}
+main [class*="__titre"] + .a1__sous, main [class*="__titre"] + .p1__sous,
+main [class*="__titre"] + [class*="__chapeau"], main [class*="__titre"] + .p2__texte,
+main [class*="__titre"] + .ab-fp__sous { margin-top: 20px; }
+@media (max-width: 760px) {
+  main .a1__sous, main .p1__sous, main [class*="__chapeau"], main .ab-fp__sous,
+  main [class*="__tete"] > .p2__texte { font-size: 16px; line-height: 25px; }
+}
+@media (min-width: 900px) {
+  main .titre--ligne[style*="--fit-l"], main .titre--deux[style*="--fit-l"] { font-size: var(--fit-l); }
+}
+@media (min-width: 900px) {
+  main .titre--deux {
+    width: max-content; max-width: none !important;
+    position: relative; left: 50%; transform: translateX(-50%);
+    margin-left: 0 !important; margin-right: 0 !important;
+  }
+  /* Le titre de fin des pages secteur vit dans une colonne : il n'est pas
+     recentre sur la page. */
+  main .ab-fp__titre.titre--deux { left: 0; transform: none; }
+}
+/* Dans un bloc deja centre en flex ou en grille, le titre repart du bord
+   gauche avant d'etre recentre : sinon il serait decale deux fois. */
+@media (min-width: 900px) {
+  main .titre--ligne, main .titre--deux, main .sous--ligne, main .sous--deux {
+    align-self: flex-start; justify-self: start;
+  }
+  main .ab-fp__titre.titre--deux { align-self: auto; justify-self: auto; }
+}
+/* La colonne du bandeau centre garde la largeur de sa piste : c'est le titre
+   seul qui deborde, des deux cotes. */
+.p1__dedans--centre .p1__mots { min-width: 0; width: 100%; }
